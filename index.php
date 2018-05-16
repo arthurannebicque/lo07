@@ -54,8 +54,10 @@ else {
 if (isset($_GET['action'])) {
 
   if ($_GET['action'] == 'addBabysitter') {
-      if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['password']) && !empty($_POST['passwordConfirmation']) && !empty($_POST['email']) && !empty($_POST['type']) && !empty($_POST['ville'])){
-          addBabysitter($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['password'], $_POST['passwordConfirmation'], $_POST['type'], $_POST['ville'], $_POST['telephone'], $_POST['age'], $_POST['experience']);
+      if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['password']) && !empty($_POST['passwordConfirmation']) && !empty($_POST['email']) && !empty($_POST['type'])
+      && !empty($_POST['ville']) && !empty($_POST['langues'])){
+          addBabysitter($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['password'], $_POST['passwordConfirmation'], $_POST['type'], $_POST['ville'],
+          $_POST['telephone'], $_POST['age'], $_POST['experience'], $_POST['langues']);
       }
       else {
           throw new Exception('tous les champs n\'ont pas été remplis');

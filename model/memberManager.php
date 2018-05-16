@@ -96,4 +96,32 @@ class MemberManager {
     return $babysitter;
 
   }
+
+  public function getLangueId($langue) {
+    $db = $this->dbConnect();
+    $req = $db->prepare('SELECT id FROM langues WHERE langue = ?');
+    $req->execute(array($langue));
+    $langueID = $req->fetch();
+
+    return $langueID;
+  }
+
+  public function createLangue($langue) {
+    $db = $this->dbConnect();
+
+    $req = $db->prepare('INSERT INTO langues(langue) VALUES(?)');
+    $req->execute(array($langue));
+    $langueID = $db->lastInsertId();
+
+    return $langueID;
+  }
+
+  public function createBabysitterLangue($id_babysitter, $id_langue) {
+    $db = $this->dbConnect();
+
+    $req = $db->prepare('INSERT INTO babysitter_langue(id_babysitter, id_langue) VALUES(?,?)');
+    $affectedBabysitterLangue = $req->execute(array($id_babysitter, $id_langue));
+
+    return $affectedBabysitterLangue;
+  }
 }

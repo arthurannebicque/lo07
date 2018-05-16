@@ -60,6 +60,66 @@
               <option> +3 ans</option>
             </select>
         </div>
+        <div class="form-label-group">
+          <label for="inputLangues">Langues parlées (autre que français)</label>
+            <select id="inputLangues" name="langues[]" multiple class ="form-control">
+              <?php
+              $listeLangues = array("Afrikaans", "Albanais",
+              "Allemand",
+              "Anglais",
+              "Arabe",
+              "Arménien",
+              "Bengali",
+              "Bulgare",
+              "Catalan",
+              "Chinois",
+              "Coréen",
+              "Croate",
+              "Danois",
+              "Espagnol",
+              "Estonien",
+              "Filipino",
+              "Finnois",
+              "Géorgien",
+              "Grec",
+              "Hébreu",
+              "Hindi",
+              "Hongrois",
+              "Indonésien",
+              "Islandais",
+              "Italien",
+              "Japonais",
+              "Khmer",
+              "Letton",
+              "Lituanien",
+              "Malgache",
+              "Mongol",
+              "Néerlandais",
+              "Norvégien",
+              "Occitan",
+              "Persan",
+              "Polonais",
+              "Portugais",
+              "Quechua",
+              "Roumain",
+              "Russe",
+              "Samoan",
+              "Serbe",
+              "Slovaque",
+              "Slovène",
+              "Suédois",
+              "Tamoul",
+              "Tchèque",
+              "Turc",
+              "Ukrainien",
+              "Vietnamien");
+
+              foreach ($listeLangues as $langue) {
+                echo "<option>".$langue."</option>";
+              }
+              ?>
+            </select>
+        </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Inscription</button>
         <p class="mt-5 mb-3 text-muted text-center">Déjà inscrit ? Connectez vous <a href="index.php?action=connexion">ici</a></p>
 

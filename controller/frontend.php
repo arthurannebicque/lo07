@@ -3,7 +3,7 @@
 require_once ('model/MemberManager.php');
 require_once ('model/SlotManager.php');
 
-function addBabysitter($nom, $prenom, $email, $password, $passwordConfirmation, $type, $ville, $telephone, $age, $experience) {
+function addBabysitter($nom, $prenom, $email, $password, $passwordConfirmation, $type, $ville, $telephone, $age, $experience, $langues) {
 
     $memberManager = new \LO07\Sittie2\Model\MemberManager();
 
@@ -25,6 +25,16 @@ function addBabysitter($nom, $prenom, $email, $password, $passwordConfirmation, 
     if($emailUsed['exist_email'] == '0') {
           $affectedCredentials = $memberManager->createCredentials($email, $pass_hache, $type);
           $affectedBabysitter = $memberManager->createBabysitter($affectedCredentials['id_user'], $nom, $prenom, $ville, $telephone, $age, $experience);
+          foreach ($langues as $langue) {
+            $langueUsed = $memberManager->getLangueId($langue);
+            if($langueUsed === false) {
+              $affectedLangue = $memberManager->createLangue($langue);
+              $affectedBabysitterLangue = $memberManager->createBabysitterLangue($affectedCredentials['id_user'], $affectedLangue);
+          }
+          else {
+            $affectedBabysitterLangue = $memberManager->createBabysitterLangue($affectedCredentials['id_user'], $langueUsed['id']);
+          }
+        }
 
 
     }
