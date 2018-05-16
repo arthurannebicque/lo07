@@ -37,6 +37,8 @@ if ($_SESSION['type'] == 2) {
   echo "bonjour parent<br>";
   echo '<a type="button" class="btn btn-primary" href="index.php?action=reservation&type=ponctuelle">Réservation simple</a><br>';
   echo '<a type="button" class="btn btn-primary" href="index.php?action=reservation&type=régulière">Réservation régulière</a><br>';
+  echo '<a type="button" class="btn btn-primary" href="index.php?action=reservation&type=langue">Réservation par langue</a><br>';
+
 
   ?>
   <h2>Vos réservations :</h2>

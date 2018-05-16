@@ -25,7 +25,15 @@ class SlotManager {
 
   public function getDispos($id_babysitter) {
       $db = $this->dbConnect();
-      $slots = $db->prepare('SELECT DATE_FORMAT(creneau, "%d/%m/%Y") AS date, DATE_FORMAT(creneau, "%Hh%i") AS heure, statut, id_reservation FROM disponibilites WHERE id_babysitter = ? ORDER BY creneau');
+      $slots = $db->prepare('SELECT id_dispo, DATE_FORMAT(creneau, "%d/%m/%Y") AS date, DATE_FORMAT(creneau, "%Hh%i") AS heure, statut, id_reservation FROM disponibilites WHERE id_babysitter = ? ORDER BY creneau');
+      $slots->execute(array($id_babysitter));
+
+      return $slots;
+  }
+
+  public function getFreeDispos($id_babysitter) {
+      $db = $this->dbConnect();
+      $slots = $db->prepare('SELECT id_dispo, DATE_FORMAT(creneau, "%d/%m/%Y") AS date, DATE_FORMAT(creneau, "%Hh%i") AS heure, statut, id_reservation FROM disponibilites WHERE id_babysitter = ? AND statut = "disponible" ORDER BY creneau');
       $slots->execute(array($id_babysitter));
 
       return $slots;
@@ -58,6 +66,17 @@ class SlotManager {
 	         'id_reservation' => $id_reservation,
 	         'id_babysitter' => $id_babysitter,
            'creneau' => $creneau
+	        ));
+
+      return $slots;
+  }
+  public function bookDispoID($id_dispo, $statut, $id_reservation) {
+      $db = $this->dbConnect();
+      $slots = $db->prepare('UPDATE disponibilites SET statut = :statut, id_reservation = :id_reservation WHERE id_dispo = :id_dispo');
+      $slots->execute(array(
+	         'statut' => $statut,
+	         'id_reservation' => $id_reservation,
+           'id_dispo' => $id_dispo
 	        ));
 
       return $slots;

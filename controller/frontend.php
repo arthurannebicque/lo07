@@ -204,6 +204,23 @@ function requestResaPonctuelle($id, $date, $heure_debut, $heure_fin, $enfants) {
   }
 }
 
+function requestResaLangue($id, $id_langue, $enfants) {
+  $memberManager = new \LO07\Sittie2\Model\MemberManager();
+  $slotManager = new \LO07\Sittie2\Model\SlotManager();
+
+  $listBabysitters = $memberManager->findBabysitter($id_langue);
+  $selectedLangue = $memberManager->getLangue($id_langue);
+  $babysitters = $listBabysitters->fetchall();
+  foreach ($babysitters as $babysitter ) {
+    $listeDispos = $slotManager->getFreeDispos($babysitter['id']);
+    $Dispos[] = $listeDispos->fetchall();
+  }
+  $selectedEnfants = $enfants;
+  $listeEnfants = $memberManager->getEnfants($_SESSION['id']);
+  $listeLangues = $memberManager->getLangues();
+  require('view/resaLangueForm.php');
+}
+
 function createResaPonctuelle($id_parent, $id_babysitter, $creneaux, $selectedEnfants) {
   $slotManager = new \LO07\Sittie2\Model\SlotManager();
   $memberManager = new \LO07\Sittie2\Model\MemberManager();
@@ -223,6 +240,25 @@ function createResaPonctuelle($id_parent, $id_babysitter, $creneaux, $selectedEn
   $babysitter = $memberManager->getBabysitterInfos($newReservationId);
   $listeEnfants = $memberManager->getEnfantsResa($newReservationId);
 
+  require('view/recapReservation.php');
+
+}
+
+function createResaLangue($id_parent, $id_babysitter, $id_dispos, $enfants) {
+  $slotManager = new \LO07\Sittie2\Model\SlotManager();
+  $memberManager = new \LO07\Sittie2\Model\MemberManager();
+  $type = 2;
+  $newReservationId = $slotManager->createReservation($id_parent, $id_babysitter, $type);
+  $statut = 'reservé';
+  foreach ($id_dispos as $id_dispo) {
+    $affectedSlot = $slotManager->bookDispoID($id_dispo, $statut, $newReservationId);
+  }
+  foreach ($enfants as $enfant) {
+    $affectedEnfantReservation = $slotManager->registerEnfantReservation($enfant, $newReservationId);
+  }
+  $slots = $slotManager->getDisposResa($newReservationId);
+  $babysitter = $memberManager->getBabysitterInfos($newReservationId);
+  $listeEnfants = $memberManager->getEnfantsResa($newReservationId);
   require('view/recapReservation.php');
 
 }
@@ -250,6 +286,14 @@ function getListeEnfants() {
   $listeEnfants = $memberManager->getEnfants($_SESSION['id']);
 
   require('view/resaPonctuelleForm.php');
+}
+
+function getResaLangueForm() {
+  $memberManager = new \LO07\Sittie2\Model\MemberManager();
+  $listeEnfants = $memberManager->getEnfants($_SESSION['id']);
+  $listeLangues = $memberManager->getLangues();
+
+  require('view/resaLangueForm.php');
 }
 
 function showReservation($id_reservation) {

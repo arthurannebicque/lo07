@@ -124,4 +124,30 @@ class MemberManager {
 
     return $affectedBabysitterLangue;
   }
+  
+  public function getLangue($id_langue) {
+    $db = $this->dbConnect();
+    $req = $db->prepare('SELECT langue FROM langues WHERE id = ?');
+    $req->execute(array($id_langue));
+    $langue = $req->fetch();
+    return $langue;
+
+  }
+
+  public function getLangues() {
+    $db = $this->dbConnect();
+    $listeLangues = $db->prepare('SELECT id, langue FROM langues');
+    $listeLangues->execute();
+
+    return $listeLangues;
+  }
+
+  public function findBabysitter($id_langue) {
+    $db = $this->dbConnect();
+
+    $babysitters = $db->prepare('SELECT babysitters.id, babysitters.nom, babysitters.prenom FROM babysitters, babysitter_langue WHERE babysitter_langue.id_langue = ? AND babysitters.id = babysitter_langue.id_babysitter');
+    $babysitters->execute(array($id_langue));
+
+    return $babysitters;
+  }
 }

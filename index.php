@@ -19,15 +19,27 @@ if (isset($_SESSION['id']) && isset($_SESSION['email']) && isset($_SESSION['type
     elseif ($_GET['action'] == 'reservation') {
       if ($_GET['type'] == 'ponctuelle') getListeEnfants(); //require('view/resaPonctuelleForm.php');
       if ($_GET['type'] == 'reguliere') require('view/resaReguliereForm.php');
+      if ($_GET['type'] == 'langue') getResaLangueForm(); //require('view/resaPonctuelleForm.php');
+
     }
     elseif ($_GET['action'] == 'requestResaPonctuelle') {
       if (!empty($_POST['date']) && !empty($_POST['heure_debut']) && !empty($_POST['heure_fin']) && !empty($_POST['enfants'])){
         requestResaPonctuelle($_SESSION['id'], $_POST['date'], $_POST['heure_debut'], $_POST['heure_fin'], $_POST['enfants']);
       }
     }
+    elseif ($_GET['action'] == 'requestResaLangue') {
+      if (!empty($_POST['langue']) && !empty($_POST['enfants'])){
+        requestResaLangue($_SESSION['id'], $_POST['langue'], $_POST['enfants']);
+      }
+    }
     elseif ($_GET['action'] == 'createResaPonctuelle') {
       if (isset($_GET['id']) && isset($_GET['creneaux']) && isset($_GET['enfants'])){
         createResaPonctuelle($_SESSION['id'], $_GET['id'], $_GET['creneaux'], $_GET['enfants']);
+      }
+    }
+    elseif ($_GET['action'] == 'createResaLangue') {
+      if (!empty($_POST['id_babysitter']) && !empty($_POST['dispo']) && !empty($_POST['enfants'])){
+        createResaLangue($_SESSION['id'], $_POST['id_babysitter'], $_POST['dispo'], $_POST['enfants']);
       }
     }
     elseif ($_GET['action'] == 'showReservation') {
