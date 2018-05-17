@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:8889
--- Généré le :  Mer 16 Mai 2018 à 11:19
+-- Généré le :  Jeu 17 Mai 2018 à 17:13
 -- Version du serveur :  5.6.34
 -- Version de PHP :  7.1.0
 
@@ -37,7 +37,9 @@ INSERT INTO `authentifiants` (`id_user`, `email`, `password`, `type`) VALUES
 (6, 'vincent@dujardin.com', '$2y$10$fSOQH6/ACfV64kAuOI1xU.v6GfG7ZYbcV2/msVeqF9tuB33BzQiPq', 1),
 (10, 'marine@delorme.fr', '$2y$10$y8h.s5rsch8pZKj/98SE1e8JOWEwMmn1FNtSkhCZlVExLwVne5C36', 2),
 (11, 'valentin@gaulhet.fr', '$2y$10$QPfQI0sVpzfv0j6GX6gHyObNODcjzLkqSFq0PILRE4HbNTGK0dtbq', 1),
-(12, 'marc@lemercier.fr', '$2y$10$W/58VEhnNBgdPMx378IYfeue0nfZKPUpXHU0eoMmWf/IrmmHihUWK', 2);
+(12, 'marc@lemercier.fr', '$2y$10$W/58VEhnNBgdPMx378IYfeue0nfZKPUpXHU0eoMmWf/IrmmHihUWK', 2),
+(14, 'anouk@harel.fr', '$2y$10$bglVdFB/kK0JpLQSD24UOeHahcwvqOrMO4ZPRwGS.JR7kvsI68UwS', 1),
+(15, 'phuc@nguyen.fr', '$2y$10$z1vhB57elI7HdXbWlpEI2eNgsS1aovVd8x8RYLgZ4A6KnY2XryUtS', 1);
 
 -- --------------------------------------------------------
 
@@ -64,7 +66,31 @@ CREATE TABLE `babysitters` (
 INSERT INTO `babysitters` (`id`, `nom`, `prenom`, `ville`, `portable`, `age`, `experience`, `candidature_valide`, `visible`) VALUES
 (3, 'Annebicque', 'Arthur', 'Paris, France', '0650913185', 23, 1, 0, 0),
 (6, 'Dujardin', 'Vincent', 'Lille, France', '0678987654', 23, 1, 0, 0),
-(11, 'Gaulhet', 'Valentin', 'Troyes, France', '0601020304', 20, -1, 0, 0);
+(11, 'Gaulhet', 'Valentin', 'Troyes, France', '0601020304', 20, -1, 0, 0),
+(14, 'Harel', 'Anouk', 'Strasbourg, France', '0659384958', 20, 1, 0, 0),
+(15, 'Nguyen', 'Phuc', 'Antony, France', '0659382059', 24, -1, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `babysitter_langue`
+--
+
+CREATE TABLE `babysitter_langue` (
+  `id` int(11) NOT NULL,
+  `id_babysitter` int(11) NOT NULL,
+  `id_langue` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `babysitter_langue`
+--
+
+INSERT INTO `babysitter_langue` (`id`, `id_babysitter`, `id_langue`) VALUES
+(1, 14, 1),
+(2, 14, 2),
+(3, 14, 3),
+(4, 15, 2);
 
 -- --------------------------------------------------------
 
@@ -123,7 +149,14 @@ INSERT INTO `disponibilites` (`id_dispo`, `id_babysitter`, `creneau`, `statut`, 
 (38, 11, '2018-05-17 08:00:00', 'disponible', NULL),
 (39, 11, '2018-05-17 09:00:00', 'disponible', NULL),
 (40, 11, '2018-05-17 10:00:00', 'reservé', 47),
-(41, 11, '2018-05-17 11:00:00', 'reservé', 47);
+(41, 11, '2018-05-17 11:00:00', 'reservé', 47),
+(45, 14, '2018-05-18 13:00:00', 'disponible', NULL),
+(46, 14, '2018-05-18 14:00:00', 'disponible', NULL),
+(47, 14, '2018-05-18 15:00:00', 'disponible', NULL),
+(48, 14, '2018-05-18 16:00:00', 'disponible', NULL),
+(49, 15, '2018-05-19 10:00:00', 'reservé', 51),
+(50, 15, '2018-05-19 11:00:00', 'reservé', 51),
+(51, 15, '2018-05-19 12:00:00', 'reservé', 51);
 
 -- --------------------------------------------------------
 
@@ -147,6 +180,26 @@ INSERT INTO `enfants` (`id`, `id_parent`, `prenom`, `date_naissance`, `restricti
 (1, 10, 'Clément', '2002-04-05', 'aucun'),
 (2, 10, 'Arthur', '1994-05-26', 'aucun'),
 (3, 12, 'Alfred', '2004-01-01', 'aucune');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `langues`
+--
+
+CREATE TABLE `langues` (
+  `id` int(11) NOT NULL,
+  `langue` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `langues`
+--
+
+INSERT INTO `langues` (`id`, `langue`) VALUES
+(1, 'Allemand'),
+(2, 'Anglais'),
+(3, 'Tchèque');
 
 -- --------------------------------------------------------
 
@@ -199,7 +252,9 @@ INSERT INTO `reservations` (`id`, `id_parent`, `id_babysitter`, `type`, `note`, 
 (43, 10, 3, 1, -1, '', 0),
 (45, 10, 3, 1, 4, 'satisfait', 122),
 (46, 10, 6, 1, 4, 'bien', 122),
-(47, 12, 11, 1, -1, '', 0);
+(47, 12, 11, 1, -1, '', 0),
+(48, 10, 15, 1, -1, '', 0),
+(51, 10, 15, 2, -1, '', 0);
 
 -- --------------------------------------------------------
 
@@ -278,7 +333,8 @@ INSERT INTO `reservation_enfant` (`id`, `id_reservation`, `id_enfant`) VALUES
 (58, 45, 2),
 (59, 46, 1),
 (60, 46, 2),
-(61, 47, 3);
+(61, 47, 3),
+(64, 51, 1);
 
 -- --------------------------------------------------------
 
@@ -334,6 +390,12 @@ ALTER TABLE `babysitters`
   ADD KEY `id_babysitter` (`id`);
 
 --
+-- Index pour la table `babysitter_langue`
+--
+ALTER TABLE `babysitter_langue`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `disponibilites`
 --
 ALTER TABLE `disponibilites`
@@ -345,6 +407,12 @@ ALTER TABLE `disponibilites`
 ALTER TABLE `enfants`
   ADD PRIMARY KEY (`id`),
   ADD KEY `parent_enfant` (`id_parent`);
+
+--
+-- Index pour la table `langues`
+--
+ALTER TABLE `langues`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `parents`
@@ -378,27 +446,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `authentifiants`
 --
 ALTER TABLE `authentifiants`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT pour la table `babysitter_langue`
+--
+ALTER TABLE `babysitter_langue`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `disponibilites`
 --
 ALTER TABLE `disponibilites`
-  MODIFY `id_dispo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_dispo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT pour la table `enfants`
 --
 ALTER TABLE `enfants`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT pour la table `langues`
+--
+ALTER TABLE `langues`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT pour la table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT pour la table `reservation_enfant`
 --
 ALTER TABLE `reservation_enfant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
