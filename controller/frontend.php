@@ -211,10 +211,14 @@ function requestResaLangue($id, $id_langue, $enfants) {
   $listBabysitters = $memberManager->findBabysitter($id_langue);
   $selectedLangue = $memberManager->getLangue($id_langue);
   $babysitters = $listBabysitters->fetchall();
-  foreach ($babysitters as $babysitter ) {
-    $listeDispos = $slotManager->getFreeDispos($babysitter['id']);
-    $Dispos[] = $listeDispos->fetchall();
+  echo "<pre>";
+  print_r($babysitters);
+  //foreach ($babysitters as $babysitter ) {
+  for ($i=0; $i < count($babysitters); $i++) {
+    $listeDispos = $slotManager->getFreeDispos($babysitters[$i]['id']);
+    $babysitters[$i][] = $listeDispos->fetchall();
   }
+  print_r($babysitters);
   $selectedEnfants = $enfants;
   $listeEnfants = $memberManager->getEnfants($_SESSION['id']);
   $listeLangues = $memberManager->getLangues();
