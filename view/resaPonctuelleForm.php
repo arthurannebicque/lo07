@@ -62,7 +62,7 @@ $req2 = htmlspecialchars(serialize($selectedEnfants), ENT_QUOTES);
      <td><?= $babysitter['id']?></td>
      <td><?= $babysitter['nom']?></td>
      <td><?= $babysitter['prenom']?></td>
-     <td><a type="button" class="btn btn-primary" href="index.php?action=createResaPonctuelle&id=<?= $babysitter['id']?>&creneaux=<?=$req?>&enfants=<?=$req2?>">Choisir</a></td>
+     <td><a type="button" class="btn btn-primary" href="index.php?action=createReservation&id=<?= $babysitter['id']?>&creneaux=<?=$req?>&enfants=<?=$req2?>&type=1">Choisir</a></td>
 
 
  </tr>

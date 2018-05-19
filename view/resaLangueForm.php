@@ -7,7 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <script src="jquery/jquery.min.js"></script>
 
+    <script>
+
+      $( "#voir_dispo" ).click(function(e) {
+        e.preventDefault();
+        alert("works");
+        $( "#dispo_form" ).slideToggle( "slow" );
+
+      });
+    </script>
   </head>
 
   <body>
@@ -42,14 +52,14 @@
 //$req2 = htmlspecialchars(serialize($selectedEnfants), ENT_QUOTES);
 ?>
 <h2>Babysitters parlant <?= $selectedLangue['langue']; ?> :</h2>
-<!--<h3>le <?= $date ?> de <?= $heure_debut ?>h à <?= $heure_fin ?>h.</h3>-->
 
  <?php
  foreach ($babysitters as $babysitter) {
+   if (!empty($babysitter[3])) {
 
    echo $babysitter['id']." ".$babysitter['prenom']." ".$babysitter['nom']." ";
-   echo "<a type='button' class='btn btn-primary' id='dispo".$babysitter['id']."' href=''>Voir disponibilités</a>";
-   echo "<form class='form-signin' action='index.php?action=createResaLangue' method='post'>";
+   echo "<a type='button' class='btn btn-primary' id='voir_dispo' href=''>Voir disponibilités</a>";
+   echo "<form class='form-signin' id=dispo_form action='index.php?action=createResaLangue' method='post'>";
 
        foreach ($babysitter[3] as $dispo) {
        echo $dispo['date']." ". $dispo['heure']." <input type='checkbox' name='dispo[]' value=".$dispo['id_dispo']."><br>";
@@ -64,9 +74,11 @@
    <button class='btn btn-lg btn-primary btn-block' type='submit'>Choisir</button>";
    echo "</form>";
  }
+}
 echo "<br>";
 } ?>
 <br>
 <a type="button" class="btn btn-primary" href="index.php">Retour</a>
 
 </body>
+</html>

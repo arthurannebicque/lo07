@@ -15,10 +15,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['email']) && isset($_SESSION['type
       if (!empty($_POST['date']) && !empty($_POST['heure_debut']) && !empty($_POST['heure_fin'])){
         addDispoSimple($_SESSION['id'], $_POST['date'], $_POST['heure_debut'], $_POST['heure_fin']);
       }
+      else {
+          throw new Exception('tous les champs n\'ont pas été remplis');
+      }
+    }
+    elseif ($_GET['action'] == 'addDispoRecurrente') {
+      if (!empty($_POST['weekday']) && !empty($_POST['date_debut']) && !empty($_POST['date_fin'])){
+        addDispoRecurrente($_SESSION['id'], $_POST['weekday'], $_POST['date_debut'], $_POST['date_fin']);
+      }
+      else {
+          throw new Exception('tous les champs n\'ont pas été remplis');
+      }
     }
     elseif ($_GET['action'] == 'reservation') {
       if ($_GET['type'] == 'ponctuelle') getListeEnfants(); //require('view/resaPonctuelleForm.php');
-      if ($_GET['type'] == 'reguliere') require('view/resaReguliereForm.php');
+      if ($_GET['type'] == 'reguliere') getListeEnfants();
       if ($_GET['type'] == 'langue') getResaLangueForm(); //require('view/resaPonctuelleForm.php');
 
     }
@@ -26,20 +37,40 @@ if (isset($_SESSION['id']) && isset($_SESSION['email']) && isset($_SESSION['type
       if (!empty($_POST['date']) && !empty($_POST['heure_debut']) && !empty($_POST['heure_fin']) && !empty($_POST['enfants'])){
         requestResaPonctuelle($_SESSION['id'], $_POST['date'], $_POST['heure_debut'], $_POST['heure_fin'], $_POST['enfants']);
       }
+      else {
+          throw new Exception('tous les champs n\'ont pas été remplis');
+      }
+    }
+    elseif ($_GET['action'] == 'requestResaReguliere') {
+      if (!empty($_POST['date_debut']) && !empty($_POST['date_fin']) && !empty($_POST['weekday']) && !empty($_POST['enfants'])){
+        requestResaReguliere($_SESSION['id'], $_POST['date_debut'], $_POST['date_fin'], $_POST['weekday'], $_POST['enfants']);
+      }
+      else {
+          throw new Exception('tous les champs n\'ont pas été remplis');
+      }
     }
     elseif ($_GET['action'] == 'requestResaLangue') {
       if (!empty($_POST['langue']) && !empty($_POST['enfants'])){
         requestResaLangue($_SESSION['id'], $_POST['langue'], $_POST['enfants']);
       }
+      else {
+          throw new Exception('tous les champs n\'ont pas été remplis');
+      }
     }
-    elseif ($_GET['action'] == 'createResaPonctuelle') {
-      if (isset($_GET['id']) && isset($_GET['creneaux']) && isset($_GET['enfants'])){
-        createResaPonctuelle($_SESSION['id'], $_GET['id'], $_GET['creneaux'], $_GET['enfants']);
+    elseif ($_GET['action'] == 'createReservation') {
+      if (isset($_GET['id']) && isset($_GET['creneaux']) && isset($_GET['enfants']) && isset($_GET['type'])){
+        createReservation($_SESSION['id'], $_GET['id'], $_GET['creneaux'], $_GET['enfants'], $_GET['type']);
+      }
+      else {
+          throw new Exception('tous les champs n\'ont pas été remplis');
       }
     }
     elseif ($_GET['action'] == 'createResaLangue') {
       if (!empty($_POST['id_babysitter']) && !empty($_POST['dispo']) && !empty($_POST['enfants'])){
         createResaLangue($_SESSION['id'], $_POST['id_babysitter'], $_POST['dispo'], $_POST['enfants']);
+      }
+      else {
+          throw new Exception('tous les champs n\'ont pas été remplis');
       }
     }
     elseif ($_GET['action'] == 'showReservation') {
@@ -55,6 +86,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email']) && isset($_SESSION['type
     elseif ($_GET['action'] == 'closeReservation') {
       if (!empty($_POST['id_reservation']) && !empty($_POST['note']) && !empty($_POST['heure_debut']) && !empty($_POST['heure_fin']) && !empty($_POST['evaluation'])){
         closeReservation($_POST['id_reservation'], $_POST['heure_debut'], $_POST['heure_fin'], $_POST['note'], $_POST['evaluation']);
+      }
+      else {
+          throw new Exception('tous les champs n\'ont pas été remplis');
       }
     }
   }

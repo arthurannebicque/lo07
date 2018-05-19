@@ -170,6 +170,39 @@ function addDispoSimple($id, $date, $heure_debut, $heure_fin) {
 
   header('Location: index.php');
 }
+function addDispoRecurrente($id, $weekday, $date_debut, $date_fin) {
+
+  $slotManager = new \LO07\Sittie2\Model\SlotManager();
+  $statut='disponible';
+  $time_type = array(0 => array('06', '07'), 1 => array('08', '09', '10', '11'), 2 => array('12', '13'), 3 => array('14', '15', '16'),
+   4 => array('17', '18', '19'), 5 => array('20', '21', '22'), 6 => '23');
+
+  if ($date_debut<$date_fin) {
+    $date_debut = new DateTime($date_debut);
+    $date_fin = new DateTime($date_fin. " 00:00:01");
+    $interval = DateInterval::createFromDateString('1 day');
+    $period = new DatePeriod($date_debut, $interval, $date_fin);
+    foreach ($period as $dt) {
+      if (isset($weekday[$dt->format('N')])) {
+        foreach ($weekday[$dt->format('N')] as $key => $value) {
+          for ($i=0; $i < 7; $i++) {
+            if ($key == $i) {
+              foreach ($time_type[$i] as $time) {
+              $slot = new DateTime($dt->format('Y-m-d')." ".$time.":00:00");
+              $creneau = $slot->format('Y-m-d H:i:s');
+              $affectedSlot = $slotManager->createDispo($id, $creneau, $statut);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  else {
+      throw new Exception("la date de fin n'est pas valide");
+  }
+header('Location: index.php');
+}
 
 function debug($req) {
   while($res = $req->fetch()) {
@@ -204,6 +237,41 @@ function requestResaPonctuelle($id, $date, $heure_debut, $heure_fin, $enfants) {
   }
 }
 
+function requestResaReguliere($id, $date_debut, $date_fin, $weekday, $enfants) {
+    $slotManager = new \LO07\Sittie2\Model\SlotManager();
+    $time_type = array(0 => array('06', '07'), 1 => array('08', '09', '10', '11'), 2 => array('12', '13'), 3 => array('14', '15', '16'),
+     4 => array('17', '18', '19'), 5 => array('20', '21', '22'), 6 => '23');
+
+    if ($date_debut<$date_fin) {
+      $date_debut = new DateTime($date_debut);
+      $date_fin = new DateTime($date_fin. " 00:00:01");
+      $interval = DateInterval::createFromDateString('1 day');
+      $period = new DatePeriod($date_debut, $interval, $date_fin);
+      foreach ($period as $dt) {
+        if (isset($weekday[$dt->format('N')])) {
+          foreach ($weekday[$dt->format('N')] as $key => $value) {
+            for ($i=0; $i < 7; $i++) {
+              if ($key == $i) {
+                foreach ($time_type[$i] as $time) {
+                $slot = new DateTime($dt->format('Y-m-d')." ".$time.":00:00");
+                $creneau[]= $slot->format('Y-m-d H:i:s');
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    $count = count($creneau);
+    $creneaux = join("','",$creneau);
+    $listBabysitters = $slotManager->findDispos($creneaux, $count);
+    $selectedEnfants = $enfants;
+    $memberManager = new \LO07\Sittie2\Model\MemberManager();
+    $listeEnfants = $memberManager->getEnfants($_SESSION['id']);
+    require('view/resaReguliereForm.php');
+
+  }
+
 function requestResaLangue($id, $id_langue, $enfants) {
   $memberManager = new \LO07\Sittie2\Model\MemberManager();
   $slotManager = new \LO07\Sittie2\Model\SlotManager();
@@ -211,24 +279,20 @@ function requestResaLangue($id, $id_langue, $enfants) {
   $listBabysitters = $memberManager->findBabysitter($id_langue);
   $selectedLangue = $memberManager->getLangue($id_langue);
   $babysitters = $listBabysitters->fetchall();
-  echo "<pre>";
-  print_r($babysitters);
   //foreach ($babysitters as $babysitter ) {
   for ($i=0; $i < count($babysitters); $i++) {
     $listeDispos = $slotManager->getFreeDispos($babysitters[$i]['id']);
     $babysitters[$i][] = $listeDispos->fetchall();
   }
-  print_r($babysitters);
   $selectedEnfants = $enfants;
   $listeEnfants = $memberManager->getEnfants($_SESSION['id']);
   $listeLangues = $memberManager->getLangues();
   require('view/resaLangueForm.php');
 }
 
-function createResaPonctuelle($id_parent, $id_babysitter, $creneaux, $selectedEnfants) {
+function createReservation($id_parent, $id_babysitter, $creneaux, $selectedEnfants, $type) {
   $slotManager = new \LO07\Sittie2\Model\SlotManager();
   $memberManager = new \LO07\Sittie2\Model\MemberManager();
-  $type = 1;
   $newReservationId = $slotManager->createReservation($id_parent, $id_babysitter, $type);
   $listCreneaux = unserialize($creneaux);
   $statut = 'reservé';
@@ -240,6 +304,8 @@ function createResaPonctuelle($id_parent, $id_babysitter, $creneaux, $selectedEn
   foreach ($selectedEnfants as $enfant) {
     $affectedEnfantReservation = $slotManager->registerEnfantReservation($enfant, $newReservationId);
   }
+  //if ($type == 1) $slots = $slotManager->getDisposResa($newReservationId);
+  //if ($type == 3) $slots = $slotManager->getDisposResa($newReservationId);
   $slots = $slotManager->getDisposResa($newReservationId);
   $babysitter = $memberManager->getBabysitterInfos($newReservationId);
   $listeEnfants = $memberManager->getEnfantsResa($newReservationId);
@@ -267,29 +333,17 @@ function createResaLangue($id_parent, $id_babysitter, $id_dispos, $enfants) {
 
 }
 
-function inputEnfants($v) {
-  for ($i=0; $i < $v; $i++) {
-  echo "
-  <h3>Enfant n°".($i+1)."</h3>
-    <label>Prenom</label>
-    <input type='text' name='enfants[".$i."][name]' class ='form-control' placeholder='prenom'>
-    <div class='form-label-group'>
-      Date de naissance
-      <input type='date' name='enfants[".$i."][date]'>
-    </div>
-    <div class='form-label-group'>
-    <label for='inputRestriction'>Restrictions alimentaires</label>
-        <textarea id='inputRestriction' name='enfants[".$i."][restrictions]' class='form-control' placeholder='Presentation'></textarea>
-
-    </div>
-";}
-}
-
 function getListeEnfants() {
   $memberManager = new \LO07\Sittie2\Model\MemberManager();
   $listeEnfants = $memberManager->getEnfants($_SESSION['id']);
 
-  require('view/resaPonctuelleForm.php');
+  if ($_GET['type'] == 'ponctuelle') {
+    require('view/resaPonctuelleForm.php');
+  }
+  elseif ($_GET['type'] == 'reguliere') {
+    require('view/resaReguliereForm.php');
+  }
+
 }
 
 function getResaLangueForm() {
@@ -323,7 +377,14 @@ function closeReservation($id_reservation, $heure_debut, $heure_fin, $note, $eva
   $enfant = $listeEnfants->fetchall();
   $nombreEnfants = count($enfant);
   if ($type[0] == 1) {
-  $revenu = $duree*(7 + 4*($nombreEnfants-1));}
+    $revenu = $duree*(7 + 4*($nombreEnfants-1));}
+  if ($type[0] == 2) {
+    $revenu = $duree*(15 + 15*($nombreEnfants-1));}
+  if ($type[0] == 3) {
+    $slots = $slotManager->getDisposResa($id_reservation)
+    $slot = $slots->fetchall();
+    $duree = count($slot);
+    $revenu = $duree*(10 + 5*($nombreEnfants-1));}
   $affectedDispo = $slotManager->updateDisposResa($id_reservation, $statut);
   $affectedResa = $slotManager->updateReservation($id_reservation, $note, $evaluation, $revenu);
 
