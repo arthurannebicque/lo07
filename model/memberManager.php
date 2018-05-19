@@ -60,6 +60,26 @@ class MemberManager {
         return $credentials;
     }
 
+    public function validateApplication($id) {
+        $db = $this->dbConnect();
+        $affectedBabysitter = $db->prepare('UPDATE babysitters SET candidature_valide = 1, visible = 1 WHERE id = :id');
+        $affectedBabysitter->execute(array(
+            'id' => $id,
+        ));
+
+        return $affectedBabysitter;
+    }
+
+    public function declineApplication($id) {
+        $db = $this->dbConnect();
+        $affectedBabysitter = $db->prepare('DELETE FROM authentifiants WHERE id_user = :id');
+        $affectedBabysitter->execute(array(
+            'id' => $id,
+        ));
+
+        return $affectedBabysitter;
+    }
+
     public function createEnfant($id_parent, $prenom, $date, $restrictions) {
         $db = $this->dbConnect();
 
@@ -91,6 +111,22 @@ class MemberManager {
         $req->execute(array($id_reservation));
         $babysitter = $req->fetch();
         return $babysitter;
+    }
+
+    public function getBabysitterInfosID($id) {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT * FROM babysitters WHERE id = ?');
+        $req->execute(array($id));
+        $babysitter = $req->fetch();
+        return $babysitter;
+    }
+
+    public function getBabysittersApplication() {
+        $db = $this->dbConnect();
+        $babysitters = $db->prepare('SELECT * FROM babysitters WHERE candidature_valide = 0');
+        $babysitters->execute();
+
+        return $babysitters;
     }
 
     public function getLangueId($langue) {
@@ -140,7 +176,7 @@ class MemberManager {
     public function findBabysitter($id_langue) {
         $db = $this->dbConnect();
 
-        $babysitters = $db->prepare('SELECT babysitters.id, babysitters.nom, babysitters.prenom FROM babysitters, babysitter_langue WHERE babysitter_langue.id_langue = ? AND babysitters.id = babysitter_langue.id_babysitter');
+        $babysitters = $db->prepare('SELECT babysitters.id, babysitters.nom, babysitters.prenom FROM babysitters, babysitter_langue WHERE babysitter_langue.id_langue = ? AND babysitters.id = babysitter_langue.id_babysitter AND babysitters.visible = 1');
         $babysitters->execute(array($id_langue));
 
         return $babysitters;

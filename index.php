@@ -77,7 +77,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['email']) && isset($_SESSION['type
             } else {
                 throw new Exception('tous les champs n\'ont pas été remplis');
             }
-        }
+        } elseif ($_GET['action'] == 'validateApplication') {
+            if (isset($_GET['id'])) {
+                validateApplication($_GET['id']);
+            }
+        } elseif ($_GET['action'] == 'declineApplication') {
+            if (isset($_GET['id'])) {
+                declineApplication($_GET['id']);
+            }
+          }
     } else {
         showProfil();
     }
@@ -85,7 +93,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email']) && isset($_SESSION['type
     if (isset($_GET['action'])) {
 
         if ($_GET['action'] == 'addBabysitter') {
-            if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['password']) && !empty($_POST['passwordConfirmation']) && !empty($_POST['email']) && !empty($_POST['type']) && !empty($_POST['ville']) && !empty($_POST['langues'])) {
+            if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['password']) && !empty($_POST['passwordConfirmation']) && !empty($_POST['email']) && !empty($_POST['type']) && !empty($_POST['ville'])) {
                 addBabysitter($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['password'], $_POST['passwordConfirmation'], $_POST['type'], $_POST['ville'], $_POST['telephone'], $_POST['age'], $_POST['experience'], $_POST['langues']);
             } else {
                 throw new Exception('tous les champs n\'ont pas été remplis');

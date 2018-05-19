@@ -2,36 +2,42 @@
 
 <?php
 if ($_SESSION['type'] == 1) {
-    echo "bonjour babysitter<br>";
+    if ($babysitter['candidature_valide']) {
+      echo "bonjour babysitter<br>";
 
-    echo '<a type="button" class="btn btn-primary" href="index.php?action=disponibilite&type=simple">Disponibilité simple</a><br>';
-    echo '<a type="button" class="btn btn-primary" href="index.php?action=disponibilite&type=recurrente">Disponibilité recurrente</a><br>';
-    ?>
-    <h2>Vos disponibilités :</h2>
-    <table>
-        <tr>
-            <th>Date</th>
-            <th>Heure</th>
-            <th>Statut</th>
-            <th></th>
-        </tr>
-        <?php
-        while ($slot = $slots->fetch()) {
-            if ($slot['statut'] != 'expiré') {
-                ?>
-                <tr>
-                    <td><?= $slot['date'] ?></td>
-                    <td><?= $slot['heure'] ?></td>
-                    <td><?= $slot['statut'] ?></td>
-            <?php if ($slot['statut'] == 'reservé')
-                echo
-                '<td><a type="button" class="btn btn-primary" href="index.php?action=showReservation&id=' . $slot['id_reservation'] . '">Détails</a></td>';
-            ?>
-                </tr>
-            <?php }
-        } ?>
-    </table>
-    <?php
+      echo '<a type="button" class="btn btn-primary" href="index.php?action=disponibilite&type=simple">Disponibilité simple</a><br>';
+      echo '<a type="button" class="btn btn-primary" href="index.php?action=disponibilite&type=recurrente">Disponibilité recurrente</a><br>';
+      ?>
+      <h2>Vos disponibilités :</h2>
+      <table>
+          <tr>
+              <th>Date</th>
+              <th>Heure</th>
+              <th>Statut</th>
+              <th></th>
+          </tr>
+          <?php
+          while ($slot = $slots->fetch()) {
+              if ($slot['statut'] != 'expiré') {
+                  ?>
+                  <tr>
+                      <td><?= $slot['date'] ?></td>
+                      <td><?= $slot['heure'] ?></td>
+                      <td><?= $slot['statut'] ?></td>
+              <?php if ($slot['statut'] == 'reservé')
+                  echo
+                  '<td><a type="button" class="btn btn-primary" href="index.php?action=showReservation&id=' . $slot['id_reservation'] . '">Détails</a></td>';
+              ?>
+                  </tr>
+              <?php
+            }
+          }
+      echo "</table>";
+    }
+    elseif (!$babysitter['candidature_valide']) {
+      echo "Votre candidature n'a pas encore été validée";
+    }
+
 }
 
 if ($_SESSION['type'] == 2) {
@@ -69,3 +75,28 @@ if ($_SESSION['type'] == 2) {
     </table>
     <?php
 }
+
+if ($_SESSION['type'] == 3) {
+  ?>
+  <table>
+      <tr>
+          <th>id</th>
+          <th>Nom</th>
+          <th>Prenom</th>
+          <th></th>
+
+      </tr>
+      <?php
+  while ($babysitter = $babysitters->fetch()) {
+    ?>
+    <tr>
+        <td><?= $babysitter['id'] ?></td>
+        <td><?= $babysitter['nom'] ?></td>
+        <td><?= $babysitter['prenom'] ?></td>
+        <td><a type="button" class="btn btn-primary" href="index.php?action=validateApplication&id=<?= $babysitter['id'] ?>">Valider</a> <a type="button" class="btn btn-primary" href="index.php?action=declineApplication&id=<?= $babysitter['id'] ?>">Refuser</a></td>
+
+
+    </tr>
+    <?php } ?>
+    </table>
+    <?php } ?>

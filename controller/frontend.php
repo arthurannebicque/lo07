@@ -114,18 +114,29 @@ function deconnectMember() {
     header('Location: index.php');
 }
 
+function validateApplication($id) {
+  $memberManager = new \LO07\Sittie2\Model\MemberManager();
+  $affectedBabysitter = $memberManager->validateApplication($id);
+  header('Location: index.php');
+}
+
+function declineApplication($id) {
+  $memberManager = new \LO07\Sittie2\Model\MemberManager();
+  $affectedBabysitter = $memberManager->declineApplication($id);
+  header('Location: index.php');
+}
+
 function showProfil() {
+    $memberManager = new \LO07\Sittie2\Model\MemberManager();
+    $slotManager = new \LO07\Sittie2\Model\SlotManager();
 
     if ($_SESSION['type'] == 1) {
-
-        $slotManager = new \LO07\Sittie2\Model\SlotManager();
-
+        $babysitter = $memberManager->getBabysitterInfosID($_SESSION['id']);
         $slots = $slotManager->getDispos($_SESSION['id']);
     } elseif ($_SESSION['type'] == 2) {
-
-        $slotManager = new \LO07\Sittie2\Model\SlotManager();
-
         $reservations = $slotManager->getReservations($_SESSION['id']);
+    } elseif ($_SESSION['type'] == 3) {
+      $babysitters = $memberManager->getBabysittersApplication();
     }
     require('view/profilPage.php');
 }
