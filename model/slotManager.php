@@ -85,7 +85,7 @@ class SlotManager {
     public function findDispos($creneaux, $count) {
         try {
             $db = $this->dbConnect();
-            $query = "SELECT babysitters.id AS id, babysitters.nom AS nom, babysitters.prenom AS prenom FROM babysitters, disponibilites  WHERE babysitters.id = disponibilites.id_babysitter AND disponibilites.statut = 'disponible' AND babysitters.visible = 1 AND disponibilites.creneau IN ('$creneaux') GROUP BY babysitters.id HAVING COUNT(*) = '$count'";
+            $query = "SELECT babysitters.id AS id, babysitters.nom AS nom, babysitters.prenom AS prenom, babysitters.ville AS ville FROM babysitters, disponibilites  WHERE babysitters.id = disponibilites.id_babysitter AND disponibilites.statut = 'disponible' AND babysitters.visible = 1 AND disponibilites.creneau IN ('$creneaux') GROUP BY babysitters.id HAVING COUNT(*) = '$count'";
             //$babysitters = $db->prepare("SELECT babysitters.id AS id, babysitters.nom AS nom, babysitters.prenom AS prenom FROM babysitters, disponibilites  WHERE babysitters.id = disponibilites.id_babysitter AND disponibilites.creneau IN (?) GROUP BY babysitters.id HAVING COUNT(*) = ?");
             //$babysitters->execute(array($creneaux, $count));
             //$babysitters->execute(array('creneaux' => $creneaux, 'count' => $count));
@@ -137,6 +137,31 @@ class SlotManager {
         return $famille;
     }
 
+    public function getReservationWeekdays($id_reservation) {
+      $db = $this->dbConnect();
+      $weekdays = $db->prepare('SELECT WEEKDAY(creneau) AS weekday FROM disponibilites WHERE id_reservation = ? GROUP BY weekday');
+      $weekdays->execute(array($id_reservation));
+
+      return $weekdays;
+
+    }
+
+    public function getReservationDate($id_reservation, $ordre){
+      $db = $this->dbConnect();
+      $req = $db->prepare("SELECT DATE_FORMAT(creneau, '%d/%m/%Y') AS date FROM disponibilites WHERE id_reservation = ? ORDER BY creneau {$ordre} LIMIT 1");
+      $req->execute(array($id_reservation));
+      $date = $req->fetch();
+      return $date;
+    }
+
+    public function getReservationHours($id_reservation, $weekday){
+      $db = $this->dbConnect();
+      $hours = $db->prepare('SELECT HOUR(creneau) AS heure FROM disponibilites WHERE id_reservation = ? AND WEEKDAY(creneau) = ? GROUP BY heure');
+      $hours->execute(array($id_reservation, $weekday));
+
+      return $hours;
+    }
+
     public function updateReservation($id_reservation, $note, $evaluation, $revenu) {
         $db = $this->dbConnect();
         $slots = $db->prepare('UPDATE reservations SET note = :note, evaluation = :evaluation, revenu = :revenu WHERE id = :id_reservation');
@@ -156,6 +181,30 @@ class SlotManager {
         $req->execute(array($id));
         $type = $req->fetch();
         return $type;
+    }
+
+    public function getRevenuMensuelGlobal() {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT SUM(revenu) FROM reservations WHERE id IN (SELECT reservations.id FROM reservations, disponibilites WHERE disponibilites.id_reservation = reservations.id AND MONTH(disponibilites.creneau) = MONTH(NOW()) AND reservations.revenu > 0 GROUP BY reservations.id)');
+        $req->execute();
+        $revenuMensuelGlobal = $req->fetch();
+        return $revenuMensuelGlobal;
+    }
+
+    public function getRevenuAnnuelGlobal() {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT SUM(revenu) FROM reservations WHERE id IN (SELECT reservations.id FROM reservations, disponibilites WHERE disponibilites.id_reservation = reservations.id AND YEAR(disponibilites.creneau) = YEAR(NOW()) AND reservations.revenu > 0 GROUP BY reservations.id)');
+        $req->execute();
+        $revenuAnnuelGlobal = $req->fetch();
+        return $revenuAnnuelGlobal;
+    }
+
+    public function getRevenuTrimestrielGlobal() {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT SUM(revenu) FROM reservations WHERE id IN (SELECT reservations.id FROM reservations, disponibilites WHERE disponibilites.id_reservation = reservations.id AND MONTH(disponibilites.creneau) IN (MONTH(NOW()), MONTH(NOW())-1, MONTH(NOW())-2) AND reservations.revenu > 0 GROUP BY reservations.id)');
+        $req->execute();
+        $revenuTrimestrielGlobal = $req->fetch();
+        return $revenuTrimestrielGlobal;
     }
 
 }

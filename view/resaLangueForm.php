@@ -52,17 +52,17 @@
 //$req = htmlspecialchars(serialize($req), ENT_QUOTES);
 //$req2 = htmlspecialchars(serialize($selectedEnfants), ENT_QUOTES);
             ?>
-            <h2>Babysitters parlant <?= $selectedLangue['langue']; ?> :</h2>
+            <h2>Babysitters parlant <?= $selectedLangue['langue']; ?> dans un rayon de 30km:</h2>
 
             <?php
             foreach ($babysitters as $babysitter) {
-                if (!empty($babysitter[3])) {
+                if ($babysitter['distance'] <= 30 && !empty($babysitter[4])) {
 
-                    echo $babysitter['id'] . " " . $babysitter['prenom'] . " " . $babysitter['nom'] . " ";
+                    echo $babysitter['id'] . " " . $babysitter['prenom'] . " " . $babysitter['nom'] . " à ".$babysitter['distance']."km";
                     echo "<a type='button' class='btn btn-primary' id='voir_dispo' href=''>Voir disponibilités</a>";
                     echo "<form class='form-signin' id=dispo_form action='index.php?action=createResaLangue' method='post'>";
 
-                    foreach ($babysitter[3] as $dispo) {
+                    foreach ($babysitter[4] as $dispo) {
                         echo $dispo['date'] . " " . $dispo['heure'] . " <input type='checkbox' name='dispo[]' value=" . $dispo['id_dispo'] . "><br>";
                     }
 

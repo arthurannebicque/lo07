@@ -129,6 +129,15 @@ class MemberManager {
         return $babysitters;
     }
 
+    public function getBabysittersCount($value) {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT COUNT(*) FROM babysitters WHERE candidature_valide = ?');
+        $req->execute(array($value));
+        $babysitterCount = $req->fetch();
+
+        return $babysitterCount;
+    }
+
     public function getLangueId($langue) {
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id FROM langues WHERE langue = ?');
@@ -167,7 +176,7 @@ class MemberManager {
 
     public function getLangues() {
         $db = $this->dbConnect();
-        $listeLangues = $db->prepare('SELECT id, langue FROM langues');
+        $listeLangues = $db->prepare('SELECT langues.id, langues.langue FROM langues, babysitter_langue WHERE EXISTS (SELECT * FROM babysitter_langue WHERE babysitter_langue.id_langue = langues.id) GROUP BY langues.id');
         $listeLangues->execute();
 
         return $listeLangues;
@@ -176,10 +185,43 @@ class MemberManager {
     public function findBabysitter($id_langue) {
         $db = $this->dbConnect();
 
-        $babysitters = $db->prepare('SELECT babysitters.id, babysitters.nom, babysitters.prenom FROM babysitters, babysitter_langue WHERE babysitter_langue.id_langue = ? AND babysitters.id = babysitter_langue.id_babysitter AND babysitters.visible = 1');
+        $babysitters = $db->prepare('SELECT babysitters.id, babysitters.nom, babysitters.prenom, babysitters.ville FROM babysitters, babysitter_langue WHERE babysitter_langue.id_langue = ? AND babysitters.id = babysitter_langue.id_babysitter AND babysitters.visible = 1');
         $babysitters->execute(array($id_langue));
 
         return $babysitters;
+    }
+
+    public function getListRevenuBabysitter() {
+        $db = $this->dbConnect();
+        $listeRevenuBabysitter = $db->prepare('SELECT babysitters.prenom, babysitters.nom, SUM(reservations.revenu) AS revenu FROM babysitters, reservations WHERE babysitters.id = reservations.id_babysitter AND reservations.revenu > 0 GROUP BY babysitters.id ORDER BY revenu DESC');
+        $listeRevenuBabysitter->execute();
+
+        return $listeRevenuBabysitter;
+
+    }
+
+    public function getVilleParent($id) {
+      $db = $this->dbConnect();
+      $req = $db->prepare('SELECT ville FROM parents WHERE id_parent = ?');
+      $req->execute(array($id));
+      $ville = $req->fetch();
+      return $ville;
+    }
+
+    public function getListeRatings($id) {
+      $db = $this->dbConnect();
+      $ratings = $db->prepare('SELECT note, evaluation FROM reservations WHERE id_babysitter = ? AND note != -1');
+      $ratings->execute(array($id));
+
+      return $ratings;
+    }
+
+    public function getNoteMoyenne($id) {
+      $db = $this->dbConnect();
+      $req = $db->prepare('SELECT AVG(note) AS average FROM reservations WHERE id_babysitter = ? AND note != -1');
+      $req->execute(array($id));
+      $average = $req->fetch();
+      return $average;
     }
 
 }

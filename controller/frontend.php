@@ -137,6 +137,12 @@ function showProfil() {
         $reservations = $slotManager->getReservations($_SESSION['id']);
     } elseif ($_SESSION['type'] == 3) {
       $babysitters = $memberManager->getBabysittersApplication();
+      $applicationCount = $memberManager->getBabysittersCount(0);
+      $babysitterCount = $memberManager->getBabysittersCount(1);
+      $listeRevenuBabysitter = $memberManager->getListRevenuBabysitter();
+      $revenuMensuelGlobal = $slotManager->getRevenuMensuelGlobal();
+      $revenuAnnuelGlobal = $slotManager->getRevenuAnnuelGlobal();
+      $revenuTrimestrielGlobal = $slotManager->getRevenuTrimestrielGlobal();
     }
     require('view/profilPage.php');
 }
@@ -206,6 +212,8 @@ function debug($req) {
 
 function requestResaPonctuelle($id, $date, $heure_debut, $heure_fin, $enfants) {
     $slotManager = new \LO07\Sittie2\Model\SlotManager();
+    $memberManager = new \LO07\Sittie2\Model\MemberManager();
+
     $req = array();
     if ($heure_debut < $heure_fin) {
         for ($i = 0; $i < ($heure_fin - $heure_debut); $i++) {
@@ -217,18 +225,26 @@ function requestResaPonctuelle($id, $date, $heure_debut, $heure_fin, $enfants) {
         }
         $count = count($req);
         $creneaux = join("','", $req);
+        $villeParent = $memberManager->getVilleParent($_SESSION['id']);
+
         $listBabysitters = $slotManager->findDispos($creneaux, $count);
-        var_dump($enfants);
-        echo "<br>";
-        var_dump($listBabysitters);
+        $babysitters = $listBabysitters->fetchall();
+        for ($i = 0; $i < count($babysitters); $i++) {
+          $distance = getDistance($villeParent[0], $babysitters[$i]['ville']);
+          $babysitters[$i]['distance'] = $distance;
+          $listeRatings = $memberManager->getListeRatings($babysitters[$i]['id']);
+          $babysitters[$i]['ratings'] = $listeRatings->fetchall();
+          $noteMoyenne = $memberManager->getNoteMoyenne($babysitters[$i]['id']);
+          $babysitters[$i]['average'] = $noteMoyenne;
+        }
         $selectedEnfants = $enfants;
-        $memberManager = new \LO07\Sittie2\Model\MemberManager();
         $listeEnfants = $memberManager->getEnfants($_SESSION['id']);
         require('view/resaPonctuelleForm.php');
     }
 }
 
 function requestResaReguliere($id, $date_debut, $date_fin, $weekday, $enfants) {
+    $memberManager = new \LO07\Sittie2\Model\MemberManager();
     $slotManager = new \LO07\Sittie2\Model\SlotManager();
     $time_type = array(0 => array('06', '07'), 1 => array('08', '09', '10', '11'), 2 => array('12', '13'), 3 => array('14', '15', '16'),
         4 => array('17', '18', '19'), 5 => array('20', '21', '22'), 6 => '23');
@@ -252,12 +268,23 @@ function requestResaReguliere($id, $date_debut, $date_fin, $weekday, $enfants) {
                 }
             }
         }
+    } else {
+      throw new Exception('La date de fin n\'est pas valide');
     }
     $count = count($creneau);
     $creneaux = join("','", $creneau);
+    $villeParent = $memberManager->getVilleParent($_SESSION['id']);
     $listBabysitters = $slotManager->findDispos($creneaux, $count);
+    $babysitters = $listBabysitters->fetchall();
+    for ($i = 0; $i < count($babysitters); $i++) {
+      $distance = getDistance($villeParent[0], $babysitters[$i]['ville']);
+      $babysitters[$i]['distance'] = $distance;
+      $listeRatings = $memberManager->getListeRatings($babysitters[$i]['id']);
+      $babysitters[$i]['ratings'] = $listeRatings->fetchall();
+      $noteMoyenne = $memberManager->getNoteMoyenne($babysitters[$i]['id']);
+      $babysitters[$i]['average'] = $noteMoyenne;
+    }
     $selectedEnfants = $enfants;
-    $memberManager = new \LO07\Sittie2\Model\MemberManager();
     $listeEnfants = $memberManager->getEnfants($_SESSION['id']);
     require('view/resaReguliereForm.php');
 }
@@ -268,11 +295,18 @@ function requestResaLangue($id, $id_langue, $enfants) {
 
     $listBabysitters = $memberManager->findBabysitter($id_langue);
     $selectedLangue = $memberManager->getLangue($id_langue);
+    $villeParent = $memberManager->getVilleParent($_SESSION['id']);
     $babysitters = $listBabysitters->fetchall();
     //foreach ($babysitters as $babysitter ) {
     for ($i = 0; $i < count($babysitters); $i++) {
+        $distance = getDistance($villeParent[0], $babysitters[$i]['ville']);
+        $babysitters[$i]['distance'] = $distance;
         $listeDispos = $slotManager->getFreeDispos($babysitters[$i]['id']);
         $babysitters[$i][] = $listeDispos->fetchall();
+        $listeRatings = $memberManager->getListeRatings($babysitters[$i]['id']);
+        $babysitters[$i]['ratings'] = $listeRatings->fetchall();
+        $noteMoyenne = $memberManager->getNoteMoyenne($babysitters[$i]['id']);
+        $babysitters[$i]['average'] = $noteMoyenne;
     }
     $selectedEnfants = $enfants;
     $listeEnfants = $memberManager->getEnfants($_SESSION['id']);
@@ -299,6 +333,14 @@ function createReservation($id_parent, $id_babysitter, $creneaux, $selectedEnfan
     $slots = $slotManager->getDisposResa($newReservationId);
     $babysitter = $memberManager->getBabysitterInfos($newReservationId);
     $listeEnfants = $memberManager->getEnfantsResa($newReservationId);
+    $dateDebut = $slotManager->getReservationDate($id_reservation, "ASC");
+    $dateFin = $slotManager->getReservationDate($id_reservation, "DESC");
+    $type = $slotManager->getReservationType($id_reservation);
+    $weekdays = $slotManager->getReservationWeekdays($id_reservation);
+    while ($weekday = $weekdays->fetch()) {
+      $hours = $slotManager->getReservationHours($id_reservation, $weekday['weekday']);
+      $creneauResa[$weekday[0]] = $hours->fetchall();
+    }
 
     require('view/recapReservation.php');
 }
@@ -348,6 +390,14 @@ function showReservation($id_reservation) {
     $famille = $slotManager->getReservationName($id_reservation);
     $slots = $slotManager->getDisposResa($id_reservation);
     $listeEnfants = $memberManager->getEnfantsResa($id_reservation);
+    $dateDebut = $slotManager->getReservationDate($id_reservation, 'ASC');
+    $dateFin = $slotManager->getReservationDate($id_reservation, "DESC");
+    $type = $slotManager->getReservationType($id_reservation);
+    $weekdays = $slotManager->getReservationWeekdays($id_reservation);
+    while ($weekday = $weekdays->fetch()) {
+      $hours = $slotManager->getReservationHours($id_reservation, $weekday['weekday']);
+      $creneauResa[$weekday[0]] = $hours->fetchall();
+    }
 
     require('view/recapReservation.php');
 }
@@ -378,4 +428,19 @@ function closeReservation($id_reservation, $heure_debut, $heure_fin, $note, $eva
     $affectedResa = $slotManager->updateReservation($id_reservation, $note, $evaluation, $revenu);
 
     header('Location: index.php?index.php');
+}
+
+function getDistance($origin, $destination) {
+  $origin = urlencode($origin);
+  $destination = urlencode($destination);
+  $url="https://maps.googleapis.com/maps/api/distancematrix/json?origins={$origin}&destinations={$destination}&key=AIzaSyCSysIBEGGSED6I8XqB0CM-ywiIczcwIgE";
+  $resp_json = file_get_contents($url);
+  $resp = json_decode($resp_json, true);
+  if($resp['status']=='OK'){
+    $distance = isset($resp['rows'][0]['elements'][0]['distance']['value']) ? $resp['rows'][0]['elements'][0]['distance']['value'] : "";
+  } else {
+    throw new Exception('Impossible de rentrer cette adresse');
+  }
+
+  return $distance/1000;
 }
