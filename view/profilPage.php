@@ -45,7 +45,6 @@
   </div>
 </nav>
 
-<div class="container-fluid">
 <?php
 if ($_SESSION['type'] == 1) {
     if ($babysitter['candidature_valide']) {
@@ -132,9 +131,11 @@ if ($_SESSION['type'] == 2) {
         </div>
           </div>
     </div>
+    <div class="container-fluid">
     <div class="row justify-content-md-center mt-3">
     <h2>Vos réservations :</h2>
     </div>
+  </div>
     <div class="container">
     <table class="table table-hover btn-table">
     <thead class="thead-light">
@@ -285,6 +286,5 @@ if ($_GET['element']=='revenu') {
   }
 }
    } ?>
-  </div>
   </div>
 </body>

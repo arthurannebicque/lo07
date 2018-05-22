@@ -7,56 +7,136 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <script src="jquery/jquery.min.js"></script>
+        <link href="public/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="public/bootstrap/css/sb-admin-2.css" rel="stylesheet">
 
-        <script>
 
-            $("#voir_dispo").click(function (e) {
-                e.preventDefault();
-                alert("works");
-                $("#dispo_form").slideToggle("slow");
-
-            });
-        </script>
     </head>
 
     <body>
-        <form class="form-signin" action="index.php?action=requestResaLangue" method="post">
-            <div class="text-center mb-4">
-                <h1 class="h3 mb-3 font-weight-normal">Réservation par langue</h1>
+      <nav class="navbar navbar-light bg-light static-top justify-content-between border-bottom">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+          <img src="icon.png" width="50" height="50">
+          </a>
+          <div class="navbar">
+          <a class="nav-link" href="#discover">Découvrir</a>
+
+          <?php
+          if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
+            echo('
+            <a class="nav-link" href="index.php">Profil</a>
+            <a type="button" class="btn btn-outline-primary" href="index.php?action=deconnexion">Deconnexion</a>
+            ');
+        } else {
+          echo('
+          <a class="nav-link" href="index.php?action=registration">Inscription</a>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexionModalCenter">Connexion</button>
+
+          ');
+        }
+          ?>
+          </div>
+        </div>
+      </nav>
+      <div class="container-fluid mt-3">
+        <div class="row justify-content-md-center">
+          <div class="col-lg-4 col-md-6">
+            <div class="panel panel-primary">
+              <div class="panel panel-heading">
+            <div class="row justify-content-md-center">
+              <span>Réservation</span>
             </div>
-            <div class="form-label-group">
-                <label for="inputLangues">Langue recherchée</label>
-                <select id="inputLangues" name="langue" class ="form-control">
+            <div class="row justify-content-md-center">
+              <a class="huge" href="index.php?action=reservation&type=ponctuelle">Ponctuelle</a>
+            </div>
+          </div>
+
+          </div>
+        </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="panel panel-green">
+                <div class="panel panel-heading">
+                  <div class="row justify-content-md-center">
+                    <span>Réservation<span>
+                    </div>
+                  <div class="row justify-content-md-center">
+                      <a class="huge" href="index.php?action=reservation&type=reguliere">Régulière</a>
+                    </div>
+
+                  </div>
+        </div>
+      </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="panel panel-yellow">
+              <div class="panel panel-heading">
+            <div class="row justify-content-md-center">
+              <span>Réservation</span>
+            </div>
+            <div class="row justify-content-md-center">
+              <a class="huge" href="index.php?action=reservation&type=langue">Par langue</a>
+            </div>
+          </div>
+
+        </div>
+          </div>
+            </div>
+      </div>
+      <div class="container-fluid">
+      <div class="row justify-content-md-center mt-3">
+          <h2>Réservation par langue</h2>
+      </div>
+    </div>
+        <form class="form w-75 m-auto justify-content-md-center" action="index.php?action=requestResaLangue" method="post">
+
+          <div class="form-group row justify-content-md-center">
+                <label class="col-form-label" for="inputLangues">Langue recherchée</label>
+                <div class="col-3">
+                <select id="inputLangues" name="langue" class="custom-select">
                     <?php
                     while ($langue = $listeLangues->fetch()) {
                         echo "<option value=" . $langue['id'] . ">" . $langue['langue'] . "</option>";
                     }
                     ?>
                 </select>
-                <div class="form-label-group">
-                    <label>Enfants à garder :</label>
-                    <select name="enfants[]" multiple>
+              </div>
+            </div>
+
+                <div class="form-group row justify-content-md-center">
+                    <label class="col-form-label">Enfants à garder :</label>
+                    <div class="col-3">
+                    <select class="custom-select" name="enfants[]" size=2 multiple>
                         <?php
                         while ($enfant = $listeEnfants->fetch()) {
                             echo "<option value=" . $enfant['id'] . ">" . $enfant['prenom'] . "</option>";
                         }
                         ?>
                     </select>
+                  </div>
                 </div>
+                <div class="form-group row justify-content-md-center">
+                  <div class="col-5">
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Créer</button>
-        </form>
+                </div>
+                </div>
+            </form>
         <?php
         if (!empty($listBabysitters)) {
 
 //$req = htmlspecialchars(serialize($req), ENT_QUOTES);
 //$req2 = htmlspecialchars(serialize($selectedEnfants), ENT_QUOTES);
             ?>
-            <h2>Babysitters parlant <?= $selectedLangue['langue']; ?> dans un rayon de 30km:</h2>
-
+            <div class="container-fluid bg-light border-top mt-5">
+              <div class="row justify-content-md-center">
+            <h2>Babysitters parlant <?= $selectedLangue['langue']; ?></h2>
+          </div>
+          <div class="row justify-content-md-center">
+        <h3>Dans un rayon de 30km:</h3>
+      </div>
+        </div>
             <?php
             foreach ($babysitters as $babysitter) {
-                if ($babysitter['distance'] <= 30 && !empty($babysitter[4])) {
+                if ($babysitter['distance'] <= 3000 && !empty($babysitter[4])) {
 
                     echo $babysitter['id'] . " " . $babysitter['prenom'] . " " . $babysitter['nom'] . " à ".$babysitter['distance']."km";
                     echo "<a type='button' class='btn btn-primary' id='voir_dispo' href=''>Voir disponibilités</a>";
@@ -79,8 +159,12 @@
             echo "<br>";
         }
         ?>
-        <br>
-        <a type="button" class="btn btn-primary" href="index.php">Retour</a>
-
+        <div class="container mt-5 mb-3">
+          <div class="row justify-content-md-center">
+            <div class="col-3">
+        <a type="button" class="btn btn-outline-secondary btn-block" href="index.php">Retour</a>
+      </div>
+      </div>
+      </div>
     </body>
 </html>

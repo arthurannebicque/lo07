@@ -39,7 +39,6 @@
           </div>
         </div>
       </nav>
-      <div class="container-fluid">
       <div class="container-fluid mt-3">
         <div class="row justify-content-md-center">
           <div class="col-lg-4 col-md-6">
@@ -83,9 +82,11 @@
           </div>
             </div>
       </div>
+      <div class="container-fluid">
       <div class="row justify-content-md-center mt-3">
           <h2>Réservation Réguliere</h2>
       </div>
+    </div>
       <div class="container-fluid mt-3">
         <form class="form w-75 m-auto justify-content-md-center" action="index.php?action=requestResaReguliere" method="post">
             <div class="form-group row justify-content-md-center">
@@ -103,7 +104,7 @@
                 <?php
                 $listeJour = array('LUN', 'MAR', 'MER', 'JEU', 'VEN', 'SAM', 'DIM');
                 $listeType = array('Avant l\'école/crèche (6h-8h)', 'Matin (8h-12h)', 'Midi (12h-14h)', 'Après-Midi (14h-17h)', 'Après l\'école/crèche (17-20h)', 'Soirée (20h-23h)', 'Nuit (23h et +)');
-                echo "<table class='table w-75' cellspacing='0' cellpadding='0'>";
+                echo "<table class='table w-75 mt-3' cellspacing='0' cellpadding='0'>";
                 echo "<thead>";
                 echo "<tr>";
                 echo "<th></th>";
@@ -153,49 +154,106 @@
             $req = htmlspecialchars(serialize($creneau), ENT_QUOTES);
             $req2 = htmlspecialchars(serialize($selectedEnfants), ENT_QUOTES);
             ?>
+            <div class="container-fluid bg-light border-top mt-5">
+              <div class="row justify-content-md-center">
             <h2>Babysitters disponibles :</h2>
+          </div>
+          <div class="row justify-content-md-center">
             <h3>du <?= $date_debut->format('d/m/Y') ?> au <?= $date_fin->format('d/m/Y') ?></h3>
-            sur le(s) créneaux :<br>
+          </div>
+          <div class="row justify-content-md-center">
+            sur le(s) créneaux :
+          </div>
+          <div class="row justify-content-md-center">
+
             <?php
             $listeJourEntier = array('Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche');
             foreach ($weekday as $day => $time_type) {
-              echo "<br>";
+              echo "<div class='col'>";
+              echo "<div class='row justify-content-md-center'>";
+
               echo $listeJourEntier[$day-1];
-              echo "<br>";
+              echo "</div>";
+
               foreach ($time_type as $key => $time) {
-                echo $listeType[$key]."<br>";
+                echo "<div class='row justify-content-md-center'>";
+                echo $listeType[$key];
+                echo "</div>";
               }
+              echo "</div>";
             }
-            ?></h3>
 
+            ?>
+            </div>
+          </div>
+          <div class="container justify-content-md-center">
 
-        <table>
-            <tr>
-                <th>id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Distance</th>
-                <th></th>
-
-            </tr>
             <?php
             foreach ($babysitters as $babysitter) {
               if ($babysitter['distance'] <= 3000) {
                 ?>
-                <tr>
-                    <td><?= $babysitter['id'] ?></td>
-                    <td><?= $babysitter['nom'] ?></td>
-                    <td><?= $babysitter['prenom'] ?></td>
-                    <td><?= $babysitter['distance'] ?></td>
-                    <td><a type="button" class="btn btn-primary" href="index.php?action=createReservation&id=<?= $babysitter['id'] ?>&creneaux=<?= $req ?>&enfants=<?= $req2 ?>&type=3">Choisir</a></td>
+                <div class="bg-light border mt-3">
+                  <article style="padding:20px;">
+                    <a href="index.php?action=createReservation&id=<?= $babysitter['id'] ?>&creneaux=<?= $req ?>&enfants=<?= $req2 ?>&type=1">
+                      <div class="row">
+                    <aside class="col-2">
+                      <div class="row justify-content-md-center">
+                      <?= round($babysitter['distance']) ?>km
+                    </div>
+                      <div class="row justify-content-md-center">
+                      <?= $babysitter['ville'] ?>
+                    </div>
+                    </aside>
+                    <div class="col-7">
+                    <div class="row">
+                    <h3><?= $babysitter['prenom']." ".$babysitter['nom'] ?></h3>
+                  </div>
+                  <div class="row border-top">
+                    <ul class="list-inline list-unstyled">
+                      <li class="list-inline-item"><?=$babysitter['age']?> ans,</li>
+                      <li class="list-inline-item">1 an d'expérience</li>
+                    </ul>
+                  </div>
+                  <div class="row">
+                    <p>Bonjour, Je suis actuellement en Terminale Littéraire spécialité musique, je suis disponible tout les weekends, pendant les vacances scolaires et les mercredis après-midi. N'hésitez...je suis disponible tout les weekends,je suis disponible tout les weekends</p>
+                  </div>
+                  </div>
+                  <div class="col-3 border">
+                    <div class="row">
+                      <div class="col">
+                    <?= round($babysitter['average'][0], 1)?>/5
+                  </div>
+                  <div class="col">
+                    <?=count($babysitter['ratings'])."avis"?>
+                  </div>
+                </div>
 
+                <?php foreach ($babysitter['ratings'] as $rating) {
+                  echo "<div class='row'>";
+                  echo "<div class='col-1'>";
+                  echo $rating['note']. "/5 ";
+                  echo "</div>";
+                  echo "<div class='col'>";
+                  echo  "Tres bien tres bien tres bien tres bien tres bien tres bienf"; //60 caracteres max
+                    echo "</div>";
+                    echo "</div>";
+                }
 
-                </tr>
+                ?>
+              </div>
+            </div>
+              </a>
+              </article>
+              </div>
               <?php }
              } ?>
-        </table>
+             </div>
     <?php } ?>
-
-    <a type="button" class="btn btn-primary" href="index.php">Retour</a>
-
+    <div class="container mt-5 mb-3">
+      <div class="row justify-content-md-center">
+        <div class="col-3">
+    <a type="button" class="btn btn-outline-secondary btn-block" href="index.php">Retour</a>
+    </div>
+    </div>
+    </div>
 </body>

@@ -28,7 +28,7 @@
             </div>
             <div class="form-label-group">
                 <label for="inputEvaluation">Évaluation</label>
-                <textarea id="inputEvaluation" name="evaluation" class="form-control" placeholder="Évaluation" required></textarea>
+                <textarea id="inputEvaluation" name="evaluation" class="form-control" placeholder="Évaluation" maxlength="60" required></textarea>
             </div>
             <input type="hidden" name="id_reservation" value=<?= $_GET['id'] ?>>
 
