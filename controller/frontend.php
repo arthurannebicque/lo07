@@ -135,6 +135,12 @@ function showProfil() {
         $slots = $slotManager->getDispos($_SESSION['id']);
     } elseif ($_SESSION['type'] == 2) {
         $reservations = $slotManager->getReservations($_SESSION['id']);
+        $reservation = $reservations->fetchall();
+
+        for ($i = 0; $i < count($reservation); $i++) {
+          $dateFin = $slotManager->getReservationDate($reservation[$i]['id'], "DESC");
+          $reservation[$i]['fin'] = $dateFin;
+        }
     } elseif ($_SESSION['type'] == 3) {
       $babysitters = $memberManager->getBabysittersApplication();
       $applicationCount = $memberManager->getBabysittersCount(0);
@@ -402,26 +408,25 @@ function showReservation($id_reservation) {
     require('view/recapReservation.php');
 }
 
-function closeReservation($id_reservation, $heure_debut, $heure_fin, $note, $evaluation) {
+function closeReservation($id_reservation, $heure_debut, $heure_fin, $note, $evaluation, $type) {
     $slotManager = new \LO07\Sittie2\Model\SlotManager();
     $memberManager = new \LO07\Sittie2\Model\MemberManager();
 
     $statut = "expiré";
-    $type = $slotManager->getReservationType($id_reservation);
-    $duree = $heure_fin - $heure_debut;
+
     $listeEnfants = $memberManager->getEnfantsResa($id_reservation);
     $enfant = $listeEnfants->fetchall();
     $nombreEnfants = count($enfant);
     if ($type[0] == 1) {
+        $duree = $heure_fin - $heure_debut;
         $revenu = $duree * (7 + 4 * ($nombreEnfants - 1));
     }
     if ($type[0] == 2) {
+        $duree = $heure_fin - $heure_debut;
         $revenu = $duree * (15 + 15 * ($nombreEnfants - 1));
     }
     if ($type[0] == 3) {
-        $slots = $slotManager->getDisposResa($id_reservation);
-        $slot = $slots->fetchall();
-        $duree = count($slot);
+        $duree = $heure_fin;
         $revenu = $duree * (10 + 5 * ($nombreEnfants - 1));
     }
     $affectedDispo = $slotManager->updateDisposResa($id_reservation, $statut);

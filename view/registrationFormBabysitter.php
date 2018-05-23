@@ -55,9 +55,9 @@
             <div class="form-label-group">
                 <label for="inputExperience">Expérience</label>
                 <select id="inputExperience" name="experience" class ="form-control"required autofocus>
-                    <option selected> -1 an</option>
-                    <option> 1 à 3 ans</option>
-                    <option> +3 ans</option>
+                    <option selected>moins d'1 an</option>
+                    <option>1 à 3 ans</option>
+                    <option>plus de 3 ans</option>
                 </select>
             </div>
             <div class="form-label-group">

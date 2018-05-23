@@ -87,6 +87,7 @@
           <h2>Réservation par langue</h2>
       </div>
     </div>
+    <div class="container-fluid mt-3">
         <form class="form w-75 m-auto justify-content-md-center" action="index.php?action=requestResaLangue" method="post">
 
           <div class="form-group row justify-content-md-center">
@@ -120,6 +121,7 @@
                 </div>
                 </div>
             </form>
+          </div>
         <?php
         if (!empty($listBabysitters)) {
 

@@ -148,7 +148,7 @@ class SlotManager {
 
     public function getReservationDate($id_reservation, $ordre){
       $db = $this->dbConnect();
-      $req = $db->prepare("SELECT DATE_FORMAT(creneau, '%d/%m/%Y') AS date FROM disponibilites WHERE id_reservation = ? ORDER BY creneau {$ordre} LIMIT 1");
+      $req = $db->prepare("SELECT DATE_FORMAT(creneau, '%d/%m/%Y') AS date_fin, DATEDIFF(creneau, CURDATE()) AS difference FROM disponibilites WHERE id_reservation = ? ORDER BY creneau {$ordre} LIMIT 1");
       $req->execute(array($id_reservation));
       $date = $req->fetch();
       return $date;
@@ -177,7 +177,7 @@ class SlotManager {
 
     public function getReservationType($id) {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT type FROM reservations WHERE id = ?');
+        $req = $db->prepare('SELECT type, note FROM reservations WHERE id = ?');
         $req->execute(array($id));
         $type = $req->fetch();
         return $type;

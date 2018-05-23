@@ -72,8 +72,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email']) && isset($_SESSION['type
                 require('view/closeReservationForm.php');
             }
         } elseif ($_GET['action'] == 'closeReservation') {
-            if (!empty($_POST['id_reservation']) && !empty($_POST['note']) && !empty($_POST['heure_debut']) && !empty($_POST['heure_fin']) && !empty($_POST['evaluation'])) {
-                closeReservation($_POST['id_reservation'], $_POST['heure_debut'], $_POST['heure_fin'], $_POST['note'], $_POST['evaluation']);
+            if (!empty($_POST['id_reservation']) && !empty($_POST['note']) && !empty($_POST['heure_debut']) && !empty($_POST['heure_fin']) && !empty($_POST['evaluation']) && !empty($_POST['type'])) {
+                closeReservation($_POST['id_reservation'], $_POST['heure_debut'], $_POST['heure_fin'], $_POST['note'], $_POST['evaluation'], $_POST['type']);
             } else {
                 throw new Exception('tous les champs n\'ont pas été remplis');
             }

@@ -146,17 +146,18 @@ if ($_SESSION['type'] == 2) {
         </tr>
       </thead>
         <?php
-        while ($reservation = $reservations->fetch()) {
+        foreach ($reservation as $resa) {
+
             ?>
             <tr>
-                <td><?= $reservation['date'] ?></td>
-                <td><?= $reservation['prenom'] ?> <?= $reservation['nom'] ?></td>
-                <td><a type="button" class="btn btn-primary btn-sm my-0" href="index.php?action=showReservation&id=<?= $reservation['id'] ?>">Détails</a>
+                <td><?= $resa['date'] ?></td>
+                <td><?= $resa['prenom'] ?> <?= $resa['nom'] ?></td>
+                <td><a type="button" class="btn btn-primary btn-sm my-0" href="index.php?action=showReservation&id=<?= $resa['id'] ?>">Détails</a>
         <?php
-        if ($reservation['diff'] <= 0) {
-            if ($reservation['note'] == "-1") {
-                echo '<a type="button" class="btn btn-primary btn-sm my-0" href="index.php?action=closeReservationForm&id=' . $reservation['id'] . '">Terminer</a>';
-            } elseif ($reservation['note'] != "-1")
+        if ($resa['fin']['difference'] <= 0) {
+            if ($resa['note'] == "-1") {
+                echo '<a type="button" class="btn btn-outline-danger btn-sm my-0" href="index.php?action=showReservation&id=' . $resa['id'] . '">Terminer</a>';
+            } elseif ($resa['note'] != "-1")
                 echo '<i>Terminé</i>';
         }
         ?>
@@ -170,7 +171,7 @@ if ($_SESSION['type'] == 2) {
 
 if ($_SESSION['type'] == 3) {
   ?>
-  <div class="container-fluid">
+  <div class="container-fluid mt-3">
     <div class="row justify-content-md-center">
       <div class="col-lg-4 col-md-6">
         <div class="panel panel-primary">
@@ -246,36 +247,62 @@ if ($_SESSION['type'] == 3) {
       </div>
         </div>
   </div>
-  <hr>
 
-  <div class="container">
+  <div class="container justify-content-md-center">
       <?php
       if (isset($_GET['element'])) {
         if ($_GET['element']=='application') {
   while ($babysitter = $babysitters->fetch()) {
     ?>
-        <div class="row m-auto">
-        <div class="col-2">
-          photo
+    <div class="bg-light mt-3">
+      <div class="card pt-3 px-3 pb-0">
+          <div class="row">
+        <aside class="col-2">
+
+          <div class="row justify-content-md-center">
+          <?= $babysitter['ville'] ?>
         </div>
-        <div class="col-10">
-            <div class="row">
-              <div class="col-10">
-                <h3 ><?= $babysitter['prenom']." ".$babysitter['nom']?></h3><p class="card-text"><?= $babysitter['ville']?></p>
-              </div>
-              <div class="col-2">
-                <div class="btn-group-vertical btn-group-justified">
-                  <div class="btn-group">
-                    <a type="button" class="btn btn-block btn-success" href="index.php?action=validateApplication&id=<?= $babysitter['id'] ?>">Valider</a>
-                    </div>
-                    <div class="btn-group">
-                      <a type="button" class="btn btn-block btn-danger" href="index.php?action=declineApplication&id=<?= $babysitter['id'] ?>">Refuser</a>
-                      </div>
-                    </div>
-              </div>
+        </aside>
+        <div class="col-7">
+        <div class="row">
+        <h3><?= $babysitter['prenom']." ".$babysitter['nom'] ?></h3>
+      </div>
+      <div class="row border-top">
+        <ul class="list-inline list-unstyled">
+          <li class="list-inline-item"><?=$babysitter['age']?>ans,</li>
+          <li class="list-inline-item">1 an d'expérience</li>
+        </ul>
+      </div>
+      <div class="row">
+        <p>Bonjour, Je suis actuellement en Terminale Littéraire spécialité musique, je suis disponible tout les weekends, pendant les vacances scolaires et les mercredis après-midi. N'hésitez...</p>
+      </div>
+      </div>
+      <div class="col-3">
+        <div class="row align-items-start">
+          <h4>Langues parlées</h4>
+    </div>
+    <div class="row align-items-center">
+      <ul class="list-unstyled">
+        <li>Anglais</li>
+        <li>Allemand</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+<div class="row align-items-end justify-content-md-end">
+  <div class="btn-group btn-group-justified">
+    <div class="btn-group">
+      <a type="button" class="btn btn-block btn-success" href="index.php?action=validateApplication&id=<?= $babysitter['id'] ?>">Valider</a>
+      </div>
+      <div class="btn-group">
+        <a type="button" class="btn btn-block btn-danger" href="index.php?action=declineApplication&id=<?= $babysitter['id'] ?>">Refuser</a>
         </div>
       </div>
 </div>
+</div>
+  </div>
+
     <?php }
   }
 if ($_GET['element']=='revenu') {
@@ -284,7 +311,8 @@ if ($_GET['element']=='revenu') {
       echo $revenuBabysitter['prenom']." ".$revenuBabysitter['nom']." Revenu : ".$revenuBabysitter['revenu']."<br>";
     }
   }
-}
+}?>
+</div>
+<?php
    } ?>
-  </div>
 </body>
