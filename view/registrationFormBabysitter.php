@@ -12,7 +12,7 @@
     </head>
 
     <body>
-        <form class="form-signin" action="index.php?action=addBabysitter" method="post">
+        <form class="form-signin" action="index.php?action=addBabysitter" method="post"enctype="multipart/form-data">
             <input type="hidden" name="type" value=1 />
             <div class="text-center mb-4">
                 <h1 class="h3 mb-3 font-weight-normal">Inscrivez vous en tant que Babysitter</h1>
@@ -55,7 +55,7 @@
             <div class="form-label-group">
                 <label for="inputExperience">Expérience</label>
                 <select id="inputExperience" name="experience" class ="form-control"required autofocus>
-                    <option selected>moins d'1 an</option>
+                    <option selected>moins d' 1 an</option>
                     <option>1 à 3 ans</option>
                     <option>plus de 3 ans</option>
                 </select>
@@ -120,6 +120,9 @@
                     ?>
                 </select>
             </div>
+            <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+            <input type="file" name="profil" required/>
+            <br>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Inscription</button>
             <p class="mt-5 mb-3 text-muted text-center">Déjà inscrit ? Connectez vous <a href="index.php?action=connexion">ici</a></p>
 

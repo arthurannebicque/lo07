@@ -3,6 +3,19 @@
 require_once ('model/MemberManager.php');
 require_once ('model/SlotManager.php');
 
+function upload($index,$destination,$maxsize=FALSE,$extensions=FALSE)
+{
+   //Test1: fichier correctement uploadé
+     if (!isset($_FILES[$index]) OR $_FILES[$index]['error'] > 0) return FALSE;
+   //Test2: taille limite
+     if ($maxsize !== FALSE AND $_FILES[$index]['size'] > $maxsize) return FALSE;
+   //Test3: extension
+     $ext = substr(strrchr($_FILES[$index]['name'],'.'),1);
+     if ($extensions !== FALSE AND !in_array($ext,$extensions)) return FALSE;
+   //Déplacement
+     return move_uploaded_file($_FILES[$index]['tmp_name'],$destination.".".$ext);
+}
+
 function addBabysitter($nom, $prenom, $email, $password, $passwordConfirmation, $type, $ville, $telephone, $age, $experience, $langues) {
 
     $memberManager = new \LO07\Sittie2\Model\MemberManager();
@@ -22,7 +35,10 @@ function addBabysitter($nom, $prenom, $email, $password, $passwordConfirmation, 
 
     if ($emailUsed['exist_email'] == '0') {
         $affectedCredentials = $memberManager->createCredentials($email, $pass_hache, $type);
-        $affectedBabysitter = $memberManager->createBabysitter($affectedCredentials['id_user'], $nom, $prenom, $ville, $telephone, $age, $experience);
+        $uploadPhoto = upload('profil',"ressources/pictures/{$affectedCredentials['id_user']}",1048576, array('png','jpg','jpeg') );
+        $ext = substr(strrchr($_FILES['profil']['name'],'.'),1);
+        $photoName = $affectedCredentials['id_user'].".".$ext;
+        $affectedBabysitter = $memberManager->createBabysitter($affectedCredentials['id_user'], $nom, $prenom, $ville, $telephone, $age, $experience, $photoName);
         foreach ($langues as $langue) {
             $langueUsed = $memberManager->getLangueId($langue);
             if ($langueUsed === false) {
@@ -37,6 +53,7 @@ function addBabysitter($nom, $prenom, $email, $password, $passwordConfirmation, 
     }
 
     if ($affectedBabysitter === false) {
+        $deletedBabysitter = $memberManager->declineApplication($affectedCredentials['id_user']);
         throw new Exception("impossible d'ajouter le membre !");
     } else {
         header('Location: index.php?action=registrationComplete&email=' . $email);
@@ -339,12 +356,12 @@ function createReservation($id_parent, $id_babysitter, $creneaux, $selectedEnfan
     $slots = $slotManager->getDisposResa($newReservationId);
     $babysitter = $memberManager->getBabysitterInfos($newReservationId);
     $listeEnfants = $memberManager->getEnfantsResa($newReservationId);
-    $dateDebut = $slotManager->getReservationDate($id_reservation, "ASC");
-    $dateFin = $slotManager->getReservationDate($id_reservation, "DESC");
-    $type = $slotManager->getReservationType($id_reservation);
-    $weekdays = $slotManager->getReservationWeekdays($id_reservation);
+    $dateDebut = $slotManager->getReservationDate($newReservationId, "ASC");
+    $dateFin = $slotManager->getReservationDate($newReservationId, "DESC");
+    $type = $slotManager->getReservationType($newReservationId);
+    $weekdays = $slotManager->getReservationWeekdays($newReservationId);
     while ($weekday = $weekdays->fetch()) {
-      $hours = $slotManager->getReservationHours($id_reservation, $weekday['weekday']);
+      $hours = $slotManager->getReservationHours($newReservationId, $weekday['weekday']);
       $creneauResa[$weekday[0]] = $hours->fetchall();
     }
 
@@ -448,4 +465,76 @@ function getDistance($origin, $destination) {
   }
 
   return $distance/1000;
+}
+
+function searchBabysitter($name) {
+  $memberManager = new \LO07\Sittie2\Model\MemberManager();
+  $slotManager = new \LO07\Sittie2\Model\SlotManager();
+
+  $babysittersSearch = $memberManager->searchBabysitterName($name);
+  $applicationCount = $memberManager->getBabysittersCount(0);
+  $babysitterCount = $memberManager->getBabysittersCount(1);
+  $revenuMensuelGlobal = $slotManager->getRevenuMensuelGlobal();
+  $revenuAnnuelGlobal = $slotManager->getRevenuAnnuelGlobal();
+  $revenuTrimestrielGlobal = $slotManager->getRevenuTrimestrielGlobal();
+
+
+  require('view/showSearchForm.php');
+}
+
+  function showBabysitterDetails($id){
+
+    $memberManager = new \LO07\Sittie2\Model\MemberManager();
+    $slotManager = new \LO07\Sittie2\Model\SlotManager();
+
+    $applicationCount = $memberManager->getBabysittersCount(0);
+    $babysitterCount = $memberManager->getBabysittersCount(1);
+    $revenuMensuelGlobal = $slotManager->getRevenuMensuelGlobal();
+    $revenuAnnuelGlobal = $slotManager->getRevenuAnnuelGlobal();
+    $revenuTrimestrielGlobal = $slotManager->getRevenuTrimestrielGlobal();
+    $babysitterInfos = $memberManager->getBabysitterInfosID($id);
+    $listeReservations = $memberManager->getBabysitterReservations($id);
+    $reservations = $listeReservations->fetchall();
+    for ($i = 0; $i < count($reservations); $i++) {
+      $reservations[$i]['dateDebut'] = $slotManager->getReservationDate($reservations[$i]['id'], 'ASC');
+      $reservations[$i]['dateFin'] = $slotManager->getReservationDate($reservations[$i]['id'], "DESC");
+      $reservations[$i]['slots'] = $slotManager->getDisposResa($reservations[$i]['id']);
+      $reservations[$i]['listeEnfants'] = $memberManager->getEnfantsResa($reservations[$i]['id']);
+      $weekdays = $slotManager->getReservationWeekdays($reservations[$i]['id']);
+      while ($weekday = $weekdays->fetch()) {
+        $hours = $slotManager->getReservationHours($reservations[$i]['id'], $weekday['weekday']);
+        $reservations[$i]['creneauResa'][$weekday[0]] = $hours->fetchall();
+      }
+    }
+    require('view/showSearchForm.php');
+
+  }
+
+function showRevenuList() {
+  $memberManager = new \LO07\Sittie2\Model\MemberManager();
+  $slotManager = new \LO07\Sittie2\Model\SlotManager();
+
+  $applicationCount = $memberManager->getBabysittersCount(0);
+  $babysitterCount = $memberManager->getBabysittersCount(1);
+  $listeRevenuBabysitter = $memberManager->getListRevenuBabysitter();
+  $revenuMensuelGlobal = $slotManager->getRevenuMensuelGlobal();
+  $revenuAnnuelGlobal = $slotManager->getRevenuAnnuelGlobal();
+  $revenuTrimestrielGlobal = $slotManager->getRevenuTrimestrielGlobal();
+
+  require('view/showRevenuList.php');
+}
+
+function showSearchForm() {
+
+  $memberManager = new \LO07\Sittie2\Model\MemberManager();
+  $slotManager = new \LO07\Sittie2\Model\SlotManager();
+
+  $applicationCount = $memberManager->getBabysittersCount(0);
+  $babysitterCount = $memberManager->getBabysittersCount(1);
+  $revenuMensuelGlobal = $slotManager->getRevenuMensuelGlobal();
+  $revenuAnnuelGlobal = $slotManager->getRevenuAnnuelGlobal();
+  $revenuTrimestrielGlobal = $slotManager->getRevenuTrimestrielGlobal();
+
+  require('view/showSearchForm.php');
+
 }

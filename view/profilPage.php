@@ -180,13 +180,13 @@ if ($_SESSION['type'] == 3) {
           <span>Nombre de candidature</span>
         </div>
         <div class="row justify-content-md-center">
-          <a class="huge" href="index.php?element=application"><?=$applicationCount[0]?></a>
+          <a class="huge" href="index.php"><?=$applicationCount[0]?></a>
         </div>
         <br>
       </div>
       <div class="panel-footer text-center">
 
-        <a href="index.php?element=application">Voir plus</a>
+        <a href="index.php">Voir plus</a>
     </div>
       </div>
     </div>
@@ -216,15 +216,15 @@ if ($_SESSION['type'] == 3) {
                 <span>Chiffre d'affaire <?=$periode?><span>
                 </div>
               <div class="row justify-content-md-center">
-                  <a class="huge" href="index.php?element=revenu"><?=$revenu?>€</a>
+                  <a class="huge" href="index.php?action=showRevenuList"><?=$revenu?>€</a>
                 </div>
                 <div class="row justify-content-md-center">
-                <a href="index.php?revenu=mensuel&element=<?=$_GET['element']?>">Mensuel</a><a href="index.php?revenu=trimestriel&element=<?=$_GET['element']?>"> Trimestriel </a> <a href="index.php?revenu=annuel&element=<?=$_GET['element']?>"> Annuel</a>
+                <a href="index.php?revenu=mensuel">Mensuel</a><a href="index.php?revenu=trimestriel"> Trimestriel </a> <a href="index.php?revenu=annuel"> Annuel</a>
               </div>
               </div>
           <div class="panel-footer text-center">
 
-            <a href="index.php?element=revenu">Voir plus</a>
+            <a href="index.php?action=showRevenuList">Voir plus</a>
         </div>
     </div>
   </div>
@@ -235,84 +235,83 @@ if ($_SESSION['type'] == 3) {
           <span>Nombre de babysitters inscrits</span>
         </div>
         <div class="row justify-content-md-center">
-          <a class="huge" href="index.php?element=babysitters"><?=$babysitterCount[0]?></a>
+          <a class="huge" href="index.php?action=showSearchForm"><?=$babysitterCount[0]?></a>
         </div>
         <br>
       </div>
       <div class="panel-footer text-center">
 
-        <a href="index.php?element=babysitters">Voir plus</a>
+        <a href="index.php?action=showSearchForm">Voir plus</a>
     </div>
     </div>
       </div>
         </div>
   </div>
 
-  <div class="container justify-content-md-center">
+  <div class="container justify-content-md-center mb-3">
       <?php
-      if (isset($_GET['element'])) {
-        if ($_GET['element']=='application') {
+
+
   while ($babysitter = $babysitters->fetch()) {
     ?>
     <div class="bg-light mt-3">
       <div class="card pt-3 px-3 pb-0">
           <div class="row">
-        <aside class="col-2">
+        <aside class="col-2 border">
+          <div class="row justify-content-md-center">
 
+          <img src="ressources/pictures/<?=$babysitter['photo']?>" maxheight="180px">
+        </div>
           <div class="row justify-content-md-center">
           <?= $babysitter['ville'] ?>
         </div>
         </aside>
-        <div class="col-7">
-        <div class="row">
+        <div class="col-8 border">
+        <div class="row p-1">
         <h3><?= $babysitter['prenom']." ".$babysitter['nom'] ?></h3>
       </div>
-      <div class="row border-top">
+      <div class="row border-top p-1">
         <ul class="list-inline list-unstyled">
-          <li class="list-inline-item"><?=$babysitter['age']?>ans,</li>
-          <li class="list-inline-item">1 an d'expérience</li>
+          <li class="list-inline-item"><?=$babysitter['age']?> ans,</li>
+          <li class="list-inline-item"><?=$babysitter['experience']?> d'expérience</li>
         </ul>
       </div>
-      <div class="row">
+      <div class="row p-1">
         <p>Bonjour, Je suis actuellement en Terminale Littéraire spécialité musique, je suis disponible tout les weekends, pendant les vacances scolaires et les mercredis après-midi. N'hésitez...</p>
       </div>
       </div>
-      <div class="col-3">
-        <div class="row align-items-start">
+      <div class="col-2 border">
+
+        <div class="row border">
           <h4>Langues parlées</h4>
     </div>
-    <div class="row align-items-center">
+    <div class="row border">
       <ul class="list-unstyled">
         <li>Anglais</li>
         <li>Allemand</li>
+
       </ul>
-    </div>
 
   </div>
+    <div class="row justify-content-md-end border mb-auto">
+      <div class="btn-group btn-group-justified">
+        <div class="btn-group">
+          <a type="button" class="btn btn-block btn-success" href="index.php?action=validateApplication&id=<?= $babysitter['id'] ?>">Valider</a>
+          </div>
+          <div class="btn-group">
+            <a type="button" class="btn btn-block btn-danger" href="index.php?action=declineApplication&id=<?= $babysitter['id'] ?>">Refuser</a>
+            </div>
+          </div>
+    </div>
+  </div>
 </div>
-<div class="row align-items-end justify-content-md-end">
-  <div class="btn-group btn-group-justified">
-    <div class="btn-group">
-      <a type="button" class="btn btn-block btn-success" href="index.php?action=validateApplication&id=<?= $babysitter['id'] ?>">Valider</a>
-      </div>
-      <div class="btn-group">
-        <a type="button" class="btn btn-block btn-danger" href="index.php?action=declineApplication&id=<?= $babysitter['id'] ?>">Refuser</a>
-        </div>
-      </div>
-</div>
+
 </div>
   </div>
 
     <?php }
-  }
-if ($_GET['element']=='revenu') {
-
-    while ($revenuBabysitter = $listeRevenuBabysitter->fetch()) {
-      echo $revenuBabysitter['prenom']." ".$revenuBabysitter['nom']." Revenu : ".$revenuBabysitter['revenu']."<br>";
-    }
-  }
-}?>
+?>
 </div>
 <?php
-   } ?>
+} ?>
 </body>

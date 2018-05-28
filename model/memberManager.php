@@ -33,11 +33,11 @@ class MemberManager {
         return $affectedCredentials;
     }
 
-    public function createBabysitter($id, $nom, $prenom, $ville, $telephone, $age, $experience) {
+    public function createBabysitter($id, $nom, $prenom, $ville, $telephone, $age, $experience, $photoName) {
         $db = $this->dbConnect();
 
-        $req = $db->prepare('INSERT INTO babysitters(id, nom, prenom, ville, portable, age, experience) VALUES(?, ?, ?, ?, ?, ?, ?)');
-        $affectedBabysitter = $req->execute(array($id, $nom, $prenom, $ville, $telephone, $age, $experience));
+        $req = $db->prepare('INSERT INTO babysitters(id, nom, prenom, ville, portable, age, experience, photo) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
+        $affectedBabysitter = $req->execute(array($id, $nom, $prenom, $ville, $telephone, $age, $experience, $photoName));
 
         return $affectedBabysitter;
     }
@@ -105,12 +105,28 @@ class MemberManager {
         return $listeEnfants;
     }
 
+    public function searchBabysitterName($name) {
+      $db = $this->dbConnect();
+      $babysitters = $db->prepare('SELECT id, nom, prenom FROM babysitters WHERE LOWER(nom)= :nom');
+      $babysitters->execute(array('nom' => strtolower($name)));
+
+      return $babysitters;
+    }
+
     public function getBabysitterInfos($id_reservation) {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT nom, prenom, portable FROM babysitters, reservations WHERE reservations.id = ? AND babysitters.id = reservations.id_babysitter');
+        $req = $db->prepare('SELECT nom, prenom, portable, photo FROM babysitters, reservations WHERE reservations.id = ? AND babysitters.id = reservations.id_babysitter');
         $req->execute(array($id_reservation));
         $babysitter = $req->fetch();
         return $babysitter;
+    }
+
+    public function getBabysitterReservations($id) {
+        $db = $this->dbConnect();
+        $reservations = $db->prepare('SELECT reservations.id as id, type, parents.nom as nom, parents.ville as ville, note, evaluation, revenu FROM reservations, parents WHERE reservations.id_babysitter = ? AND parents.id_parent = reservations.id_parent');
+        $reservations->execute(array($id));
+
+        return $reservations;
     }
 
     public function getBabysitterInfosID($id) {

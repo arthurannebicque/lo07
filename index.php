@@ -85,7 +85,19 @@ if (isset($_SESSION['id']) && isset($_SESSION['email']) && isset($_SESSION['type
             if (isset($_GET['id'])) {
                 declineApplication($_GET['id']);
             }
-          }
+        } elseif ($_GET['action'] == 'searchBabysitter') {
+            if (isset($_POST['name'])) {
+                searchBabysitter($_POST['name']);
+            }
+        } elseif ($_GET['action'] == 'showRevenuList') {
+                showRevenuList();
+        } elseif ($_GET['action'] == 'showSearchForm') {
+                showSearchForm();
+        } elseif ($_GET['action'] == 'showBabysitterDetails') {
+            if (isset($_GET['id'])) {
+                showBabysitterDetails($_GET['id']);
+            }
+        }
     } else {
         showProfil();
     }

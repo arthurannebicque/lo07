@@ -153,6 +153,9 @@
                           <div class="row">
                         <aside class="col-2">
                           <div class="row justify-content-md-center">
+                          <img src="ressources/pictures/<?=$babysitter['photo']?>" height="120px" width="120px">
+                        </div>
+                          <div class="row justify-content-md-center">
                           <?= round($babysitter['distance']) ?>km
                         </div>
                           <div class="row justify-content-md-center">
@@ -165,8 +168,8 @@
                       </div>
                       <div class="row border-top">
                         <ul class="list-inline list-unstyled">
-                          <li class="list-inline-item">24 ans,</li>
-                          <li class="list-inline-item">1 an d'expérience</li>
+                          <li class="list-inline-item"><?= $babysitter['age']?> ans,</li>
+                          <li class="list-inline-item"><?= $babysitter['experience']?> d'expérience</li>
                         </ul>
                       </div>
                       <div class="row">

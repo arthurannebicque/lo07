@@ -100,7 +100,7 @@ if ($_SESSION['type'] == 2) {
     <div class="row">
       <div class="col-3">
         <div class="card text-center">
-          <img class="card-img-top" src="feeding-bottle.png" alt="Card image cap">
+          <img class="card-img-top" src="ressources/pictures/<?=$babysitter['photo']?>" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title"><?=$babysitter['prenom']." ".$babysitter['nom']?></h5>
         <p class="card-text "><?=$babysitter['portable']?></p>
