@@ -9,6 +9,21 @@
         <meta name="author" content="">
         <link href="public/bootstrap/css/bootstrap.css" rel="stylesheet">
         <link href="public/bootstrap/css/sb-admin-2.css" rel="stylesheet">
+        <script src="jquery/jquery.min.js"></script>
+        <script>
+        $( document ).ready(function() {
+          $( "input#dispo").closest('form').hide();
+          $( "#dispo-div" ).on('click', function(event) {
+            //console.log('ici')
+            var id = $(event.target).closest('a').attr('id');
+            console.log("You clicked on:", id);
+            $( "#form-dispo" +id ).slideToggle( "slow" );
+
+          });
+        })
+
+        </script>
+
 
 
     </head>
@@ -136,30 +151,102 @@
         <h3>Dans un rayon de 30km:</h3>
       </div>
         </div>
+        <div id="dispo-div">
             <?php
+
             foreach ($babysitters as $babysitter) {
-                if ($babysitter['distance'] <= 3000 && !empty($babysitter[4])) {
+                if ($babysitter['distance'] <= 3000 && !empty($babysitter[7])) {
+                  echo "<div class='container bg-light border-top mt-5' value='{$babysitter['id']}'>";
+                  ?>
+                  <div class="bg-light  mt-3">
+                    <article style="padding:20px;">
+                      <a id="<?=$babysitter['id']?>" value='{$babysitter['id']}'>
+                        <div class="row">
+                      <aside class="col-2">
+                        <div class="row justify-content-md-center">
 
-                    echo $babysitter['id'] . " " . $babysitter['prenom'] . " " . $babysitter['nom'] . " à ".$babysitter['distance']."km";
-                    echo "<a type='button' class='btn btn-primary' href=''>Voir disponibilités</a>";
-                    echo "<form class='form-signin' action='index.php?action=createResaLangue' method='post'>";
+                        <img src="ressources/pictures/<?=$babysitter['photo']?>" height="120px" width="120px">
+                      </div>
+                        <div class="row justify-content-md-center">
+                        <?= round($babysitter['distance']) ?>km
+                      </div>
+                        <div class="row justify-content-md-center">
+                        <?= $babysitter['ville'] ?>
+                      </div>
+                      </aside>
+                      <div class="col-7">
+                      <div class="row">
+                      <h3><?= $babysitter['prenom']." ".$babysitter['nom'] ?></h3>
+                    </div>
+                    <div class="row border-top">
+                      <ul class="list-inline list-unstyled">
+                        <li class="list-inline-item"><?=$babysitter['age']?> ans,</li>
+                        <li class="list-inline-item">1 an d'expérience</li>
+                      </ul>
+                    </div>
+                    <div class="row">
+                      <p><?=$babysitter['presentation']?></p>
+                    </div>
+                    </div>
+                    <div class="col-3 border">
+                      <div class="row">
+                        <div class="col">
+                      <?= round($babysitter['average'][0], 1)?>/5
+                    </div>
+                    <div class="col">
+                      <?=count($babysitter['ratings'])."avis"?>
+                    </div>
+                  </div>
 
-                    foreach ($babysitter[4] as $dispo) {
-                        echo $dispo['date'] . " " . $dispo['heure'] . " <input type='checkbox' name='dispo[]' value=" . $dispo['id_dispo'] . "><br>";
+                  <?php foreach ($babysitter['ratings'] as $rating) {
+                    echo "<div class='row'>";
+                    echo "<div class='col-1'>";
+                    echo $rating['note']. "/5 ";
+                    echo "</div>";
+                    echo "<div class='col'>";
+                    echo  "Tres bien tres bien tres bien tres bien tres bien tres bienf"; //60 caracteres max
+                      echo "</div>";
+                      echo "</div>";
+                  }
+
+                  ?>
+                </div>
+              </div>
+                </a>
+                </article>
+                </div>
+                <?php
+                    echo "<form class='form-signin' id='form-dispo{$babysitter['id']}' action='index.php?action=createResaLangue' method='post'>";
+                    echo "<table class='table table-hover'>";
+                    echo "<tbody>";
+                    foreach ($babysitter[7] as $dispo) {
+
+                      echo "<tr>";
+                      echo "<td>".$dispo['date']."</td>";
+                      echo "<td>".$dispo['heure']."</td>";
+                      echo "<td><input type='checkbox' name='dispo[]' value=" . $dispo['id_dispo'] . "></td>";
+                      echo "<tr>";
+
+                        //echo $dispo['date'] . " " . $dispo['heure'] . " <input type='checkbox' name='dispo[]' value=" . $dispo['id_dispo'] . "><br>";
                     }
-
-                    echo "<input type='hidden' name='id_babysitter' value=" . $babysitter['id'] . ">";
+                    echo "</tbody>";
+                    echo "</table>";
+                    echo "<input id='dispo' type='hidden' name='id_babysitter' value=" . $babysitter['id'] . ">";
 
                     foreach ($selectedEnfants as $selectedEnfant) {
                         echo "<input type='hidden' name='enfants[]' value=" . $selectedEnfant . ">";
                     }
-                    echo "
-   <button class='btn btn-lg btn-primary btn-block' type='submit'>Choisir</button>";
+                    echo "<div class='form-group row justify-content-md-center'>";
+                      echo "<div class='col-2'>";
+                    echo "<button class='btn btn-lg btn-primary' type='submit'>Choisir</button>";
+                    echo "</div>";
+                    echo "</div>";
                     echo "</form>";
+                    echo "</div>";
 
                 }
             }
-            echo "<br>";
+            echo "</div>>";
         }
         ?>
         <div class="container mt-5 mb-3">
