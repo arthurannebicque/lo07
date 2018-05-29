@@ -33,11 +33,11 @@ class MemberManager {
         return $affectedCredentials;
     }
 
-    public function createBabysitter($id, $nom, $prenom, $ville, $telephone, $age, $experience, $photoName) {
+    public function createBabysitter($id, $nom, $prenom, $ville, $telephone, $age, $experience, $photoName, $presentation) {
         $db = $this->dbConnect();
 
-        $req = $db->prepare('INSERT INTO babysitters(id, nom, prenom, ville, portable, age, experience, photo) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
-        $affectedBabysitter = $req->execute(array($id, $nom, $prenom, $ville, $telephone, $age, $experience, $photoName));
+        $req = $db->prepare('INSERT INTO babysitters(id, nom, prenom, ville, portable, age, experience, photo, presentation) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)');
+        $affectedBabysitter = $req->execute(array($id, $nom, $prenom, $ville, $telephone, $age, $experience, $photoName, $presentation));
 
         return $affectedBabysitter;
     }

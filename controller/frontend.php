@@ -16,7 +16,7 @@ function upload($index,$destination,$maxsize=FALSE,$extensions=FALSE)
      return move_uploaded_file($_FILES[$index]['tmp_name'],$destination.".".$ext);
 }
 
-function addBabysitter($nom, $prenom, $email, $password, $passwordConfirmation, $type, $ville, $telephone, $age, $experience, $langues) {
+function addBabysitter($nom, $prenom, $email, $password, $passwordConfirmation, $type, $ville, $telephone, $age, $experience, $langues, $presentation) {
 
     $memberManager = new \LO07\Sittie2\Model\MemberManager();
 
@@ -38,7 +38,7 @@ function addBabysitter($nom, $prenom, $email, $password, $passwordConfirmation, 
         $uploadPhoto = upload('profil',"ressources/pictures/{$affectedCredentials['id_user']}",1048576, array('png','jpg','jpeg') );
         $ext = substr(strrchr($_FILES['profil']['name'],'.'),1);
         $photoName = $affectedCredentials['id_user'].".".$ext;
-        $affectedBabysitter = $memberManager->createBabysitter($affectedCredentials['id_user'], $nom, $prenom, $ville, $telephone, $age, $experience, $photoName);
+        $affectedBabysitter = $memberManager->createBabysitter($affectedCredentials['id_user'], $nom, $prenom, $ville, $telephone, $age, $experience, $photoName, $presentation);
         foreach ($langues as $langue) {
             $langueUsed = $memberManager->getLangueId($langue);
             if ($langueUsed === false) {

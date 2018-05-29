@@ -120,6 +120,10 @@
                     ?>
                 </select>
             </div>
+            <div class="form-label-group">
+                <textarea id="inputPresentation" name="presentation" class="form-control" placeholder="Presentation" required></textarea>
+                <label for="inputPresentation">Présentation</label>
+            </div>
             <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
             <input type="file" name="profil" required/>
             <br>
