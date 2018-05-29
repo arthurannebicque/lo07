@@ -1,95 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-
-    <head>
-
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <script src="jquery/jquery.min.js"></script>
-         <script src="public/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <link href="public/bootstrap/css/bootstrap.css" rel="stylesheet">
-        <link href="public/bootstrap/css/sb-admin-2.css" rel="stylesheet">
+<?php ob_start(); ?>
 
 
-    </head>
-
-    <body>
-      <nav class="navbar navbar-light bg-light static-top justify-content-between border-bottom">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-          <img src="icon.png" width="50" height="50">
-          </a>
-          <div class="navbar">
-          <a class="nav-link" href="#discover">Découvrir</a>
-
-          <?php
-          if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
-            echo('
-            <a class="nav-link" href="index.php">Profil</a>
-            <a type="button" class="btn btn-outline-primary" href="index.php?action=deconnexion">Deconnexion</a>
-            ');
-        } else {
-          echo('
-          <a class="nav-link" href="index.php?action=registration">Inscription</a>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexionModalCenter">Connexion</button>
-
-          ');
-        }
-          ?>
-          </div>
-        </div>
-      </nav>
-
-      <div class="container-fluid mt-3">
-        <div class="row justify-content-md-center">
-          <div class="col-lg-4 col-md-6">
-            <div class="panel panel-primary">
-              <div class="panel panel-heading">
-            <div class="row justify-content-md-center">
-              <span>Réservation</span>
-            </div>
-            <div class="row justify-content-md-center">
-              <a class="huge" href="index.php?action=reservation&type=ponctuelle">Ponctuelle</a>
-            </div>
-          </div>
-
-          </div>
-        </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="panel panel-green">
-                <div class="panel panel-heading">
-                  <div class="row justify-content-md-center">
-                    <span>Réservation<span>
-                    </div>
-                  <div class="row justify-content-md-center">
-                      <a class="huge" href="index.php?action=reservation&type=reguliere">Régulière</a>
-                    </div>
-
-                  </div>
-        </div>
-      </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="panel panel-yellow">
-              <div class="panel panel-heading">
-            <div class="row justify-content-md-center">
-              <span>Réservation</span>
-            </div>
-            <div class="row justify-content-md-center">
-              <a class="huge" href="index.php?action=reservation&type=langue">Par langue</a>
-            </div>
-          </div>
-
-        </div>
-          </div>
-            </div>
-      </div>
-      <div class="container-fluid">
-      <div class="row justify-content-md-center mt-3">
-          <h2>Récapitulatif de la réservation</h2>
-      </div>
-      </div>
+  <div class="container-fluid">
+  <div class="row justify-content-md-center mt-3">
+      <h2>Récapitulatif de la réservation</h2>
+  </div>
+  </div>
 
 
 <?php
@@ -292,5 +208,6 @@ if ($_SESSION['type'] == 1) {
     </div>
 <?php
 }
-?>
-</body>
+
+  $content = ob_get_clean();
+  require('view/templateProfil.php'); ?>
