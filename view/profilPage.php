@@ -247,6 +247,11 @@ if ($_SESSION['type'] == 3) {
       </div>
         </div>
   </div>
+  <div class="container-fluid">
+  <div class="row justify-content-md-center mt-3">
+      <h2>Candidatures en attente</h2>
+  </div>
+  </div>
 
   <div class="container justify-content-md-center mb-3">
       <?php

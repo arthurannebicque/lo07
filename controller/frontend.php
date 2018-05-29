@@ -538,3 +538,18 @@ function showSearchForm() {
   require('view/showSearchForm.php');
 
 }
+
+function blockBabysitter($id, $nom) {
+  $memberManager = new \LO07\Sittie2\Model\MemberManager();
+  $visible = 0;
+  $affectedBabysitter = $memberManager->updateBabysitterVisibility($id, $visible);
+  searchBabysitter($nom);
+
+}
+function unblockBabysitter($id, $nom) {
+  $memberManager = new \LO07\Sittie2\Model\MemberManager();
+  $visible = 1;
+  $affectedBabysitter = $memberManager->updateBabysitterVisibility($id, $visible);
+  searchBabysitter($nom);
+
+}

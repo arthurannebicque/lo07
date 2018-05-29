@@ -107,7 +107,7 @@ class MemberManager {
 
     public function searchBabysitterName($name) {
       $db = $this->dbConnect();
-      $babysitters = $db->prepare('SELECT id, nom, prenom FROM babysitters WHERE LOWER(nom)= :nom');
+      $babysitters = $db->prepare('SELECT id, nom, prenom, visible FROM babysitters WHERE LOWER(nom)= :nom');
       $babysitters->execute(array('nom' => strtolower($name)));
 
       return $babysitters;
@@ -238,6 +238,17 @@ class MemberManager {
       $req->execute(array($id));
       $average = $req->fetch();
       return $average;
+    }
+
+    public function updateBabysitterVisibility($id, $visible) {
+      $db = $this->dbConnect();
+      $affectedBabysitter = $db->prepare('UPDATE babysitters SET visible = :visible WHERE id = :id');
+      $affectedBabysitter->execute(array(
+          'visible' => $visible,
+          'id' => $id,
+      ));
+
+      return $affectedBabysitter;
     }
 
 }

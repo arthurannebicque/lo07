@@ -163,7 +163,10 @@
         <tr>
             <td><?= $babysitter['prenom'] ?></td>
             <td><?= $babysitter['nom'] ?></td>
-            <td><a type="button" class="btn btn-primary btn-sm my-0" href="index.php?action=showBabysitterDetails&id=<?= $babysitter['id'] ?>">Voir prestations</a></td>
+            <td><a type="button" class="btn btn-primary btn-sm my-0" href="index.php?action=showBabysitterDetails&id=<?= $babysitter['id'] ?>">Voir prestations</a>
+
+            <?php if($babysitter['visible']) echo"<a type='button' class='btn btn-outline-danger btn-sm my-0' href='index.php?action=blockBabysitter&id=". $babysitter['id']."&nom=". $babysitter['nom']."'>Bloquer</a></td>";
+            if(!$babysitter['visible']) echo"<a type='button' class='btn btn-outline-success btn-sm my-0' href='index.php?action=unblockBabysitter&id=". $babysitter['id']."&nom=". $babysitter['nom']."'>Débloquer</a></td>"; ?>
         </tr>
     <?php } ?>
     </table>
@@ -319,3 +322,4 @@ if (isset($reservations)) {
 }?>
 </div>
 </div>
+</body>

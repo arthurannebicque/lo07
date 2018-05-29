@@ -9015,5 +9015,11 @@ a.text-dark:hover, a.text-dark:focus {
       display: block;
       /* Other styles here */
   }
+
+  .dispo-form {
+    position: absolute;
+    height: 100px;
+    overflow-x: scroll;
+  }
 }
 /*# sourceMappingURL=bootstrap.css.map */

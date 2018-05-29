@@ -141,8 +141,8 @@
                 if ($babysitter['distance'] <= 3000 && !empty($babysitter[4])) {
 
                     echo $babysitter['id'] . " " . $babysitter['prenom'] . " " . $babysitter['nom'] . " à ".$babysitter['distance']."km";
-                    echo "<a type='button' class='btn btn-primary' id='voir_dispo' href=''>Voir disponibilités</a>";
-                    echo "<form class='form-signin' id=dispo_form action='index.php?action=createResaLangue' method='post'>";
+                    echo "<a type='button' class='btn btn-primary' href=''>Voir disponibilités</a>";
+                    echo "<form class='form-signin' action='index.php?action=createResaLangue' method='post'>";
 
                     foreach ($babysitter[4] as $dispo) {
                         echo $dispo['date'] . " " . $dispo['heure'] . " <input type='checkbox' name='dispo[]' value=" . $dispo['id_dispo'] . "><br>";
@@ -156,6 +156,7 @@
                     echo "
    <button class='btn btn-lg btn-primary btn-block' type='submit'>Choisir</button>";
                     echo "</form>";
+
                 }
             }
             echo "<br>";

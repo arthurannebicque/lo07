@@ -97,6 +97,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['email']) && isset($_SESSION['type
             if (isset($_GET['id'])) {
                 showBabysitterDetails($_GET['id']);
             }
+        } elseif ($_GET['action'] == 'blockBabysitter') {
+            if (isset($_GET['id']) && isset($_GET['nom'])) {
+                blockBabysitter($_GET['id'], $_GET['nom']);
+            }
+        } elseif ($_GET['action'] == 'unblockBabysitter') {
+            if (isset($_GET['id']) && isset($_GET['nom'])) {
+                unblockBabysitter($_GET['id'], $_GET['nom']);
+            }
         }
     } else {
         showProfil();
