@@ -48,30 +48,76 @@
 <?php
 if ($_SESSION['type'] == 1) {
     if ($babysitter['candidature_valide']) {
-      echo "bonjour babysitter<br>";
-
-      echo '<a type="button" class="btn btn-primary" href="index.php?action=disponibilite&type=simple">Disponibilité simple</a><br>';
-      echo '<a type="button" class="btn btn-primary" href="index.php?action=disponibilite&type=recurrente">Disponibilité recurrente</a><br>';
       ?>
-      <h2>Vos disponibilités :</h2>
-      <table>
+      <div class="container-fluid mt-3">
+        <div class="row justify-content-md-center">
+          <div class="col-lg-4 col-md-6">
+            <div class="panel panel-primary">
+              <div class="panel panel-heading">
+            <div class="row justify-content-md-center">
+              <span>Disponibilité</span>
+            </div>
+            <div class="row justify-content-md-center">
+              <a class="huge" href="index.php?action=disponibilite&type=simple">Simple</a>
+            </div>
+          </div>
+
+          </div>
+        </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="panel panel-green">
+                <div class="panel panel-heading">
+                  <div class="row justify-content-md-center">
+                    <span class="invisible">Dispo<span>
+                    </div>
+                  <div class="row justify-content-md-center">
+                      <a class="huge" href="index.php">Accueil</a>
+                    </div>
+
+                  </div>
+        </div>
+      </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="panel panel-yellow">
+              <div class="panel panel-heading">
+            <div class="row justify-content-md-center">
+              <span>Disponibilité</span>
+            </div>
+            <div class="row justify-content-md-center">
+              <a class="huge" href="index.php?action=disponibilite&type=recurrente">Récurrente</a>
+            </div>
+          </div>
+
+        </div>
+          </div>
+            </div>
+      </div>
+      <div class="container-fluid">
+      <div class="row justify-content-md-center mt-3">
+      <h2>Vos disponibilités</h2>
+      </div>
+    </div>
+    <div class="container">
+    <table class="table table-hover btn-table">
+    <thead class="thead-light">
           <tr>
               <th>Date</th>
               <th>Heure</th>
-              <th>Statut</th>
-              <th></th>
+              <th style="width: 20%">Statut</th>
+
           </tr>
+        </thead>
           <?php
           while ($slot = $slots->fetch()) {
               if ($slot['statut'] != 'expiré') {
-                  ?>
-                  <tr>
+                  if ($slot['statut'] == 'reservé') echo "<tr class='table-danger'>";
+                  if ($slot['statut'] == 'disponible') echo "<tr class='table-success'>";?>
                       <td><?= $slot['date'] ?></td>
                       <td><?= $slot['heure'] ?></td>
-                      <td><?= $slot['statut'] ?></td>
+                      <td><?= $slot['statut'] ?>
               <?php if ($slot['statut'] == 'reservé')
                   echo
-                  '<td><a type="button" class="btn btn-primary" href="index.php?action=showReservation&id=' . $slot['id_reservation'] . '">Détails</a></td>';
+                  '<a type="button" class="btn btn-primary btn-sm" href="index.php?action=showReservation&id=' . $slot['id_reservation'] . '">Détails</a></td>';
               ?>
                   </tr>
               <?php
