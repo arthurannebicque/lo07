@@ -109,7 +109,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email']) && isset($_SESSION['type
     } else {
         showProfil();
     }
-} else {
+} elseif (isset($_COOKIE['email']) && isset($_COOKIE['pass_hash'])) {
+    if (!empty($_COOKIE['email']) && !empty($_COOKIE['pass_hash'])) {
+        cookieConnect($_COOKIE['email'], $_COOKIE['pass_hash']);
+    }
+}
+ else {
     if (isset($_GET['action'])) {
 
         if ($_GET['action'] == 'addBabysitter') {

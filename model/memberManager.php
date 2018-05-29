@@ -22,6 +22,15 @@ class MemberManager {
         return $emailUsed;
     }
 
+    public function verifyCookieCredentials($email, $pass_hash) {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT COUNT(*) AS exist_member FROM authentifiants WHERE LOWER(email)= :email AND password = :pass_hash');
+        $req->execute(array('email' => strtolower($email), 'pass_hash' => $pass_hash));
+        $memberFound = $req->fetch();
+
+        return $memberFound;
+    }
+
     public function createCredentials($email, $password, $type) {
         $db = $this->dbConnect();
         $req = $db->prepare('INSERT INTO authentifiants(email, password, type) VALUES(?, ?, ?)');

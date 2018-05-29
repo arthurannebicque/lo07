@@ -120,6 +120,19 @@ function connectMember($email, $password, $cookie) {
     }
 }
 
+function cookieConnect($email, $pass_hash) {
+    $memberManager = new \LO07\Sittie2\Model\MemberManager();
+    $cookieCredentials = $memberManager->verifyCookieCredentials($email, $pass_hash);
+
+    if($cookieCredentials['exist_member'] == '1') {
+        $memberCredentials = $memberManager->getCredentials($email);
+        $_SESSION['id'] = $memberCredentials['id_user'];
+        $_SESSION['email'] = $email;
+        $_SESSION['type'] = $memberCredentials['type'];
+    }
+    header('Location: index.php');
+}
+
 function deconnectMember() {
     $_SESSION = array();
     session_destroy();
