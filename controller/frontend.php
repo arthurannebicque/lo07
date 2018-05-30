@@ -333,7 +333,6 @@ function requestResaLangue($id, $id_langue, $enfants) {
     $selectedLangue = $memberManager->getLangue($id_langue);
     $villeParent = $memberManager->getVilleParent($_SESSION['id']);
     $babysitters = $listBabysitters->fetchall();
-    //foreach ($babysitters as $babysitter ) {
     for ($i = 0; $i < count($babysitters); $i++) {
         $distance = getDistance($villeParent[0], $babysitters[$i]['ville']);
         $babysitters[$i]['distance'] = $distance;
@@ -364,8 +363,6 @@ function createReservation($id_parent, $id_babysitter, $creneaux, $selectedEnfan
     foreach ($selectedEnfants as $enfant) {
         $affectedEnfantReservation = $slotManager->registerEnfantReservation($enfant, $newReservationId);
     }
-    //if ($type == 1) $slots = $slotManager->getDisposResa($newReservationId);
-    //if ($type == 3) $slots = $slotManager->getDisposResa($newReservationId);
     $slots = $slotManager->getDisposResa($newReservationId);
     $babysitter = $memberManager->getBabysitterInfos($newReservationId);
     $listeEnfants = $memberManager->getEnfantsResa($newReservationId);

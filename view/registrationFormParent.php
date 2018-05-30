@@ -87,24 +87,6 @@
             </div>
             <div id=newinput>
             </div>
-            <!-- <div id='enfant1' class='form-input-children' style='display:none'>
-            <?php inputEnfants(1); ?>
-            </div>
-            <div id='enfant2' class='form-input-children' style='display:none'>
-            <?php inputEnfants(2); ?>
-            </div>
-            <div id='enfant3' class='form-input-children' style='display:none'>
-            <?php inputEnfants(3); ?>
-            </div>
-            <div id='enfant4' class='form-input-children' style='display:none'>
-            <?php inputEnfants(4); ?>
-            </div>
-            <div id='enfant5' class='form-input-children' style='display:none'>
-            <?php inputEnfants(5); ?>
-            </div>
-            <div id='enfant6' class='form-input-children' style='display:none'>
-            <?php inputEnfants(6); ?>
-            </div> -->
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Inscription</button>
             <p class="mt-5 mb-3 text-muted text-center">Déjà inscrit ? Connectez vous <a href="index.php?action=connexion">ici</a></p>
