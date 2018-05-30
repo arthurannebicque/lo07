@@ -286,10 +286,10 @@ function requestResaReguliere($id, $date_debut, $date_fin, $weekday, $enfants) {
         4 => array('17', '18', '19'), 5 => array('20', '21', '22'), 6 => '23');
 
     if ($date_debut < $date_fin) {
-        $date_debut = new DateTime($date_debut);
-        $date_fin = new DateTime($date_fin . " 00:00:01");
+        $dateDebut = new DateTime($date_debut);
+        $dateFin = new DateTime($date_fin . " 00:00:01");
         $interval = DateInterval::createFromDateString('1 day');
-        $period = new DatePeriod($date_debut, $interval, $date_fin);
+        $period = new DatePeriod($dateDebut, $interval, $dateFin);
         foreach ($period as $dt) {
             if (isset($weekday[$dt->format('N')])) {
                 foreach ($weekday[$dt->format('N')] as $key => $value) {

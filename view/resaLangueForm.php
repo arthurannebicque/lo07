@@ -25,7 +25,11 @@ $( document ).ready(function() {
                 <select id="inputLangues" name="langue" class="custom-select">
                     <?php
                     while ($langue = $listeLangues->fetch()) {
-                        echo "<option value=" . $langue['id'] . ">" . $langue['langue'] . "</option>";
+                        echo "<option value=" . $langue['id'];
+                        if (isset($selectedLangue) && $langue['langue'] == $selectedLangue['langue']) {
+                          echo " selected";
+                        }
+                        echo ">" . $langue['langue'] . "</option>";
                     }
                     ?>
                 </select>
@@ -132,7 +136,7 @@ $( document ).ready(function() {
                     echo "<table class='table table-hover'>";
                     echo "<tbody>";
                     foreach ($babysitter[7] as $dispo) {
- 
+
                       echo "<tr>";
                       echo "<td>".$dispo['date']."</td>";
                       echo "<td>".$dispo['heure']."</td>";

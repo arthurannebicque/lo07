@@ -11,16 +11,16 @@
               <div class="form-group row justify-content-md-center">
                 <label class="col-form-label">Date</label>
                 <div class="col-3">
-                <input class="form-control" type="date" name="date" required>
+                <input class="form-control" type="date" name="date" <?php if(isset($date)) echo "value='{$date}'";?>  required>
               </div>
                 </div>
 
             <div class="form-group row justify-content-md-center">
               <div class="col-2">
-                <input type="number" id="inputHeureDebut" name="heure_debut" class ="form-control" placeholder="Heure Debut" min="0" max="23" required autofocus>
+                <input type="number" id="inputHeureDebut" name="heure_debut" class ="form-control" placeholder="Heure Debut" min="0" max="23" <?php if(isset($heure_debut)) echo "value='{$heure_debut}'";?> required autofocus>
               </div>
               <div class="col-2">
-                <input type="number" id="inputHeureFin" name="heure_fin" class ="form-control" placeholder="Heure Fin" min="1" max="24" required autofocus>
+                <input type="number" id="inputHeureFin" name="heure_fin" class ="form-control" placeholder="Heure Fin" min="1" max="24" <?php if(isset($heure_fin)) echo "value='{$heure_fin}'";?> required autofocus>
               </div>
             </div>
             <div class="form-group row justify-content-md-center">

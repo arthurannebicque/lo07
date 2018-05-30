@@ -9,12 +9,12 @@
             <div class="form-group row justify-content-md-center">
               <label class="col-form-label" for="inputDateDebut">Date Debut</label>
               <div class="col-3">
-                <input type="date" id="inputDateDebut" name="date_debut" class ="form-control" placeholder="Date Debut" required>
+                <input type="date" id="inputDateDebut" name="date_debut" class ="form-control" <?php if(isset($date_debut)) echo "value='{$date_debut}'";?>  placeholder="Date Debut" required>
               </div>
 
               <label class="col-form-label" for="inputDateFin">Date Fin</label>
               <div class="col-3">
-                <input type="date" id="inputDateFin" name="date_fin" class ="form-control" placeholder="Date Fin" required>
+                <input type="date" id="inputDateFin" name="date_fin" class ="form-control" <?php if(isset($date_fin)) echo "value='{$date_fin}'";?> placeholder="Date Fin" required>
               </div>
             </div>
             <div class="form-group row justify-content-md-center">
@@ -76,7 +76,7 @@
             <h2>Babysitters disponibles :</h2>
           </div>
           <div class="row justify-content-md-center">
-            <h3>du <?= $date_debut->format('d/m/Y') ?> au <?= $date_fin->format('d/m/Y') ?></h3>
+            <h3>du <?= $dateDebut->format('d/m/Y') ?> au <?= $dateFin->format('d/m/Y') ?></h3>
           </div>
           <div class="row justify-content-md-center">
             sur le(s) créneaux :
