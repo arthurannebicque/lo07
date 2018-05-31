@@ -8,49 +8,63 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUj1D_k5Ie0F5lt1Cr2ix4zEdqnia6I04&libraries=places"></script>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
     </head>
 
     <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
         <form class="form-signin" action="index.php?action=addBabysitter" method="post"enctype="multipart/form-data">
             <input type="hidden" name="type" value=1 />
             <div class="text-center mb-4">
                 <h1 class="h3 mb-3 font-weight-normal">Inscrivez vous en tant que Babysitter</h1>
             </div>
             <div class="form-label-group">
-                <input type="text" id="inputNom" name="nom" class ="form-control" placeholder="Nom" required autofocus>
                 <label for="inputNom">Nom</label>
+                <input type="text" id="inputNom" name="nom" class ="form-control" placeholder="Nom" required autofocus>
+
             </div>
             <div class="form-label-group">
-                <input type="text" id="inputPrenom" name="prenom" class ="form-control" placeholder="prenom" required autofocus>
                 <label for="inputPrenom">Prenom</label>
+                <input type="text" id="inputPrenom" name="prenom" class ="form-control" placeholder="prenom" required autofocus>
+
             </div>
             <div class="form-label-group">
-                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required autofocus>
                 <label for="inputEmail">Email</label>
+                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required autofocus>
+
             </div>
             <div class="form-label-group">
-                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
                 <label for="inputPassword">Mot de passe</label>
+                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+
             </div>
             <div class="form-label-group">
-
-                <input type="password" id="inputPasswordConfirmation" name="passwordConfirmation" class="form-control" placeholder="Password Confirmation" required>
                 <label for="inputPasswordConfirmation">Confirmation de mot de passe</label>
+                <input type="password" id="inputPasswordConfirmation" name="passwordConfirmation" class="form-control" placeholder="Password Confirmation" required>
+
             </div>
             <div class="form-label-group">
-
-                <input type="text" id="inputVille" name="ville" class="form-control" placeholder="Ville" required>
                 <label for="inputVille">Ville</label>
+                <input type="text" id="inputVille" name="ville" class="form-control" placeholder="Ville" required>
+
             </div>
             <div class="form-label-group">
-                <input type="text" id="inputTelephone" name="telephone" class ="form-control" placeholder="Telephone" required autofocus>
                 <label for="inputTelephone">Téléphone</label>
+                <input type="text" id="inputTelephone" name="telephone" class ="form-control" placeholder="Telephone" required autofocus>
+
             </div>
 
             <div class="form-label-group">
-                <input type="number" id="inputAge" name="age" class ="form-control" placeholder="Age" required autofocus>
                 <label for="inputAge">Age</label>
+                <input type="number" id="inputAge" name="age" class ="form-control" placeholder="Age" required autofocus>
+
             </div>
             <div class="form-label-group">
                 <label for="inputExperience">Expérience</label>
@@ -131,6 +145,9 @@
             <p class="mt-5 mb-3 text-muted text-center">Déjà inscrit ? Connectez vous <a href="index.php?action=connexion">ici</a></p>
 
         </form>
+            </div>
+        </div>
+    </div>
         <script>
             function init() {
                 var input = document.getElementById('inputVille');

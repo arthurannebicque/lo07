@@ -9,7 +9,11 @@
         <meta name="author" content="">
         <script src="jquery/jquery.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUj1D_k5Ie0F5lt1Cr2ix4zEdqnia6I04&libraries=places"></script>
-
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <script>
             $(function () {
                 // run on change for the selectbox
@@ -29,7 +33,7 @@
                     var i;
                     for (i = 0; i < divKey; i++) {
                         var txt = "<h3>Enfant n°" + (i + 1) + "</h3><label>Prenom</label><input type='text' name='enfants["
-                                + i + "][name]' class ='form-control' placeholder='Prenom' required><div class='form-label-group'>Date de naissance<input type='date' name='enfants["
+                                + i + "][name]' class ='form-control' placeholder='Prenom' required><div class='form-label-group'><label>Date de naissance:       </label><input type='date' name='enfants["
                                 + i + "][date]'></div><div class='form-label-group' required><label for='inputRestriction'>Restrictions alimentaires</label><textarea id='inputRestriction' name='enfants["
                                 + i + "][restrictions]' class='form-control' placeholder='Restrictions' required></textarea></div>";
                         $("#newinput").append(txt);
@@ -44,35 +48,44 @@
     </head>
 
     <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
         <form class="form-signin" action="index.php?action=addParent" method="post">
             <input type="hidden" name="type" value=2 />
             <div class="text-center mb-4">
                 <h1 class="h3 mb-3 font-weight-normal">Inscrivez vous en tant que Parent</h1>
             </div>
             <div class="form-label-group">
-                <input type="text" id="inputNom" name="nom" class ="form-control" placeholder="Nom" required autofocus>
                 <label for="inputNom">Nom</label>
+                <input type="text" id="inputNom" name="nom" class ="form-control" placeholder="Nom" required autofocus>
+
             </div>
 
             <div class="form-label-group">
-                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required autofocus>
                 <label for="inputEmail">Email</label>
+                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required autofocus>
+
             </div>
             <div class="form-label-group">
-                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
                 <label for="inputPassword">Mot de passe</label>
+                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+
             </div>
             <div class="form-label-group">
-                <input type="password" id="inputPasswordConfirmation" name="passwordConfirmation" class="form-control" placeholder="Password Confirmation" required>
                 <label for="inputPasswordConfirmation">Confirmation de mot de passe</label>
+                <input type="password" id="inputPasswordConfirmation" name="passwordConfirmation" class="form-control" placeholder="Password Confirmation" required>
+
             </div>
             <div class="form-label-group">
-                <input type="text" id="inputVille" name="ville" class="form-control" placeholder="Ville" required>
                 <label for="inputVille">Ville</label>
+                <input type="text" id="inputVille" name="ville" class="form-control" placeholder="Ville" required>
+
             </div>
             <div class="form-label-group">
-                <textarea id="inputPresentation" name="presentation" class="form-control" placeholder="Presentation" required></textarea>
                 <label for="inputPresentation">Présentation</label>
+                <textarea id="inputPresentation" name="presentation" class="form-control" placeholder="Presentation" required></textarea>
+
             </div>
             <div class="form-label-group">
                 <label for="nombre_enfants">Nombre d'enfants</label>
@@ -90,8 +103,10 @@
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Inscription</button>
             <p class="mt-5 mb-3 text-muted text-center">Déjà inscrit ? Connectez vous <a href="index.php?action=connexion">ici</a></p>
-
         </form>
+            </div>
+        </div>
+    </div>
         <script>
             function init() {
                 var input = document.getElementById('inputVille');

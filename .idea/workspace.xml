@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1e74da1f-77e2-45de-a674-5dcaf9cdcba2" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/model/memberManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/memberManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/slotManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/slotManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/connexionForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/connexionForm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/registrationFormBabysitter.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/registrationFormBabysitter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/registrationFormParent.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/registrationFormParent.php" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="memberManager.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/memberManager.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="88" selection-start-line="8" selection-start-column="88" selection-end-line="8" selection-end-column="88" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="slotManager.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/slotManager.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="88" selection-start-line="8" selection-start-column="88" selection-end-line="8" selection-end-column="88" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="connexionForm.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/connexionForm.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="registrationFormBabysitter.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/registrationFormBabysitter.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="64" column="49" selection-start-line="64" selection-start-column="49" selection-end-line="64" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="registrationFormParent.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/view/registrationFormParent.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="35" column="162" selection-start-line="35" selection-start-column="162" selection-end-line="35" selection-end-column="162" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="common.rnc" pinned="false" current-in-tab="false">
+        <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/common.rnc">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="233">
+              <caret line="124" column="18" selection-start-line="124" selection-start-column="18" selection-end-line="124" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Sitties2/model/memberManager.php" />
+        <option value="$PROJECT_DIR$/Sitties2/model/slotManager.php" />
+        <option value="$PROJECT_DIR$/Sitties2/view/testing.php" />
+        <option value="$PROJECT_DIR$/Sitties2/view/connexionForm.php" />
+        <option value="$PROJECT_DIR$/model/memberManager.php" />
+        <option value="$PROJECT_DIR$/model/slotManager.php" />
+        <option value="$PROJECT_DIR$/view/connexionForm.php" />
+        <option value="$PROJECT_DIR$/view/registrationFormBabysitter.php" />
+        <option value="$PROJECT_DIR$/view/registrationFormParent.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="605" />
+    <option name="y" value="10" />
+    <option name="width" value="980" />
+    <option name="height" value="1040" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="lo07" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lo07" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="lo07" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lo07" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="lo07" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lo07" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="jquery" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="lo07" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lo07" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="model" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="lo07" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lo07" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="lo07" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lo07" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="view" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1e74da1f-77e2-45de-a674-5dcaf9cdcba2" name="Default" comment="" />
+      <created>1526462988810</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1526462988810</updated>
+      <workItem from="1526462990932" duration="1159000" />
+      <workItem from="1526478419419" duration="3000" />
+      <workItem from="1526538039708" duration="1463000" />
+      <workItem from="1526988294965" duration="2819000" />
+      <workItem from="1527705210946" duration="3590000" />
+      <workItem from="1527752760187" duration="1975000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="11009000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.125" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/model/memberManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="88" selection-start-line="8" selection-start-column="88" selection-end-line="8" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/slotManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="88" selection-start-line="8" selection-start-column="88" selection-end-line="8" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/connexionForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="46" column="9" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sitties2/model/slotManager.php" />
+    <entry file="file://$PROJECT_DIR$/Sitties2/model/memberManager.php" />
+    <entry file="file://$PROJECT_DIR$/Sitties2/view/connexionForm.php" />
+    <entry file="file://$PROJECT_DIR$/Sitties2/model/slotManager.php" />
+    <entry file="file://$PROJECT_DIR$/Sitties2/model/memberManager.php" />
+    <entry file="file://$PROJECT_DIR$/Sitties2/view/connexionForm.php" />
+    <entry file="file://$PROJECT_DIR$/Sitties2/model/slotManager.php" />
+    <entry file="file://$PROJECT_DIR$/Sitties2/model/memberManager.php" />
+    <entry file="file://$PROJECT_DIR$/Sitties2/view/connexionForm.php" />
+    <entry file="file://$PROJECT_DIR$/Sitties2/model/slotManager.php" />
+    <entry file="file://$PROJECT_DIR$/Sitties2/model/memberManager.php" />
+    <entry file="file://$PROJECT_DIR$/Sitties2/view/connexionForm.php" />
+    <entry file="file://$PROJECT_DIR$/Sitties2/model/memberManager.php" />
+    <entry file="file://$PROJECT_DIR$/Sitties2/view/testing.php" />
+    <entry file="file://$PROJECT_DIR$/Sitties2/view/connexionForm.php" />
+    <entry file="file://$PROJECT_DIR$/Sitties2/model/slotManager.php" />
+    <entry file="file://$PROJECT_DIR$/model/memberManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="88" selection-start-line="8" selection-start-column="88" selection-end-line="8" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/slotManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="88" selection-start-line="8" selection-start-column="88" selection-end-line="8" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/templateProfil.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="16" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/common.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="124" column="18" selection-start-line="124" selection-start-column="18" selection-end-line="124" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/connexionForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/registrationFormBabysitter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="64" column="49" selection-start-line="64" selection-start-column="49" selection-end-line="64" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/registrationFormParent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="35" column="162" selection-start-line="35" selection-start-column="162" selection-end-line="35" selection-end-column="162" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

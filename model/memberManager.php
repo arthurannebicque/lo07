@@ -6,7 +6,7 @@ class MemberManager {
 
     protected function dbConnect() {
         try {
-            $db = new \PDO('mysql:host=localhost;dbname=sitties;charset=utf8', 'root', 'root');
+            $db = new \PDO('mysql:host=localhost;dbname=sitties;charset=utf8', 'root', '');
             return $db;
         } catch (Exception $e) {
             echo 'Echec de connexion : ' . $e->getMessage();
