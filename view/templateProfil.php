@@ -25,7 +25,7 @@
     <img src="icon.png" width="50" height="50">
     </a>
     <div class="navbar">
-    <a class="nav-link" href="#discover">Découvrir</a>
+    <a class="nav-link" href="view/homeView.php">Découvrir</a>
 
     <?php
     if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
@@ -69,12 +69,15 @@ if ($_SESSION['type'] == 3) {
 }?>
 <?php
 
-if (isset($babysitter) && $_SESSION['type'] == 1 && !$babysitter['candidature_valide']) {
+if (isset($babysitter) && $_SESSION['type'] == 1 && !$babysitter['candidature_valide']) {?>
 
+  <div class="container-fluid p-5">
+      <div class="row justify-content-md-center m-5">
+      <h1>Votre candidature n'a pas encore été validée</h1>
+    </div>
+    </div>
 
-      echo "Votre candidature n'a pas encore été validée";
-
-  } else {
+  <?php } else {
       ?>
 
 <div class="container-fluid mt-3">

@@ -1,6 +1,7 @@
 <?php
 ob_start();
-if ($_SESSION['type'] == 1) {
+if ($_SESSION['type'] == 1 && $babysitter['candidature_valide']) {
+
 
       ?>
 
@@ -94,18 +95,18 @@ if ($_SESSION['type'] == 3) {
   while ($babysitter = $babysitters->fetch()) {
     ?>
     <div class="bg-light mt-3">
-      <div class="card pt-3 px-3 pb-0">
+      <div class="card pt-3 px-3 pb-0 border">
           <div class="row">
-        <aside class="col-2 border">
+        <aside class="col-2">
           <div class="row justify-content-md-center">
 
-          <img src="ressources/pictures/<?=$babysitter['photo']?>" maxheight="180px">
+          <img src="ressources/pictures/<?=$babysitter['photo']?>" height="120px">
         </div>
           <div class="row justify-content-md-center">
           <?= $babysitter['ville'] ?>
         </div>
         </aside>
-        <div class="col-8 border">
+        <div class="col-8">
         <div class="row p-1">
         <h3><?= $babysitter['prenom']." ".$babysitter['nom'] ?></h3>
       </div>
@@ -119,12 +120,12 @@ if ($_SESSION['type'] == 3) {
         <p>Bonjour, Je suis actuellement en Terminale Littéraire spécialité musique, je suis disponible tout les weekends, pendant les vacances scolaires et les mercredis après-midi. N'hésitez...</p>
       </div>
       </div>
-      <div class="col-2 border">
+      <div class="col-2 ">
 
-        <div class="row border">
+        <div class="row ">
           <h4>Langues parlées</h4>
     </div>
-    <div class="row border">
+    <div class="row" style="height: 55%">
       <ul class="list-unstyled">
         <li>Anglais</li>
         <li>Allemand</li>
@@ -132,8 +133,8 @@ if ($_SESSION['type'] == 3) {
       </ul>
 
   </div>
-    <div class="row justify-content-md-end border mb-auto">
-      <div class="btn-group btn-group-justified">
+    <div class="row justify-content-md-end mb-auto">
+      <div class="btn-group btn-group-justified mx-auto">
         <div class="btn-group">
           <a type="button" class="btn btn-block btn-success" href="index.php?action=validateApplication&id=<?= $babysitter['id'] ?>">Valider</a>
           </div>

@@ -37,7 +37,7 @@
                     echo "<tr>\n";
                     echo "<td>{$value}</td>";
                     for ($i = 1; $i < 8; $i++) {
-                        echo "<td><input name='weekday[{$i}][{$type}]' value='time_type_{$type}' type='checkbox'></td>\n";
+                        echo "<td><input name='weekday[{$i}][{$type}]' value='time_type_{$type}' type='checkbox' class='customCheck'></td>\n";
                     }
                     echo "</tr>";
                 }

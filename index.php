@@ -3,6 +3,7 @@
 session_start();
 require('controller/frontend.php');
 
+try {
 if (isset($_SESSION['id']) && isset($_SESSION['email']) && isset($_SESSION['type'])) {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'deconnexion') {
@@ -153,4 +154,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email']) && isset($_SESSION['type
     } else {
         require('view/homeView.php');
     }
+}
+} catch (Exception $e) {
+    $errorMessage = $e->getMessage();
+    require('view/errorView.php');
 }

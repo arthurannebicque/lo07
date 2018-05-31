@@ -293,6 +293,12 @@ button::-moz-focus-inner,
 input[type="radio"],
 input[type="checkbox"] {
   box-sizing: border-box;
+  padding: 0;
+
+}
+
+.customCheck {
+  box-sizing: border-box;
   -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
@@ -301,6 +307,7 @@ input[type="checkbox"] {
     width: 60px;
     background: #fff;
     border: 1px solid #ccc;
+
 
 }
 
