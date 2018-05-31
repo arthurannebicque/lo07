@@ -4,7 +4,7 @@
       <h2>Disponibilité Récurrente</h2>
   </div>
 </div>
-<div class="container-fluid mt-3">
+<div class="container-fluid mt-3" style="min-height:350px">
 <form class="form w-75 m-auto justify-content-md-center" action="index.php?action=addDispoRecurrente" method="post">
   <div class="form-group row justify-content-md-center">
     <label class="col-form-label" for="inputDateDebut">Date Debut</label>
@@ -37,7 +37,7 @@
             echo "<tr>\n";
             echo "<td>{$value}</td>";
             for ($i = 1; $i < 8; $i++) {
-                echo "<td><input name='weekday[{$i}][{$type}]' value='time_type_{$type}' type='checkbox'></td>\n";
+                echo "<td><input name='weekday[{$i}][{$type}]' value='time_type_{$type}' type='checkbox' class='customCheck'></td>\n";
             }
             echo "</tr>";
         }

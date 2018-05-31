@@ -10,7 +10,7 @@ if ($_SESSION['type'] == 1 && $babysitter['candidature_valide']) {
       <h2>Vos disponibilités</h2>
       </div>
     </div>
-    <div class="container">
+    <div class="container" style="min-height:350px">
     <table class="table table-hover btn-table">
     <thead class="thead-light">
           <tr>
@@ -37,7 +37,9 @@ if ($_SESSION['type'] == 1 && $babysitter['candidature_valide']) {
             }
           }
       echo "</table>";
+      echo "</div>";
 }
+
 
 if ($_SESSION['type'] == 2) {
 
@@ -47,7 +49,7 @@ if ($_SESSION['type'] == 2) {
     <h2>Vos réservations :</h2>
     </div>
   </div>
-    <div class="container">
+    <div class="container" style="min-height:350px">
     <table class="table table-hover btn-table">
     <thead class="thead-light">
         <tr>
@@ -88,7 +90,7 @@ if ($_SESSION['type'] == 3) {
   </div>
   </div>
 
-  <div class="container justify-content-md-center mb-3">
+  <div class="container justify-content-md-center mb-3" style="min-height:350px">
       <?php
 
 

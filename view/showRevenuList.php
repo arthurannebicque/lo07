@@ -5,7 +5,7 @@
 <h2>Classement des babysitters par revenu :</h2>
 </div>
 </div>
-<div class="container">
+<div class="container" style="min-height:350px">
 <table class="table table-hover btn-table mt-3">
 <thead class="thead-light">
 <tr>

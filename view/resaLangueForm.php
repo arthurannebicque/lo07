@@ -16,7 +16,7 @@ $( document ).ready(function() {
           <h2>Réservation par langue</h2>
       </div>
     </div>
-    <div class="container-fluid mt-3">
+    <div class="container-fluid mt-3" style="min-height:350px">
         <form class="form w-75 m-auto justify-content-md-center" action="index.php?action=requestResaLangue" method="post">
 
           <div class="form-group row justify-content-md-center">
