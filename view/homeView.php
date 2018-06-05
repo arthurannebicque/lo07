@@ -38,7 +38,7 @@
       ');
   } else {
     echo('
-    <a class="nav-link" href="index.php?action=registration">Inscription</a>
+    <button class="btn btn-outline-primary mr-1" data-toggle="modal" data-target="#registrationModalCenter">Inscription</button>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexionModalCenter">Connexion</button>
 
     ');
@@ -80,6 +80,37 @@
   </div>
 </div>
 
+<div class="modal fade" id="registrationModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Inscrivez vous !</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="height: 220px">
+        <div class="container mt-4">
+          <div class="row">
+            <div class="col mr-auto   text-center" style="height: 120px">
+            <a  href="index.php?action=registration&type=parent">
+            <div class="col-12 ml-auto border py-5 text-center" style="height: 120px">
+              <h5 class="mx-auto">Parent</h5>
+            </div></a>
+          </div>
+          <div class="col mr-auto  text-center" style="height: 120px">
+            <a  href="index.php?action=registration&type=babysitter">
+            <div class="col-12 mr-auto border py-5 text-center" style="height: 120px">
+              <h5 class="mx-auto">Babysitter</h5>
+            </div></a>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <header class="masthead text-white text-center">
   <div class="overlay"></div>
   <div class="container">
@@ -95,10 +126,10 @@
     </div>
     <div class="row">
             <div class="col-3 ml-auto">
-              <a type="submit" class="btn btn-block btn-lg btn-outline-light" href="index.php?action=registration&type=parent">Parent</a>
+              <a class="btn btn-block btn-lg btn-outline-light" href="index.php?action=registration&type=parent">Parent</a>
             </div>
             <div class="col-3 mr-auto">
-              <a type="submit" class="btn btn-block btn-lg btn-outline-light" href="index.php?action=registration&type=babysitter">Babysitter</a>
+              <a class="btn btn-block btn-lg btn-outline-light" href="index.php?action=registration&type=babysitter">Babysitter</a>
             </div>
     </div>
   </div>

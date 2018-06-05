@@ -87,6 +87,8 @@ if ($_SESSION['type'] == 2) {
 
 </div>
 </div>
+</div>
+</div>
 <div class="container mt-3 mb-3">
   <div class="row justify-content-md-center">
     <?php
@@ -139,11 +141,11 @@ if ($_SESSION['type'] == 2) {
               echo "</div>";
           }
           elseif (($type[0] == 1)||($type[0] == 2)) {
-              echo "<div class='col-2'>";
+              echo "<div class='col-3'>";
               echo "<input type='number' id='inputHeureDebut' name='heure_debut' class ='form-control' placeholder='Heure Debut' min='0' max='23' value='".$slot[0]['heure']."' required autofocus>";
               echo "</div>";
               echo "<label class='col-form-label'>h</label>";
-              echo "<div class='col-2'>";
+              echo "<div class='col-3'>";
 
               echo "<input type='number' id='inputHeureFin' name='heure_fin' class ='form-control' placeholder='Heure Fin' min='1' max='24' value='".($slot[$key]['heure'] + 1)."' required autofocus>";
 
@@ -180,25 +182,85 @@ if ($_SESSION['type'] == 2) {
 
 if ($_SESSION['type'] == 1) {
     ?>
-    <h3>Date</h3>
-    <?php
-    $slot = $slots->fetchall();
-    echo $slot[0]['date'];
-    $key = count($slot) - 1;
-    ?>
-    <h3>Créneaux</h3>
-    De <?= $slot[0]['heure'] . "h à " . ($slot[$key]['heure'] + 1) . "h."; ?>
-    <h3>Famille</h3>
-    <?= $famille['nom']; ?>
-    <h3>Enfants gardés</h3>
-    <?php
-    while ($enfant = $listeEnfants->fetch()) {
-        echo $enfant['prenom'];
-        echo "<br>";
-        echo "Restrictions alimentaires : " . $enfant['restrictions'];
-        echo "<br>";
-    }
-    ?>
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-3">
+          <div class="card text-center">
+            <img class="card-img-top" src="ressources/pictures/" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><?= $famille['nom']; ?></h5>
+          <p class="card-text "><?=$famille['ville']?></p>
+        </div>
+      </div>
+    </div>
+    <div class="card col-9 bg-light">
+      <div class="p-4">
+        <div class="row ">
+          <h2>Date :
+
+          <?php
+          $slot = $slots->fetchall();
+          if (($type[0] == 1)||($type[0] == 2)) {
+
+            echo " <small>".$slot[0]['date']."</small></h2>";
+          } elseif ($type[0] == 3) {
+            echo " <small>Du ".$dateDebut[0]." au ".$dateFin['date_fin']."</small></h2>";
+
+          }
+          ?>
+        </div>
+        <div class="row mt-2">
+          <?php if ($type[0] == 1) {
+            echo "<h2>Créneau :";
+          } elseif ($type[0] == 3) {
+            echo "<h2>Créneaux :</h2>";
+
+          }
+          ?>
+
+
+          <?php if (($type[0] == 1)||($type[0] == 2)) {
+            $key = count($slot) - 1;
+            echo " <small>De ".$slot[0]['heure']. "h à " . ($slot[$key]['heure'] + 1) . "h.</small></h2>";
+
+          } elseif ($type[0] == 3) {
+
+            $listeJour = array('Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche');
+            foreach ($creneauResa as $weekday => $heures) {
+              echo "<div class='col-2'>";
+              echo "<div class='row justify-content-md-center'>";
+              echo "<h3><small>".$listeJour[$weekday]."</small></h3>";
+              echo "</div>";
+              echo "<div class='row justify-content-md-center'>";
+              echo "<h3><small>De ".$heures[0]['heure']."h à ".($heures[count($heures)-1]['heure']+1)."h</small></h3>";
+              echo "</div>";
+              echo "</div>";
+
+            }
+
+
+          }
+          echo "</div>";
+          ?>
+        <div class="row mt-2">
+          <h2>Enfants gardés :</h2>
+        </div>
+
+          <?php
+          while ($enfant = $listeEnfants->fetch()) {
+            echo "<div class='row mt-1'>";
+
+            echo "<h3><small>".$enfant['prenom']."</small></h3>";
+            echo "</div>";
+        }
+        ?>
+
+  </div>
+  </div>
+</div>
+</div>
+
+
     <div class="container mt-3 mb-3">
       <div class="row justify-content-md-center">
         <div class="col-3">

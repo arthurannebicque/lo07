@@ -8,6 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <script src="jquery/jquery.min.js"></script>
+  <script src="public/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUj1D_k5Ie0F5lt1Cr2ix4zEdqnia6I04&libraries=places"></script>
   <!-- Bootstrap core CSS -->
   <link href="public/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -16,8 +17,9 @@
   <link href="public/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template -->
-  <link href="public/bootstrap/css/sb-admin-2.css" rel="stylesheet">
   <link href="public/bootstrap/css/landing-page.css" rel="stylesheet">
+  <link href="public/bootstrap/css/sb-admin-2.css" rel="stylesheet">
+
   <?php if(isset($customScript)) echo $customScript;?>
   </head>
   <body>
@@ -162,7 +164,7 @@ if (isset($babysitter) && $_SESSION['type'] == 1 && !$babysitter['candidature_va
 
 <?= $content ?>
 <!-- Footer -->
-<footer class="footer bg-light">
+<footer class="footer bg-light border">
  <div class="container">
    <div class="row">
      <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
