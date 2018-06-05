@@ -50,7 +50,7 @@
     <body>
     <div class="container">
 
-            <div class="col-md-offset-4 col-md-4">
+        <div class=" col-md-offset-2 col-md-8">
         <form class="form-signin" action="index.php?action=addParent" method="post">
             <input type="hidden" name="type" value=2 />
             <div class="text-center mb-4">
@@ -110,8 +110,8 @@
             <button class="btn btn-lg btn-primary btn-block" type="submit">Inscription</button>
             <p class="mt-5 mb-3 text-muted text-center">Déjà inscrit ? Connectez vous <a href="index.php?action=connexion">ici</a></p>
         </form>
-            </div>
 
+        </div>
     </div>
         <script>
             function init() {

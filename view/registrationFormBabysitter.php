@@ -19,7 +19,7 @@
     <body>
     <div class="container">
 
-            <div class="col-md-offset-4 col-md-4">
+            <div class="col-md-offset-2 col-md-8">
         <form class="form-signin" action="index.php?action=addBabysitter" method="post"enctype="multipart/form-data">
             <input type="hidden" name="type" value=1 />
             <div class="text-center mb-4">
