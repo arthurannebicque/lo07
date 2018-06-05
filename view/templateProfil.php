@@ -26,11 +26,11 @@
     <!-- Navigation -->
 <nav class="navbar navbar-light bg-light static-top justify-content-between border-bottom">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="index.php?action=showHome">
     <img src="icon.png" width="50" height="50">
     </a>
     <div class="navbar">
-    <a class="nav-link" href="view/homeView.php">Découvrir</a>
+    <a class="nav-link" href="index.php?action=showHome">Découvrir</a>
 
     <?php
     if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
@@ -164,7 +164,7 @@ if (isset($babysitter) && $_SESSION['type'] == 1 && !$babysitter['candidature_va
 
 <?= $content ?>
 <!-- Footer -->
-<footer class="footer bg-light border">
+<footer class="footer bg-light">
  <div class="container">
    <div class="row">
      <div class="col-lg-6 h-100 text-center text-lg-left my-auto">

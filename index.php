@@ -106,6 +106,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['email']) && isset($_SESSION['type
             if (isset($_GET['id']) && isset($_GET['nom'])) {
                 unblockBabysitter($_GET['id'], $_GET['nom']);
             }
+        } elseif ($_GET['action'] == 'showHome') {
+
+                require('view/homeView.php');
+        } elseif ($_GET['action'] == 'registration') {
+          showProfil();
         }
     } else {
         showProfil();
