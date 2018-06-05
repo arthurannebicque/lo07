@@ -22,7 +22,7 @@ $( document ).ready(function() {
           <div class="form-group row justify-content-md-center">
                 <label class="col-form-label" for="inputLangues">Langue recherchée</label>
                 <div class="col-3">
-                <select id="inputLangues" name="langue" class="custom-select">
+                <select id="inputLangues" name="langue" class="custom-select" required>
                     <?php
                     while ($langue = $listeLangues->fetch()) {
                         echo "<option value=" . $langue['id'];
@@ -39,7 +39,7 @@ $( document ).ready(function() {
                 <div class="form-group row justify-content-md-center">
                     <label class="col-form-label">Enfants à garder :</label>
                     <div class="col-3">
-                    <select class="custom-select" name="enfants[]" size=2 multiple>
+                    <select class="custom-select" name="enfants[]" size=2 multiple required>
                         <?php
                         while ($enfant = $listeEnfants->fetch()) {
                             echo "<option value=" . $enfant['id'] . ">" . $enfant['prenom'] . "</option>";

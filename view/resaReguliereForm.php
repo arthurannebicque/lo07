@@ -1,3 +1,20 @@
+<?php $customScript = "<script>
+$( document ).ready(function() {
+$('#reservationModalCenter').on('show.bs.modal', function (event) {
+var button = $(event.relatedTarget) // Button that triggered the modal
+var name = button.data('name') // Extract info from data-* attributes
+var photo = button.data('photo')
+var link = button.data('link')
+// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+var modal = $(this)
+modal.find('.babysitterIdentity').text(name)
+modal.find('.babysitterPhoto').attr('src', photo)
+modal.find('.reservationLink').attr('href', link)
+
+})
+})
+</script>"; ?>
 <?php ob_start(); ?>
       <div class="container-fluid">
       <div class="row justify-content-md-center mt-3">
@@ -49,7 +66,7 @@
             <div class="form-group row justify-content-md-center">
                 <label class="col-form-label">Enfants à garder :</label>
                 <div class="col-3">
-                <select class="custom-select" name="enfants[]" size=2 multiple>
+                <select class="custom-select" name="enfants[]" size=2 multiple required>
                     <?php
                     while ($enfant = $listeEnfants->fetch()) {
                         echo "<option value=" . $enfant['id'] . ">" . $enfant['prenom'] . "</option>";
@@ -111,9 +128,12 @@
                 ?>
                 <div class="bg-light border mt-3">
                   <article style="padding:20px;">
-                    <a href="index.php?action=createReservation&id=<?= $babysitter['id'] ?>&creneaux=<?= $req ?>&enfants=<?= $req2 ?>&type=1">
+                    <a type='button' data-toggle="modal" data-target="#reservationModalCenter" data-link="index.php?action=createReservation&id=<?= $babysitter['id'] ?>&creneaux=<?= $req ?>&enfants=<?= $req2 ?>&type=1" data-photo="ressources/pictures/<?=$babysitter['photo']?>" data-name="<?= $babysitter['prenom']." ".$babysitter['nom'] ?>">
                       <div class="row">
                     <aside class="col-2">
+                      <div class="row justify-content-md-center">
+                      <img src="ressources/pictures/<?=$babysitter['photo']?>" height="120px" width="120px">
+                    </div>
                       <div class="row justify-content-md-center">
                       <?= round($babysitter['distance']) ?>km
                     </div>
@@ -128,11 +148,11 @@
                   <div class="row border-top">
                     <ul class="list-inline list-unstyled">
                       <li class="list-inline-item"><?=$babysitter['age']?> ans,</li>
-                      <li class="list-inline-item">1 an d'expérience</li>
+                      <li class="list-inline-item"><?= $babysitter['experience']?> d'expérience</li>
                     </ul>
                   </div>
                   <div class="row">
-                    <p>Bonjour, Je suis actuellement en Terminale Littéraire spécialité musique, je suis disponible tout les weekends, pendant les vacances scolaires et les mercredis après-midi. N'hésitez...je suis disponible tout les weekends,je suis disponible tout les weekends</p>
+                    <p><?= $babysitter['presentation']?></p>
                   </div>
                   </div>
                   <div class="col-3 border">
@@ -176,6 +196,36 @@
     <a type="button" class="btn btn-outline-secondary btn-block" href="index.php">Retour</a>
     </div>
     </div>
+    </div>
+    <div class="modal fade" id="reservationModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Voulez vous choisir ce babysitter ?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" style="min-height: 220px">
+            <div class="container mt-4">
+              <div class="row justify-content-md-center">
+                  <img class="babysitterPhoto" src="ressources/pictures" height="120px" width="120px">
+              </div>
+              <div class="row justify-content-md-center">
+
+                <h3 class="babysitterIdentity">Prénom Nom</h3>
+
+              </div>
+              <div class="row justify-content-md-center">
+                <div class='col-3'>
+                  <a class="btn btn-lg btn-primary btn-block reservationLink" href="">Créer</a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <?php
       $content = ob_get_clean();

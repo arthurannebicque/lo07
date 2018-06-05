@@ -127,11 +127,9 @@ if ($_SESSION['type'] == 2) {
       </div>
       <div class="modal-body">
         <form class="form m-auto justify-content-md-center" action="index.php?action=closeReservation" method="post">
-          <div class="row justify-content-md-center">
-              <label for="inputEvaluation">Créneau</label>
-            </div>
-            <div class="form-group row justify-content-md-center">
+
               <?php if ($type[0] == 3 ) {
+                echo "<div class='form-group row justify-content-md-center'>";
               echo "<div class='col-4'>";
               echo "<label>Nombre d'heures (rappel : ".count($slot)."h)</label>";
               echo "<input type='hidden' name='heure_debut' value='0'>";
@@ -139,8 +137,13 @@ if ($_SESSION['type'] == 2) {
               echo "<div class='col-3'>";
               echo "<input type='number' id='inputHeureFin' name='heure_fin' class ='form-control' placeholder='Heures' value='".count($slot)."' required autofocus>";
               echo "</div>";
+              echo "</div>";
           }
           elseif (($type[0] == 1)||($type[0] == 2)) {
+              echo "<div class='row justify-content-md-center'>";
+              echo "<label for='inputEvaluation'>Créneau</label>";
+              echo "</div>";
+              echo "<div class='form-group row justify-content-md-center'>";
               echo "<div class='col-3'>";
               echo "<input type='number' id='inputHeureDebut' name='heure_debut' class ='form-control' placeholder='Heure Debut' min='0' max='23' value='".$slot[0]['heure']."' required autofocus>";
               echo "</div>";
@@ -151,8 +154,9 @@ if ($_SESSION['type'] == 2) {
 
               echo "</div>";
               echo "<label class='col-form-label'>h</label>";
+              echo "</div>";
             }?>
-          </div>
+        
             <div class="form-group row justify-content-md-center">
               <label class="col-form-label" for="inputNote">Note</label>
               <div class="col-3">

@@ -85,7 +85,7 @@ class SlotManager {
     public function findDispos($creneaux, $count) {
         try {
             $db = $this->dbConnect();
-            $query = "SELECT babysitters.id AS id, babysitters.nom AS nom, babysitters.prenom AS prenom, babysitters.ville AS ville, babysitters.age AS age, babysitters.experience AS experience, babysitters.photo FROM babysitters, disponibilites  WHERE babysitters.id = disponibilites.id_babysitter AND disponibilites.statut = 'disponible' AND babysitters.visible = 1 AND disponibilites.creneau IN ('$creneaux') GROUP BY babysitters.id HAVING COUNT(*) = '$count'";
+            $query = "SELECT babysitters.id AS id, babysitters.nom AS nom, babysitters.prenom AS prenom, babysitters.ville AS ville, babysitters.age AS age, babysitters.experience AS experience, babysitters.presentation AS presentation, babysitters.photo FROM babysitters, disponibilites  WHERE babysitters.id = disponibilites.id_babysitter AND disponibilites.statut = 'disponible' AND babysitters.visible = 1 AND disponibilites.creneau IN ('$creneaux') GROUP BY babysitters.id HAVING COUNT(*) = '$count'";
             //$babysitters = $db->prepare("SELECT babysitters.id AS id, babysitters.nom AS nom, babysitters.prenom AS prenom FROM babysitters, disponibilites  WHERE babysitters.id = disponibilites.id_babysitter AND disponibilites.creneau IN (?) GROUP BY babysitters.id HAVING COUNT(*) = ?");
             //$babysitters->execute(array($creneaux, $count));
             //$babysitters->execute(array('creneaux' => $creneaux, 'count' => $count));

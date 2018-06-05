@@ -356,7 +356,6 @@ function createReservation($id_parent, $id_babysitter, $creneaux, $selectedEnfan
     $listCreneaux = unserialize($creneaux);
     $statut = 'reservé';
     foreach ($listCreneaux as $creneau) {
-        echo $id_babysitter . " " . $creneau . " " . $statut . "<br>";
         $affectedSlot = $slotManager->bookDispo($id_babysitter, $creneau, $statut, $newReservationId);
     }
     $selectedEnfants = unserialize($selectedEnfants);
