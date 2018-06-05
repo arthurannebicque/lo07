@@ -153,7 +153,7 @@
          <div class="features-icons-icon d-flex">
            <i class="icon-user m-auto text-primary"></i>
          </div>
-         <h3>Adapté à vous</h3>
+         <h3>Adapté à vos besoins</h3>
          <p class="lead mb-0">Réservez à la dernière minutes ou bien chaque jour au même horaire, Sitties se plie à votre emploi du temps </p>
        </div>
      </div>
@@ -163,7 +163,7 @@
              <i class="icon-check m-auto text-primary"></i>
          </div>
          <h3>100% confiance</h3>
-         <p class="lead mb-0">Tous nos Baby-Sitters passent un test pointu nous permettant de vous proposer les meilleurs</p>
+         <p class="lead mb-0">Choisissez votre Babysitter en fonction des avis laissés par les autres parents</p>
        </div>
      </div>
    </div>
@@ -185,7 +185,7 @@
      <div class="col-lg-6 text-white showcase-img"><img src="baby2.png" style=" border-radius: 8px; " alt="dd" width="100%" ></div>
      <div class="col-lg-6 my-auto showcase-text">
        <h2>Une grande variété de choix</h2>
-       <p class="lead mb-0">Parlant anglais, mandarin ou bien suedois, expérimenté ou non, aide aux devoirs ou non, nous avons quelqu'un pour vous.</p>
+       <p class="lead mb-0">Parlant anglais, chinois ou bien portugais, expérimenté ou non, aide aux devoirs ou non, nous avons quelqu'un pour vous.</p>
      </div>
    </div>
    <div class="row no-gutters">
