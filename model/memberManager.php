@@ -124,7 +124,7 @@ class MemberManager {
 
     public function getBabysitterInfos($id_reservation) {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT nom, prenom, portable, photo FROM babysitters, reservations WHERE reservations.id = ? AND babysitters.id = reservations.id_babysitter');
+        $req = $db->prepare('SELECT nom, prenom, portable, photo, candidature_valide FROM babysitters, reservations WHERE reservations.id = ? AND babysitters.id = reservations.id_babysitter');
         $req->execute(array($id_reservation));
         $babysitter = $req->fetch();
         return $babysitter;

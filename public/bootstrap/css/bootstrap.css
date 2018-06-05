@@ -59,6 +59,13 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
   scroll-behavior: smooth;
 }
 
+.footer {
+  position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
 article > a:hover {
   color: #0056b3;
   text-decoration: none;
@@ -5455,6 +5462,10 @@ button.close {
 .modal-open .modal {
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+.modal.body a {
+  text-decoration: none;
 }
 
 .modal-dialog {

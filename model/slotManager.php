@@ -131,7 +131,7 @@ class SlotManager {
 
     public function getReservationName($id_reservation) {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT parents.nom AS nom FROM parents, reservations WHERE reservations.id = ? AND parents.id_parent = reservations.id_parent');
+        $req = $db->prepare('SELECT parents.nom AS nom, parents.ville AS ville FROM parents, reservations WHERE reservations.id = ? AND parents.id_parent = reservations.id_parent');
         $req->execute(array($id_reservation));
         $famille = $req->fetch();
         return $famille;

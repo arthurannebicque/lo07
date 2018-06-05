@@ -5,7 +5,8 @@
     <h2>Rechercher un Babysitter</h2>
 </div>
 </div>
-<div class="container-fluid mt-3" style="min-height:350px">
+<div  style="min-height:350px">
+<div class="container-fluid mt-3">
   <form class="form w-75 m-auto justify-content-md-center" action="index.php?action=searchBabysitter" method="post">
 
 
@@ -49,6 +50,7 @@
     <?php } ?>
     </table>
     </div>
+  </div>
 <?php }
 if (isset($reservations)) {
   ?>
@@ -103,7 +105,8 @@ if (isset($reservations)) {
 <div class="container justify-content-md-center mb-3">
 <div class="card pt-3 px-3 pb-0">
   <div class="row justify-content-md-center mt-3">
-      <h2>Résumé des prestations</h2>
+      <?php if(!empty($reservations)) {echo"<h2>Résumé des prestations</h2>";}
+     elseif(empty($reservations)) echo"<h2>Pas encore de prestations</h2>";?>
   </div>
   <?php
   foreach ($reservations as $reservation) {
