@@ -135,6 +135,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email']) && isset($_SESSION['type
                 require('view/registrationFormParent.php');
             if ($_GET['type'] == 'babysitter')
                 require('view/registrationFormBabysitter.php');
+        } elseif ($_GET['action'] == 'registrationComplete') {
+                require('view/registrationComplete.php');
         }
 
         elseif ($_GET['action'] == 'connexion') {

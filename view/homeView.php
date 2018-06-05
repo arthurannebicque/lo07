@@ -175,21 +175,21 @@
 <section class="showcase">
  <div class="container-fluid p-0">
    <div style="padding-bottom: 8px;" class="row no-gutters">
-     <div class="col-lg-6 order-lg-2 text-white showcase-img"> <img src="baby1.jpg" alt="dd" style=" border-radius: 8px;" width="750" ></div>
+     <div class="col-lg-6 order-lg-2 text-white showcase-img"> <img src="baby1.jpg" alt="dd" style=" border-radius: 8px;" width=100% ></div>
      <div class="col-lg-6 order-lg-1 my-auto showcase-text">
        <h2>Déja plus de 1500 inscrits en région parisienne</h2>
        <p class="lead mb-0">Rejoignez la communauté Sitties, comprennant plus de 1500 membres actifs, et choisissez dès aujourd'hui le Baby Sitter adapté à vos besoins.</p>
      </div>
    </div>
    <div style="padding-bottom: 8px ;padding-left: 10px;" class="row no-gutters">
-     <div class="col-lg-6 text-white showcase-img"><img src="baby2.png" style=" border-radius: 8px; " alt="dd" width="750" ></div>
+     <div class="col-lg-6 text-white showcase-img"><img src="baby2.png" style=" border-radius: 8px; " alt="dd" width="100%" ></div>
      <div class="col-lg-6 my-auto showcase-text">
        <h2>Une grande variété de choix</h2>
        <p class="lead mb-0">Parlant anglais, mandarin ou bien suedois, expérimenté ou non, aide aux devoirs ou non, nous avons quelqu'un pour vous.</p>
      </div>
    </div>
    <div class="row no-gutters">
-     <div class="col-lg-6 order-lg-2 text-white showcase-img"><img src="baby4.png" alt="dd" width="750" style=" border-radius: 8px;" ></div>
+     <div class="col-lg-6 order-lg-2 text-white showcase-img"><img src="baby4.png" alt="dd" width="100%" style=" border-radius: 8px;" ></div>
      <div class="col-lg-6 order-lg-1 my-auto showcase-text">
        <h2>Nous nous occupons de tout</h2>
        <p class="lead mb-0">Réservez quand vous voulez, et organisez votre emploi du temps dès le début de chaque semaine car chaque parent mérite du temps pour lui</p>
@@ -234,19 +234,17 @@
  <div class="container">
    <div class="row">
      <div class="col-xl-9 mx-auto">
-       <h2 class="mb-4">Ready to get started? Sign up now!</h2>
+       <h2 class="mb-4">Pret à vous lancer ? Inscrivez vous maintenant !</h2>
      </div>
      <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-       <form>
-         <div class="form-row">
-           <div class="col-12 col-md-9 mb-2 mb-md-0">
-             <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
-           </div>
-           <div class="col-12 col-md-3">
-             <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
-           </div>
-         </div>
-       </form>
+       <div class="row">
+               <div class="col-3 ml-auto">
+                 <a class="btn btn-block btn-lg btn-outline-light" href="index.php?action=registration&type=parent">Parent</a>
+               </div>
+               <div class="col-3 mr-auto">
+                 <a class="btn btn-block btn-lg btn-outline-light" href="index.php?action=registration&type=babysitter">Babysitter</a>
+               </div>
+       </div>
      </div>
    </div>
  </div>
@@ -274,7 +272,7 @@
            <a href="#">Privacy Policy</a>
          </li>
        </ul>
-       <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2018. All Rights Reserved.</p>
+       <p class="text-muted small mb-4 mb-lg-0">&copy; Sitties 2018. All Rights Reserved.</p>
      </div>
      <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
        <ul class="list-inline mb-0">

@@ -56,7 +56,7 @@ function addBabysitter($nom, $prenom, $email, $password, $passwordConfirmation, 
         $deletedBabysitter = $memberManager->declineApplication($affectedCredentials['id_user']);
         throw new Exception("impossible d'ajouter le membre !");
     } else {
-        header('Location: index.php?action=registrationComplete&email=' . $email);
+        header('Location: index.php?action=registrationComplete');
     }
 }
 
