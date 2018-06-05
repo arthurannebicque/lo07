@@ -38,7 +38,7 @@
       ');
   } else {
     echo('
-    <button class="btn btn-outline-primary mr-1" data-toggle="modal" data-target="#registrationModalCenter">Inscription</button>
+    <button class="btn btn-outline-primary mr-2" data-toggle="modal" data-target="#registrationModalCenter">Inscription</button>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexionModalCenter">Connexion</button>
 
     ');

@@ -2002,6 +2002,17 @@ pre code {
   border: 0;
 }
 
+.form-parent {
+  background-image: url("../../../public/images/bg-masterhead.jpg");
+  background-size: auto;
+  background-position: center;
+}
+
+.form-parent h1 {
+  font-size: 2rem;
+  text-shadow: 2px 2px 8px #7B7F7F;
+}
+
 .form-control {
   display: block;
   width: 100%;
