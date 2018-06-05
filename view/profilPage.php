@@ -119,7 +119,7 @@ if ($_SESSION['type'] == 3) {
         </ul>
       </div>
       <div class="row p-1">
-        <p>Bonjour, Je suis actuellement en Terminale Littéraire spécialité musique, je suis disponible tout les weekends, pendant les vacances scolaires et les mercredis après-midi. N'hésitez...</p>
+        <p><?=$babysitter['presentation']?></p>
       </div>
       </div>
       <div class="col-2 ">
@@ -127,7 +127,7 @@ if ($_SESSION['type'] == 3) {
         <div class="row ">
           <h4>Langues parlées</h4>
     </div>
-    <div class="row" style="height: 55%">
+    <div class="row" style="height: 50%">
       <ul class="list-unstyled">
         <li>Anglais</li>
         <li>Allemand</li>

@@ -145,7 +145,7 @@
            <i class="icon-screen-desktop m-auto text-primary"></i>
          </div>
          <h3>Pratique</h3>
-         <p class="lead mb-0">Réservez en quelques clics seulement un Baby-Sitter près de chez vous</p>
+         <p class="lead mb-0">Réservez en quelques clics seulement un Babysitter près de chez vous</p>
        </div>
      </div>
      <div class="col-lg-4">
@@ -172,24 +172,24 @@
 
 
 <!-- Image Showcases -->
-<section class="showcase">
+<section class="showcase ">
  <div class="container-fluid p-0">
-   <div style="padding-bottom: 8px;" class="row no-gutters">
-     <div class="col-lg-6 order-lg-2 text-white showcase-img"> <img src="baby1.jpg" alt="dd" style=" border-radius: 8px;" width=100% ></div>
+   <div class="row no-gutters">
+     <div class="col-lg-6 order-lg-2 text-white showcase-img"> <img src="baby1.jpg" alt="dd"  width=100% ></div>
      <div class="col-lg-6 order-lg-1 my-auto showcase-text">
        <h2>Déja plus de 1500 inscrits en région parisienne</h2>
-       <p class="lead mb-0">Rejoignez la communauté Sitties, comprennant plus de 1500 membres actifs, et choisissez dès aujourd'hui le Baby Sitter adapté à vos besoins.</p>
+       <p class="lead mb-0">Rejoignez la communauté Sitties, comprennant plus de 1500 membres actifs, et choisissez dès aujourd'hui le Babysitter adapté à vos besoins.</p>
      </div>
    </div>
-   <div style="padding-bottom: 8px ;padding-left: 10px;" class="row no-gutters">
-     <div class="col-lg-6 text-white showcase-img"><img src="baby2.png" style=" border-radius: 8px; " alt="dd" width="100%" ></div>
+   <div  class="row no-gutters">
+     <div class="col-lg-6 text-white showcase-img"><img src="baby2.png" alt="dd" width="100%" ></div>
      <div class="col-lg-6 my-auto showcase-text">
        <h2>Une grande variété de choix</h2>
        <p class="lead mb-0">Parlant anglais, chinois ou bien portugais, expérimenté ou non, aide aux devoirs ou non, nous avons quelqu'un pour vous.</p>
      </div>
    </div>
    <div class="row no-gutters">
-     <div class="col-lg-6 order-lg-2 text-white showcase-img"><img src="baby4.png" alt="dd" width="100%" style=" border-radius: 8px;" ></div>
+     <div class="col-lg-6 order-lg-2 text-white showcase-img"><img src="baby4.png" alt="dd" width="100%"  ></div>
      <div class="col-lg-6 order-lg-1 my-auto showcase-text">
        <h2>Nous nous occupons de tout</h2>
        <p class="lead mb-0">Réservez quand vous voulez, et organisez votre emploi du temps dès le début de chaque semaine car chaque parent mérite du temps pour lui</p>
@@ -221,7 +221,7 @@
        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
          <img class="img-fluid rounded-circle mb-3" src="sarah.png" alt="">
          <h5>Sarah	W.</h5>
-         <p class="font-weight-light mb-0">"Grâce à Sitties, j'ai pu trouver une babysitter parlant francais et mandarin : une perle !"</p>
+         <p class="font-weight-light mb-0">"Grâce à Sitties, j'ai pu trouver une babysitter parlant francais et chinois : une perle !"</p>
        </div>
      </div>
    </div>
