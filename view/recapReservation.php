@@ -186,7 +186,7 @@ if ($_SESSION['type'] == 1) {
       <div class="row">
         <div class="col-3">
           <div class="card text-center">
-            <img class="card-img-top" src="ressources/pictures/" alt="Card image cap">
+            <img class="card-img-top" src="home.png" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title"><?= $famille['nom']; ?></h5>
           <p class="card-text "><?=$famille['ville']?></p>

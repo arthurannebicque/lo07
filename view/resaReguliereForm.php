@@ -138,7 +138,11 @@
                   <div class="col-3 border">
                     <div class="row">
                       <div class="col">
-                    <?= round($babysitter['average'][0], 1)?>/5
+                        <?
+                        for ($i=1; $i < round($babysitter['average'][0], 1); $i++) {
+                          echo "<img src='feeding-bottle.png' height='20px' width='20px'>";
+                        }
+                        ?>
                   </div>
                   <div class="col">
                     <?=count($babysitter['ratings'])."avis"?>

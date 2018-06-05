@@ -4,7 +4,7 @@
           <h2>Réservation Ponctuelle</h2>
       </div>
     </div>
-      <div class="container-fluid mt-3" style="min-height:350px">
+      <div class="container-fluid mt-3" style="min-height:300px">
         <form class="form w-75 m-auto justify-content-md-center" action="index.php?action=requestResaPonctuelle" method="post">
 
 
@@ -90,10 +90,15 @@
                         <p>Bonjour, Je suis actuellement en Terminale Littéraire spécialité musique, je suis disponible tout les weekends, pendant les vacances scolaires et les mercredis après-midi. N'hésitez...</p>
                       </div>
                       </div>
-                      <div class="col-offset-1 col-2">
+                      <div class="col-3">
                         <div class="row">
                           <div class="col">
-                        <?= round($babysitter['average'][0], 1)?>/5
+
+                        <?
+                        for ($i=1; $i < round($babysitter['average'][0], 1); $i++) {
+                          echo "<img src='feeding-bottle.png' height='20px' width='20px'>";
+                        }
+                        ?>
                       </div>
                       <div class="col">
                         <?=count($babysitter['ratings'])."avis"?>
@@ -102,6 +107,7 @@
 
                     <?php foreach ($babysitter['ratings'] as $rating) {
                       echo "<div class='row'>";
+
                         echo $rating['note']. "/5 " . $rating['evaluation'] . "<br>";
                         echo "</div>";
                     }

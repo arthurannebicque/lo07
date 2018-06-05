@@ -16,7 +16,7 @@ $( document ).ready(function() {
           <h2>Réservation par langue</h2>
       </div>
     </div>
-    <div class="container-fluid mt-3" style="min-height:350px">
+    <div class="container-fluid mt-3" style="min-height:300px">
         <form class="form w-75 m-auto justify-content-md-center" action="index.php?action=requestResaLangue" method="post">
 
           <div class="form-group row justify-content-md-center">
@@ -107,7 +107,11 @@ $( document ).ready(function() {
                     <div class="col-3 border">
                       <div class="row">
                         <div class="col">
-                      <?= round($babysitter['average'][0], 1)?>/5
+                          <?
+                          for ($i=1; $i < round($babysitter['average'][0], 1); $i++) {
+                            echo "<img src='feeding-bottle.png' height='20px' width='20px'>";
+                          }
+                          ?>
                     </div>
                     <div class="col">
                       <?=count($babysitter['ratings'])."avis"?>
