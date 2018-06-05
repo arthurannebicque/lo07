@@ -49,45 +49,51 @@
 
     <body>
     <div class="container">
-        <div class="row">
-            <div class="col-md-offset-4 col-md-4">
+
+        <div class=" col-md-offset-2 col-md-8">
         <form class="form-signin" action="index.php?action=addParent" method="post">
             <input type="hidden" name="type" value=2 />
             <div class="text-center mb-4">
                 <h1 class="h3 mb-3 font-weight-normal">Inscrivez vous en tant que Parent</h1>
             </div>
-            <div class="form-label-group">
-                <label for="inputNom">Nom</label>
-                <input type="text" id="inputNom" name="nom" class ="form-control" placeholder="Nom" required autofocus>
+            <div class="form-row">
+                <div class="form-label-group col-md-6">
+                    <label for="inputNom">Nom</label>
+                    <input type="text" id="inputNom" name="nom" class ="form-control" placeholder="Nom" required autofocus>
+
+                </div>
+                <div class="form-label-group col-md-6">
+                    <label for="inputVille">Ville</label>
+                    <input type="text" id="inputVille" name="ville" class="form-control" placeholder="Ville" required>
+
+                </div>
 
             </div>
 
-            <div class="form-label-group">
+            <div class="form-label-group col-md-12">
                 <label for="inputEmail">Email</label>
                 <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required autofocus>
 
             </div>
-            <div class="form-label-group">
-                <label for="inputPassword">Mot de passe</label>
-                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+<div class="form-row">
+    <div class="form-label-group col-md-6">
+        <label for="inputPassword">Mot de passe</label>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
 
-            </div>
-            <div class="form-label-group">
-                <label for="inputPasswordConfirmation">Confirmation de mot de passe</label>
-                <input type="password" id="inputPasswordConfirmation" name="passwordConfirmation" class="form-control" placeholder="Password Confirmation" required>
+    </div>
+    <div class="form-label-group col-md-6">
+        <label for="inputPasswordConfirmation">Confirmation</label>
+        <input type="password" id="inputPasswordConfirmation" name="passwordConfirmation" class="form-control" placeholder="Password Confirmation" required>
 
-            </div>
-            <div class="form-label-group">
-                <label for="inputVille">Ville</label>
-                <input type="text" id="inputVille" name="ville" class="form-control" placeholder="Ville" required>
+    </div></div>
 
-            </div>
-            <div class="form-label-group">
+
+            <div class="form-label-group col-md-12">
                 <label for="inputPresentation">Présentation</label>
                 <textarea id="inputPresentation" name="presentation" class="form-control" placeholder="Presentation" required></textarea>
 
             </div>
-            <div class="form-label-group">
+            <div class="form-label-group col-md-12">
                 <label for="nombre_enfants">Nombre d'enfants</label>
                 <select id="nombre_enfants" name="nombre_enfants" class ="form-control" required autofocus>
                     <option value="1">1</option>
@@ -104,7 +110,7 @@
             <button class="btn btn-lg btn-primary btn-block" type="submit">Inscription</button>
             <p class="mt-5 mb-3 text-muted text-center">Déjà inscrit ? Connectez vous <a href="index.php?action=connexion">ici</a></p>
         </form>
-            </div>
+
         </div>
     </div>
         <script>
