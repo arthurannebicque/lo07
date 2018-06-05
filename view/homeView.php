@@ -181,8 +181,8 @@
        <p class="lead mb-0">Rejoignez la communauté Sitties, comprennant plus de 1500 membres actifs, et choisissez dès aujourd'hui le Baby Sitter adapté à vos besoins.</p>
      </div>
    </div>
-   <div style="padding-bottom: 8px;" class="row no-gutters">
-     <div class="col-lg-6 text-white showcase-img"><img src="baby2.png" style=" border-radius: 8px; padding-left: 10px;  " alt="dd" width="750" ></div>
+   <div style="padding-bottom: 8px ;padding-left: 10px;" class="row no-gutters">
+     <div class="col-lg-6 text-white showcase-img"><img src="baby2.png" style=" border-radius: 8px; " alt="dd" width="750" ></div>
      <div class="col-lg-6 my-auto showcase-text">
        <h2>Une grande variété de choix</h2>
        <p class="lead mb-0">Parlant anglais, mandarin ou bien suedois, expérimenté ou non, aide aux devoirs ou non, nous avons quelqu'un pour vous.</p>

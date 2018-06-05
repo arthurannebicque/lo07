@@ -6,8 +6,6 @@
       <change beforePath="$PROJECT_DIR$/model/memberManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/memberManager.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/slotManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/slotManager.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/homeView.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/homeView.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/registrationFormBabysitter.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/registrationFormBabysitter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/registrationFormParent.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/registrationFormParent.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,14 +37,39 @@
       <file leaf-file-name="homeView.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/view/homeView.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="153" column="116" selection-start-line="153" selection-start-column="116" selection-end-line="153" selection-end-column="116" />
+            <state relative-caret-position="235">
+              <caret line="183" column="36" selection-start-line="183" selection-start-column="36" selection-end-line="183" selection-end-column="36" />
               <folding>
+                <element signature="e#2487#2494#1#HTML" expanded="true" />
+                <element signature="e#4050#4057#1#HTML" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#a#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#0;n#div#2;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="memberManager.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/memberManager.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-323">
+              <caret line="8" column="88" selection-start-line="8" selection-start-column="88" selection-end-line="8" selection-end-column="88" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="slotManager.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/slotManager.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="88" selection-start-line="8" selection-start-column="88" selection-end-line="8" selection-end-column="88" />
             </state>
           </provider>
         </entry>
@@ -54,8 +77,8 @@
       <file leaf-file-name="templateProfil.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/view/templateProfil.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+            <state relative-caret-position="629">
+              <caret line="37" column="46" selection-start-line="37" selection-start-column="46" selection-end-line="37" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -101,8 +124,8 @@
         <option value="$PROJECT_DIR$/view/registrationFormBabysitter.php" />
         <option value="$PROJECT_DIR$/view/registrationFormParent.php" />
         <option value="$PROJECT_DIR$/view/templateProfil.php" />
-        <option value="$PROJECT_DIR$/model/memberManager.php" />
         <option value="$PROJECT_DIR$/model/slotManager.php" />
+        <option value="$PROJECT_DIR$/model/memberManager.php" />
         <option value="$PROJECT_DIR$/view/homeView.php" />
       </list>
     </option>
@@ -206,12 +229,12 @@
       <workItem from="1527752760187" duration="1975000" />
       <workItem from="1528117304321" duration="95000" />
       <workItem from="1528127202496" duration="4911000" />
-      <workItem from="1528200538221" duration="3951000" />
+      <workItem from="1528200538221" duration="4389000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19972000" />
+    <option name="totallyTimeSpent" value="20410000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -253,9 +276,16 @@
         <state relative-caret-position="4199">
           <caret line="247" column="11" lean-forward="true" selection-start-line="247" selection-start-column="11" selection-end-line="247" selection-end-column="11" />
           <folding>
+            <element signature="e#2487#2494#1#HTML" expanded="true" />
+            <element signature="e#4050#4057#1#HTML" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#a#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#2;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
@@ -400,22 +430,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/view/templateProfil.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/memberManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="88" selection-start-line="8" selection-start-column="88" selection-end-line="8" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/slotManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1445">
-          <caret line="8" column="88" selection-start-line="8" selection-start-column="88" selection-end-line="8" selection-end-column="88" />
+        <state relative-caret-position="629">
+          <caret line="37" column="46" selection-start-line="37" selection-start-column="46" selection-end-line="37" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -429,14 +445,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/model/slotManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="88" selection-start-line="8" selection-start-column="88" selection-end-line="8" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/memberManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-323">
+          <caret line="8" column="88" selection-start-line="8" selection-start-column="88" selection-end-line="8" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/view/homeView.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="153" column="116" selection-start-line="153" selection-start-column="116" selection-end-line="153" selection-end-column="116" />
+        <state relative-caret-position="235">
+          <caret line="183" column="36" selection-start-line="183" selection-start-column="36" selection-end-line="183" selection-end-column="36" />
           <folding>
+            <element signature="e#2487#2494#1#HTML" expanded="true" />
+            <element signature="e#4050#4057#1#HTML" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#a#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#2;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
