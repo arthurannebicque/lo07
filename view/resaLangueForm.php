@@ -66,7 +66,7 @@ if (!empty($listBabysitters)) { ?>
   <div id="dispo-div">
     <?php
     foreach ($babysitters as $babysitter) {
-      if ($babysitter['distance'] <= 3000 && !empty($babysitter[7])) {
+      if ($babysitter['distance'] <= 3000 && !empty($babysitter[8])) {
         echo "<div class='container bg-light border-top mt-5' value='{$babysitter['id']}'>";
         ?>
         <div class="bg-light  mt-3">
@@ -131,7 +131,7 @@ if (!empty($listBabysitters)) { ?>
         echo "<form class='form-signin' id='form-dispo{$babysitter['id']}' action='index.php?action=createResaLangue' method='post'>";
         echo "<table class='table table-hover'>";
         echo "<tbody>";
-        foreach ($babysitter[7] as $dispo) {
+        foreach ($babysitter[8] as $dispo) {
           echo "<tr>";
           echo "<td>".$dispo['date']."</td>";
           echo "<td>".$dispo['heure']."</td>";
