@@ -98,10 +98,11 @@
                 </select>
             </div>
             <div class="col-3 custom-file">
-                <label class="custom-file-label" for="customFile">Photo</label>
+
 
             <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
-            <input class="custom-file-input" type="file" name="profil" required/>
+            <input class="custom-file-input" type="file" name="profil" id="fileInput" required/>
+            <label class="custom-file-label" for="fileInput">Photo</label>
             </div>
         </div>
 
@@ -134,4 +135,13 @@
 
             google.maps.event.addDomListener(window, 'load', init);
         </script>
+        <script>
+           $('#fileInput').on('change',function(){
+               //get the file name
+               var fileName = $(this).val().split('\\').pop();
+               //replace the "Choose a file" label
+               $(this).next('.custom-file-label').html(fileName);
+           })
+       </script>
     </body>
+</html>
