@@ -85,7 +85,7 @@
       <div class="modal-body" style="height: 220px">
         <div class="container mt-4">
           <div class="row">
-            <div class="col mr-auto   text-center" style="height: 120px">
+            <div class="col mr-auto  text-center" style="height: 120px">
               <a  href="index.php?action=registration&type=parent">
                 <div class="col-12 ml-auto border py-5 text-center" style="height: 120px">
                   <h5 class="mx-auto">Parent</h5>
