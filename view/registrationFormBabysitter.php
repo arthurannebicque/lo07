@@ -86,6 +86,7 @@
             <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
             <input class="custom-file-input" type="file" name="profil" id="fileInput" required/>
             <label class="custom-file-label" for="fileInput">Photo</label>
+            <label class="col-form-label text-white">1Mo max (jpg, png, jpeg)</label>
           </div>
         </div>
         <div class="form-group row justify-content-md-center">

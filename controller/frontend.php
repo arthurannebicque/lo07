@@ -36,6 +36,10 @@ function addBabysitter($nom, $prenom, $email, $password, $passwordConfirmation, 
     if ($emailUsed['exist_email'] == '0') {
         $affectedCredentials = $memberManager->createCredentials($email, $pass_hache, $type);
         $uploadPhoto = upload('profil',"ressources/pictures/{$affectedCredentials['id_user']}",1048576, array('png','jpg','jpeg') );
+        if ($uploadPhoto === FALSE) {
+          $deletedBabysitter = $memberManager->declineApplication($affectedCredentials['id_user']);
+          throw new Exception('la photo n\'est pas valide');
+        }
         $ext = substr(strrchr($_FILES['profil']['name'],'.'),1);
         $photoName = $affectedCredentials['id_user'].".".$ext;
         $affectedBabysitter = $memberManager->createBabysitter($affectedCredentials['id_user'], $nom, $prenom, $ville, $telephone, $age, $experience, $photoName, $presentation);
