@@ -53,6 +53,7 @@
 
 <?php }
 if (isset($reservations)) {
+
   ?>
   <div class="container justify-content-md-center mb-3">
   <div class="bg-light mt-4">
@@ -88,8 +89,11 @@ if (isset($reservations)) {
   </div>
   <div class="row p-1">
     <ul class="list-unstyled">
-      <li>Anglais</li>
-      <li>Allemand</li>
+      <?
+      foreach ($babysitterInfos['langues'] as $langue) {
+        echo "<li>{$langue['langue']}</li>";
+      }
+      ?>
 
     </ul>
 

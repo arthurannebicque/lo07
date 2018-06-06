@@ -207,6 +207,14 @@ class MemberManager {
         return $listeLangues;
     }
 
+    public function getLanguesBabysitter($id) {
+        $db = $this->dbConnect();
+        $listeLangues = $db->prepare('SELECT langues.langue FROM langues, babysitter_langue WHERE babysitter_langue.id_babysitter = ? AND langues.id = babysitter_langue.id_langue');
+        $listeLangues->execute(array($id));
+
+        return $listeLangues;
+    }
+
     public function findBabysitter($id_langue) {
         $db = $this->dbConnect();
 

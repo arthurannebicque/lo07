@@ -172,7 +172,13 @@ function showProfil() {
           $reservation[$i]['fin'] = $dateFin;
         }
     } elseif ($_SESSION['type'] == 3) {
-      $babysitters = $memberManager->getBabysittersApplication();
+      $listBabysitters = $memberManager->getBabysittersApplication();
+      $babysitters = $listBabysitters->fetchall();
+      for ($i = 0; $i < count($babysitters); $i++) {
+        $listeLangues = $memberManager->getLanguesBabysitter($babysitters[$i]['id']);
+        $babysitters[$i]['langues'] = $listeLangues->fetchall();
+      }
+
       $applicationCount = $memberManager->getBabysittersCount(0);
       $babysitterCount = $memberManager->getBabysittersCount(1);
       $listeRevenuBabysitter = $memberManager->getListRevenuBabysitter();
@@ -502,6 +508,8 @@ function searchBabysitter($name) {
     $revenuAnnuelGlobal = $slotManager->getRevenuAnnuelGlobal();
     $revenuTrimestrielGlobal = $slotManager->getRevenuTrimestrielGlobal();
     $babysitterInfos = $memberManager->getBabysitterInfosID($id);
+    $listeLangues = $memberManager->getLanguesBabysitter($id);
+    $babysitterInfos['langues'] = $listeLangues->fetchall();
     $listeReservations = $memberManager->getBabysitterReservations($id);
     $reservations = $listeReservations->fetchall();
     for ($i = 0; $i < count($reservations); $i++) {

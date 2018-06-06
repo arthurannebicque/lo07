@@ -94,7 +94,8 @@ if ($_SESSION['type'] == 3) {
       <?php
 
 
-  while ($babysitter = $babysitters->fetch()) {
+  foreach ($babysitters as $babysitter) {
+
     ?>
     <div class="bg-light mt-3">
       <div class="card pt-3 px-3 pb-0 border">
@@ -129,9 +130,11 @@ if ($_SESSION['type'] == 3) {
     </div>
     <div class="row" style="height: 50%">
       <ul class="list-unstyled">
-        <li>Anglais</li>
-        <li>Allemand</li>
-
+        <?
+        foreach ($babysitter['langues'] as $langue) {
+          echo "<li>{$langue['langue']}</li>";
+        }
+        ?>
       </ul>
 
   </div>
