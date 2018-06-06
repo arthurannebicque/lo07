@@ -8,7 +8,7 @@
   <h1><small>Vous êtes désormais inscrit sur Sitties</small></h1>
 </div>
   <div class="row justify-content-md-center m-5">
-  <img src="check.png" width="25%">
+  <img src="public/images/check.png" width="25%">
 </div>
 <div class="row justify-content-md-center">
   <a type="button" class="btn btn-primary btn-lg" href="index.php?action=connexion">Connectez vous !</a>

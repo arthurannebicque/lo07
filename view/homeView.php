@@ -25,7 +25,7 @@
 <nav class="navbar navbar-light bg-light static-top justify-content-between border-bottom">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-    <img src="icon.png" width="50" height="50">
+    <img src="public/images/icon.png" width="50" height="50">
     </a>
     <div class="navbar">
     <a class="nav-link" href="#discover">Découvrir</a>
@@ -175,21 +175,21 @@
 <section class="showcase ">
  <div class="container-fluid p-0">
    <div class="row no-gutters">
-     <div class="col-lg-6 order-lg-2 text-white showcase-img"> <img src="baby1.jpg" alt="dd"  width=100% ></div>
+     <div class="col-lg-6 order-lg-2 text-white showcase-img"> <img src="public/images/baby1.jpg" alt="dd"  width=100% ></div>
      <div class="col-lg-6 order-lg-1 my-auto showcase-text">
        <h2>Déja plus de 1500 inscrits en région parisienne</h2>
        <p class="lead mb-0">Rejoignez la communauté Sitties, comprennant plus de 1500 membres actifs, et choisissez dès aujourd'hui le Babysitter adapté à vos besoins.</p>
      </div>
    </div>
    <div  class="row no-gutters">
-     <div class="col-lg-6 text-white showcase-img"><img src="baby2.png" alt="dd" width="100%" ></div>
+     <div class="col-lg-6 text-white showcase-img"><img src="public/images/baby2.png" alt="dd" width="100%" ></div>
      <div class="col-lg-6 my-auto showcase-text">
        <h2>Une grande variété de choix</h2>
        <p class="lead mb-0">Parlant anglais, chinois ou bien portugais, expérimenté ou non, aide aux devoirs ou non, nous avons quelqu'un pour vous.</p>
      </div>
    </div>
    <div class="row no-gutters">
-     <div class="col-lg-6 order-lg-2 text-white showcase-img"><img src="baby4.png" alt="dd" width="100%"  ></div>
+     <div class="col-lg-6 order-lg-2 text-white showcase-img"><img src="public/images/baby4.png" alt="dd" width="100%"  ></div>
      <div class="col-lg-6 order-lg-1 my-auto showcase-text">
        <h2>Nous nous occupons de tout</h2>
        <p class="lead mb-0">Réservez quand vous voulez, et organisez votre emploi du temps dès le début de chaque semaine car chaque parent mérite du temps pour lui</p>
@@ -205,21 +205,21 @@
    <div class="row">
      <div class="col-lg-4">
        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-         <img class="img-fluid rounded-circle mb-3" src="isa.jpg" alt="">
+         <img class="img-fluid rounded-circle mb-3" src="public/images/isa.jpg" alt="">
          <h5>Margaret E.</h5>
          <p class="font-weight-light mb-0">"Babysitters pro, horaires à la demande et j'en passe. N'hésitez plus !"</p>
        </div>
      </div>
      <div class="col-lg-4">
        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-         <img class="img-fluid rounded-circle mb-3" src="frederic.jpg" alt="">
+         <img class="img-fluid rounded-circle mb-3" src="public/images/frederic.jpg" alt="">
          <h5>Fred S.</h5>
          <p class="font-weight-light mb-0">"Parfait pour un papa un peu occupé par son travail. Voilà un an que nous sommes fidèles clients !"</p>
        </div>
      </div>
      <div class="col-lg-4">
        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-         <img class="img-fluid rounded-circle mb-3" src="sarah.png" alt="">
+         <img class="img-fluid rounded-circle mb-3" src="public/images/sarah.png" alt="">
          <h5>Sarah	W.</h5>
          <p class="font-weight-light mb-0">"Grâce à Sitties, j'ai pu trouver une babysitter parlant francais et chinois : une perle !"</p>
        </div>

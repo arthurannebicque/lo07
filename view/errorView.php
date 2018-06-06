@@ -7,7 +7,7 @@
   <h1><small>Vous avez rencontré une erreur : <?= $errorMessage?></small></h1>
 </div>
   <div class="row justify-content-md-center m-5">
-  <img src="robotic.png" width="25%">
+  <img src="public/images/robotic.png" width="25%">
 </div>
 <div class="row justify-content-md-center">
   <button type="button" class="btn btn-outline-primary" value="Retour" onclick="history.go(-1)">Retour</button>

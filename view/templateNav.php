@@ -24,7 +24,7 @@
 <nav class="navbar navbar-light bg-light static-top justify-content-between border-bottom">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-    <img src="icon.png" width="50" height="50">
+    <img src="public/images/icon.png" width="50" height="50">
     </a>
     <div class="navbar">
     <a class="nav-link" href="#discover">Découvrir</a>

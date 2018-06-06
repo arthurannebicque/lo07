@@ -109,7 +109,7 @@ $( document ).ready(function() {
                         <div class="col">
                           <?
                           for ($i=1; $i < round($babysitter['average'][0], 1); $i++) {
-                            echo "<img src='feeding-bottle.png' height='20px' width='20px'>";
+                            echo "<img src='public/images/feeding-bottle.png' height='20px' width='20px'>";
                           }
                           ?>
                     </div>

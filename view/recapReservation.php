@@ -156,7 +156,7 @@ if ($_SESSION['type'] == 2) {
               echo "<label class='col-form-label'>h</label>";
               echo "</div>";
             }?>
-        
+
             <div class="form-group row justify-content-md-center">
               <label class="col-form-label" for="inputNote">Note</label>
               <div class="col-3">
@@ -190,7 +190,7 @@ if ($_SESSION['type'] == 1) {
       <div class="row">
         <div class="col-3">
           <div class="card text-center">
-            <img class="card-img-top" src="home.png" alt="Card image cap">
+            <img class="card-img-top" src="public/images/home.png" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title"><?= $famille['nom']; ?></h5>
           <p class="card-text "><?=$famille['ville']?></p>
