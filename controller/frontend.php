@@ -95,7 +95,7 @@ function addParent($nom, $email, $password, $passwordConfirmation, $type, $ville
     if ($affectedParent === false) {
         throw new Exception("impossible d'ajouter le membre !");
     } else {
-        header('Location: index.php?index.php');
+        header('Location: index.php?action=registrationComplete');
     }
 }
 

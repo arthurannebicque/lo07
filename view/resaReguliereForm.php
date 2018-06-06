@@ -120,7 +120,7 @@ if (!empty($listBabysitters)) {
         ?>
         <div class="bg-light border mt-3">
           <article style="padding:20px;">
-            <a type='button' data-toggle="modal" data-target="#reservationModalCenter" data-link="index.php?action=createReservation&id=<?= $babysitter['id'] ?>&creneaux=<?= $req ?>&enfants=<?= $req2 ?>&type=1" data-photo="ressources/pictures/<?=$babysitter['photo']?>" data-name="<?= $babysitter['prenom']." ".$babysitter['nom'] ?>">
+            <a type='button' data-toggle="modal" data-target="#reservationModalCenter" data-link="index.php?action=createReservation&id=<?= $babysitter['id'] ?>&creneaux=<?= $req ?>&enfants=<?= $req2 ?>&type=3" data-photo="ressources/pictures/<?=$babysitter['photo']?>" data-name="<?= $babysitter['prenom']." ".$babysitter['nom'] ?>">
               <div class="row">
                 <aside class="col-2">
                   <div class="row justify-content-md-center">
@@ -206,7 +206,7 @@ if (!empty($listBabysitters)) {
           </div>
           <div class="row justify-content-md-center">
             <div class='col-3'>
-              <a class="btn btn-lg btn-primary btn-block reservationLink" href="">Créer</a>
+              <a class="btn btn-lg btn-primary btn-block reservationLink text-white" href="">Créer</a>
             </div>
           </div>
         </div>
