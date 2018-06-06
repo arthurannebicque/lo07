@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <script src="jquery/jquery.min.js"></script>
+  <script src="public/jquery/jquery.min.js"></script>
   <!-- Bootstrap core CSS -->
   <link href="public/bootstrap/css/bootstrap.css" rel="stylesheet">
   <!-- Custom fonts for this template -->

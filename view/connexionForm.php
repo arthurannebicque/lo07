@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <script src="jquery/jquery.min.js"></script>
+        <script src="public/jquery/jquery.min.js"></script>
         <link href="public/bootstrap/css/bootstrap.css" rel="stylesheet">
         <script src="public/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!------ Include the above in your HEAD tag ---------->
