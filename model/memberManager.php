@@ -218,7 +218,7 @@ class MemberManager {
     public function findBabysitter($id_langue) {
         $db = $this->dbConnect();
 
-        $babysitters = $db->prepare('SELECT babysitters.id, babysitters.nom, babysitters.prenom, babysitters.ville, babysitters.age, babysitters.photo, babysitters.presentation FROM babysitters, babysitter_langue WHERE babysitter_langue.id_langue = ? AND babysitters.id = babysitter_langue.id_babysitter AND babysitters.visible = 1');
+        $babysitters = $db->prepare('SELECT babysitters.id, babysitters.nom, babysitters.prenom, babysitters.ville, babysitters.age, babysitters.photo, babysitters.presentation, babysitters.experience FROM babysitters, babysitter_langue WHERE babysitter_langue.id_langue = ? AND babysitters.id = babysitter_langue.id_babysitter AND babysitters.visible = 1');
         $babysitters->execute(array($id_langue));
 
         return $babysitters;
