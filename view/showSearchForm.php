@@ -91,11 +91,14 @@
           elseif(empty($reservations)) echo"<h2>Pas encore de prestations</h2>";?>
         </div>
         <?php
+
         foreach ($reservations as $reservation) {
+
           echo "<div class='container-fluid mt-3'>";
           echo "<div class='row justify-content-md-center'>";
           echo "<h5>Date :";
           $slot = $reservation['slots']->fetchall();
+    
           if (($reservation['type'] == 1)||($reservation['type'] == 2)) {
             echo " <small>".$slot[0]['date']."</small></h2>";
           } elseif ($reservation['type'] == 3) {
@@ -166,7 +169,7 @@
           echo "<div class='col-9 border'>";
           echo "</div>";
           echo "</div>";
-        }    
+        }
       }?>
     </div>
   </div>

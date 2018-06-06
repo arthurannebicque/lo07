@@ -8,7 +8,9 @@
 </div>
 
 
-<?php if ($_SESSION['type'] == 2) { ?>
+<?php if ($_SESSION['type'] == 2) {
+
+  ?>
   <div class="container mt-3">
     <div class="row">
       <div class="col-3">
@@ -27,7 +29,7 @@
 
               <?php
               $slot = $slots->fetchall();
-              if (($type[0] == 1)||($type[0] == 2)) {
+              if (($type[0] == 2)||($type[0] == 1)) {
 
                 echo " <small>".$slot[0]['date']."</small></h2>";
               } elseif ($type[0] == 3) {
@@ -37,7 +39,7 @@
               ?>
             </div>
             <div class="row mt-2">
-              <?php if ($type[0] == 1) {
+              <?php if (($type[0] == 2)||($type[0] == 1)) {
                 echo "<h2>Créneau :";
               } elseif ($type[0] == 3) {
                 echo "<h2>Créneaux :</h2>";
@@ -211,7 +213,7 @@
                   ?>
                 </div>
                 <div class="row mt-2">
-                  <?php if ($type[0] == 1) {
+                  <?php if (($type[0] == 1)||($type[0] == 2)) {
                     echo "<h2>Créneau :";
                   } elseif ($type[0] == 3) {
                     echo "<h2>Créneaux :</h2>";

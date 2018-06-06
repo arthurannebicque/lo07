@@ -399,7 +399,9 @@ function createResaLangue($id_parent, $id_babysitter, $id_dispos, $enfants) {
     foreach ($enfants as $enfant) {
         $affectedEnfantReservation = $slotManager->registerEnfantReservation($enfant, $newReservationId);
     }
+    $type[0] = 2;
     $slots = $slotManager->getDisposResa($newReservationId);
+    $dateFin = $slotManager->getReservationDate($newReservationId, "DESC");
     $babysitter = $memberManager->getBabysitterInfos($newReservationId);
     $listeEnfants = $memberManager->getEnfantsResa($newReservationId);
     require('view/recapReservation.php');

@@ -166,7 +166,7 @@ if (!empty($listBabysitters)) {
                     echo $rating['note']. "/5 ";
                     echo "</div>";
                     echo "<div class='col'>";
-                    echo  "Tres bien tres bien tres bien tres bien tres bien tres bienf"; //60 caracteres max
+                    echo  $rating['evaluation']; //60 caracteres max
                     echo "</div>";
                     echo "</div>";
                   }
