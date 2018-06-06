@@ -21,7 +21,7 @@
 
   <script src="public/bootstrap/js/bootstrap.bundle.min.js"></script>
   </head>
-  <body>
+
 <nav class="navbar navbar-light bg-light static-top justify-content-between border-bottom">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">

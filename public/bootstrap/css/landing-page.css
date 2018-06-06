@@ -54,6 +54,9 @@ header.masthead h1 {
 .showcase .showcase-text {
   padding: 3rem;
 }
+.showcase {
+  background-color: #ffffff;
+}
 
 .showcase .showcase-img {
   min-height: 30rem;
