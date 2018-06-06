@@ -5,7 +5,7 @@
     <h2>Rechercher un Babysitter</h2>
 </div>
 </div>
-<div  style="min-height:350px">
+
 <div class="container-fluid mt-3">
   <form class="form w-75 m-auto justify-content-md-center" action="index.php?action=searchBabysitter" method="post">
 
@@ -50,7 +50,7 @@
     <?php } ?>
     </table>
     </div>
-  </div>
+
 <?php }
 if (isset($reservations)) {
   ?>
@@ -61,7 +61,7 @@ if (isset($reservations)) {
       <aside class="col-2 ">
         <div class="row justify-content-md-center">
 
-        <img src="ressources/pictures/<?=$babysitterInfos['photo']?>" maxheight="180px">
+        <img src="ressources/pictures/<?=$babysitterInfos['photo']?>" height="120px" width="120px">
       </div>
         <div class="row justify-content-md-center">
         <?= $babysitterInfos['ville'] ?>
@@ -78,7 +78,7 @@ if (isset($reservations)) {
       </ul>
     </div>
     <div class="row p-1">
-      <p>Bonjour, Je suis actuellement en Terminale Littéraire spécialité musique, je suis disponible tout les weekends, pendant les vacances scolaires et les mercredis après-midi. N'hésitez...</p>
+      <p><?=$babysitterInfos['presentation']?></p>
     </div>
     </div>
     <div class="col-2">

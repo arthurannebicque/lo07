@@ -102,7 +102,7 @@ if ($_SESSION['type'] == 3) {
         <aside class="col-2">
           <div class="row justify-content-md-center">
 
-          <img src="ressources/pictures/<?=$babysitter['photo']?>" height="120px">
+          <img src="ressources/pictures/<?=$babysitter['photo']?>" height="120px" width="120px">
         </div>
           <div class="row justify-content-md-center">
           <?= $babysitter['ville'] ?>

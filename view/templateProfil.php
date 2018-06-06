@@ -22,7 +22,7 @@
 
   <?php if(isset($customScript)) echo $customScript;?>
   </head>
-  <body>
+
     <!-- Navigation -->
 <nav class="navbar navbar-light bg-light static-top justify-content-between border-bottom">
   <div class="container-fluid">
@@ -51,6 +51,8 @@
     </div>
   </div>
 </nav>
+<body>
+  <div class="container-fluid" style="min-height:650px">
 <?php
 if ($_SESSION['type'] == 3) {
   if (isset($_GET['revenu'])) {
@@ -76,10 +78,16 @@ if ($_SESSION['type'] == 3) {
 
 if (isset($babysitter) && $_SESSION['type'] == 1 && !$babysitter['candidature_valide']) {?>
 
-  <div class="container-fluid p-5">
+  <div class="container-fluid p-5" style="min-height:650px">
       <div class="row justify-content-md-center m-5">
       <h1>Votre candidature n'a pas encore été validée</h1>
     </div>
+    <div class="row justify-content-md-center m-5">
+    <img src="teddy.png" width="30%">
+  </div>
+  <div class="row justify-content-md-center">
+    <a type="button" class="btn btn-outline-primary" href="index.php?action=showHome">Retour</a>
+  </div>
     </div>
 
   <?php } else {
@@ -163,9 +171,12 @@ if (isset($babysitter) && $_SESSION['type'] == 1 && !$babysitter['candidature_va
 <?php } ?>
 
 <?= $content ?>
+
+</div>
+</body>
 <!-- Footer -->
 <footer class="footer bg-light">
- <div class="container">
+ <div class="container-fluid">
    <div class="row">
      <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
        <ul class="list-inline mb-2">
@@ -209,6 +220,4 @@ if (isset($babysitter) && $_SESSION['type'] == 1 && !$babysitter['candidature_va
    </div>
  </div>
 </footer>
-
-</body>
 </html>

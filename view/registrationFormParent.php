@@ -51,7 +51,7 @@
     <body class="form-parent">
 
 
-        <form class="form w-75 m-auto justify-content-md-center" action="index.php?action=addParent" method="post">
+        <form class="form w-75 mx-auto mt-4 justify-content-md-center" action="index.php?action=addParent" method="post">
             <input type="hidden" name="type" value=2 />
             <div class="text-center mb-4">
                 <h1 class="text-white">Inscrivez vous en tant que Parent</h1>
@@ -94,7 +94,7 @@
           <div class="form-group row justify-content-md-center">
             <div class="col-4">
               <div class="row">
-                <label class="col-form-label">Nombre d'enfants</label>
+                <label class="col-form-label text-white">Nombre d'enfants</label>
 
                 <select id="nombre_enfants" name="nombre_enfants" class ="custom-select w-50" required autofocus>
                     <option value="1">1</option>

@@ -9,7 +9,6 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <script src="jquery/jquery.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUj1D_k5Ie0F5lt1Cr2ix4zEdqnia6I04&libraries=places"></script>
   <!-- Bootstrap core CSS -->
   <link href="public/bootstrap/css/bootstrap.css" rel="stylesheet">
   <!-- Custom fonts for this template -->
@@ -18,7 +17,8 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template -->
   <link href="public/bootstrap/css/landing-page.css" rel="stylesheet">
-  <script src="public/jquery/jquery.min.js"></script>
+  <link href="public/bootstrap/css/sb-admin-2.css" rel="stylesheet">
+
   <script src="public/bootstrap/js/bootstrap.bundle.min.js"></script>
   </head>
   <body>

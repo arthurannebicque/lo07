@@ -7,46 +7,49 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="jquery/jquery.min.js"></script>
+        <link href="public/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <script src="public/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!------ Include the above in your HEAD tag ---------->
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
+        <link href="public/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+        <link href="public/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     </head>
 
-    <body>
-   <div class="container">
-    <div class="row">
-        <div class="col-md-offset-3 col-md-6">
-        <header class="text-center"></header><h1>Connexion à votre compte</h1></header>
-        </div>
-        <div class="col-md-offset-5 col-md-3">
+    <body class="form-parent">
+   <div class="container mt-5 pt-5">
 
-        <form class="form-signin" action="index.php?action=connectMember" method="post">
-            <div class="text-center mb-4">
-                <h1 class="h3 mb-3 font-weight-normal">Connectez vous</h1>
-            </div>
-            <div class="form-label-group form-login">
-                <label for="inputEmail">Email</label>
-                <input type="text" id="inputLogin" name="email" class="form-control" placeholder="Email" <?php if (isset($_GET['email'])) echo 'value="' . htmlspecialchars($_GET['email']) . '"' ?> required autofocus>
 
+
+        <form class="form pt-5 w-75 mx-auto justify-content-md-center" action="index.php?action=connectMember" method="post">
+          <div class="text-center mb-4">
+              <h1 class="text-white">Connectez vous</h1>
+          </div>
+            <div class="form-group row justify-content-md-center">
+            <div class="col-3">
+                <input type="text" id="inputEmail" name="email" class="form-control" placeholder="Email" <?php if (isset($_GET['email'])) echo 'value="' . htmlspecialchars($_GET['email']) . '"' ?> required autofocus>
+              </div>
             </div>
-            <div class="form-label-group">
-                <label for="inputPassword">Password</label>
+            <div class="form-group row justify-content-md-center">
+                <div class="col-3">
                 <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-
+              </div>
             </div>
+            <div class="form-group row justify-content-md-center">
             <div class="checkbox mb-3">
-                <label>
+                <label class="text-white">
                     <input type="checkbox" name="case" value="connexion-automatique"> Connexion automatique
                 </label>
             </div>
-            <div class="wrapper">
+          </div>
+          <div class="form-group row justify-content-md-center">
+            <div class="col-5">
             <button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
-            <p class="mt-5 mb-3 text-muted text-center">Pas encore inscrit ? Inscrivez vous <a href="index.php?action=registration">ici</a></p>
-            </div>
+          </div>
+        </div>
         </form>
+        <div class="col-3 mx-auto">
+    <a type="button" class="btn btn-outline-light btn-block" href="index.php">Retour</a>
+  </div>
         </div>
     </div>
    </div>

@@ -21,7 +21,7 @@ modal.find('.reservationLink').attr('href', link)
           <h2>Réservation Ponctuelle</h2>
       </div>
     </div>
-      <div class="container-fluid mt-3" style="min-height:300px">
+      <div class="container-fluid mt-3">
         <form class="form w-75 m-auto justify-content-md-center" action="index.php?action=requestResaPonctuelle" method="post">
 
 
@@ -34,11 +34,13 @@ modal.find('.reservationLink').attr('href', link)
 
             <div class="form-group row justify-content-md-center">
               <div class="col-2">
-                <input type="number" id="inputHeureDebut" name="heure_debut" class ="form-control" placeholder="Heure Debut" min="0" max="23" <?php if(isset($heure_debut)) echo "value='{$heure_debut}'";?> required autofocus>
+                <input type="number" id="inputHeureDebut" name="heure_debut" class ="form-control" placeholder="Debut" min="0" max="23" <?php if(isset($heure_debut)) echo "value='{$heure_debut}'";?> required autofocus>
               </div>
+              <label class='col-form-label'>h</label>
               <div class="col-2">
-                <input type="number" id="inputHeureFin" name="heure_fin" class ="form-control" placeholder="Heure Fin" min="1" max="24" <?php if(isset($heure_fin)) echo "value='{$heure_fin}'";?> required autofocus>
+                <input type="number" id="inputHeureFin" name="heure_fin" class ="form-control" placeholder="Fin" min="1" max="24" <?php if(isset($heure_fin)) echo "value='{$heure_fin}'";?> required autofocus>
               </div>
+              <label class='col-form-label'>h</label>
             </div>
             <div class="form-group row justify-content-md-center">
                 <label class="col-form-label">Enfants à garder :</label>

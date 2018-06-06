@@ -4,7 +4,7 @@
       <h2>Disponibilité Simple</h2>
   </div>
 </div>
-<div class="container-fluid mt-3" style="min-height:350px">
+<div class="container-fluid mt-3">
         <form class="form w-75 m-auto justify-content-md-center" action="index.php?action=addDispoSimple" method="post">
 
           <div class="form-group row justify-content-md-center">
