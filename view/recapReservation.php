@@ -128,10 +128,11 @@
               <form class="form m-auto justify-content-md-center" action="index.php?action=closeReservation" method="post">
 
                 <?php if ($type[0] == 3 ) {
+                  print_r($type);
                   echo "<div class='form-group row justify-content-md-center'>";
                   echo "<div class='col-4'>";
                   echo "<label>Nombre d'heures (rappel : ".count($slot)."h)</label>";
-                  echo "<input type='hidden' name='heure_debut' value='0'>";
+                  echo "<input type='hidden' name='heure_debut' value='1'>";
                   echo "</div>";
                   echo "<div class='col-3'>";
                   echo "<input type='number' id='inputHeureFin' name='heure_fin' class ='form-control' placeholder='Heures' value='".count($slot)."' required autofocus>";
@@ -171,7 +172,7 @@
                   </div>
                 </div>
 
-                <input type="hidden" name="id_reservation" value=<?= $_GET['id'] ?>>
+                <input type="hidden" name="id_reservation" value=<?= $id_reservation ?>>
                 <input type="hidden" name="type" value=<?= $type[0] ?>>
 
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Créer</button>

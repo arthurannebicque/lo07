@@ -66,7 +66,7 @@ if (!empty($listBabysitters)) { ?>
   <div id="dispo-div">
     <?php
     foreach ($babysitters as $babysitter) {
-      if ($babysitter['distance'] <= 3000 && !empty($babysitter[8])) {
+      if ($babysitter['distance'] <= 30 && !empty($babysitter[8])) {
         echo "<div class='container bg-light border-top mt-5' value='{$babysitter['id']}'>";
         ?>
         <div class="bg-light  mt-3">

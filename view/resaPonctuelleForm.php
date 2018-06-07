@@ -74,7 +74,7 @@ if (!empty($listBabysitters)) {
   <div class="container justify-content-md-center">
     <?php
     foreach ($babysitters as $babysitter) {
-      if ($babysitter['distance'] <= 400) {
+      if ($babysitter['distance'] <= 30) {
         ?>
         <div class="bg-light border mt-3">
           <article style="padding:20px;">
@@ -109,7 +109,7 @@ if (!empty($listBabysitters)) {
                   <div class="row">
                     <div class="col">
                       <?
-                      for ($i=1; $i < round($babysitter['average'][0], 1); $i++) {
+                      for ($i=1; $i <= round($babysitter['average'][0]); $i++) {
                         echo "<img src='public/images/feeding-bottle.png' height='20px' width='20px'>";
                       }
                       ?>

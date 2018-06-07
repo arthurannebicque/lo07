@@ -95,7 +95,9 @@ if ($_SESSION['type'] == 1 && $babysitter['candidature_valide']) { ?>
                   <img src="ressources/pictures/<?=$babysitter['photo']?>" height="120px" width="120px">
                 </div>
                 <div class="row justify-content-md-center">
-                  <?= $babysitter['ville'] ?>
+                  <div class="col">
+                  <p><?= $babysitter['ville'] ?></p>
+                </div>
                 </div>
               </aside>
               <div class="col-8">

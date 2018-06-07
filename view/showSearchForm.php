@@ -49,7 +49,9 @@
                 <img src="ressources/pictures/<?=$babysitterInfos['photo']?>" height="120px" width="120px">
               </div>
               <div class="row justify-content-md-center">
+                <div class="col">
                 <?= $babysitterInfos['ville'] ?>
+              </div>
               </div>
             </aside>
             <div class="col-8 ">
@@ -98,7 +100,7 @@
           echo "<div class='row justify-content-md-center'>";
           echo "<h5>Date :";
           $slot = $reservation['slots']->fetchall();
-    
+
           if (($reservation['type'] == 1)||($reservation['type'] == 2)) {
             echo " <small>".$slot[0]['date']."</small></h2>";
           } elseif ($reservation['type'] == 3) {

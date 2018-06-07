@@ -383,6 +383,7 @@ function createReservation($id_parent, $id_babysitter, $creneaux, $selectedEnfan
       $hours = $slotManager->getReservationHours($newReservationId, $weekday['weekday']);
       $creneauResa[$weekday[0]] = $hours->fetchall();
     }
+    $id_reservation = $newReservationId;
 
     require('view/recapReservation.php');
 }
@@ -399,11 +400,12 @@ function createResaLangue($id_parent, $id_babysitter, $id_dispos, $enfants) {
     foreach ($enfants as $enfant) {
         $affectedEnfantReservation = $slotManager->registerEnfantReservation($enfant, $newReservationId);
     }
-    $type[0] = 2;
+    $type = $slotManager->getReservationType($newReservationId);
     $slots = $slotManager->getDisposResa($newReservationId);
     $dateFin = $slotManager->getReservationDate($newReservationId, "DESC");
     $babysitter = $memberManager->getBabysitterInfos($newReservationId);
     $listeEnfants = $memberManager->getEnfantsResa($newReservationId);
+    $id_reservation = $newReservationId;
     require('view/recapReservation.php');
 }
 
@@ -438,6 +440,7 @@ function showReservation($id_reservation) {
     $dateFin = $slotManager->getReservationDate($id_reservation, "DESC");
     $type = $slotManager->getReservationType($id_reservation);
     $weekdays = $slotManager->getReservationWeekdays($id_reservation);
+    $id_reservation = $id_reservation;
     while ($weekday = $weekdays->fetch()) {
       $hours = $slotManager->getReservationHours($id_reservation, $weekday['weekday']);
       $creneauResa[$weekday[0]] = $hours->fetchall();
@@ -482,7 +485,7 @@ function getDistance($origin, $destination) {
   if($resp['status']=='OK'){
     $distance = isset($resp['rows'][0]['elements'][0]['distance']['value']) ? $resp['rows'][0]['elements'][0]['distance']['value'] : "";
   } else {
-    throw new Exception('Impossible de rentrer cette adresse');
+    throw new Exception('Impossible de de calculer la distance');
   }
 
   return $distance/1000;
