@@ -128,7 +128,7 @@
               <form class="form m-auto justify-content-md-center" action="index.php?action=closeReservation" method="post">
 
                 <?php if ($type[0] == 3 ) {
-                  print_r($type);
+                
                   echo "<div class='form-group row justify-content-md-center'>";
                   echo "<div class='col-4'>";
                   echo "<label>Nombre d'heures (rappel : ".count($slot)."h)</label>";

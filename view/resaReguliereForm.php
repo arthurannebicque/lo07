@@ -126,11 +126,13 @@ if (!empty($listBabysitters)) {
                   <div class="row justify-content-md-center">
                     <img src="ressources/pictures/<?=$babysitter['photo']?>" height="120px" width="120px">
                   </div>
+                  <div class="col">
                   <div class="row justify-content-md-center">
                     <?= round($babysitter['distance']) ?>km
                   </div>
                   <div class="row justify-content-md-center">
                     <?= $babysitter['ville'] ?>
+                  </div>
                   </div>
                 </aside>
                 <div class="col-7">
@@ -151,13 +153,13 @@ if (!empty($listBabysitters)) {
                   <div class="row">
                     <div class="col">
                       <?
-                      for ($i=1; $i < round($babysitter['average'][0], 1); $i++) {
+                      for ($i=1; $i <= round($babysitter['average'][0]); $i++) {
                         echo "<img src='public/images/feeding-bottle.png' height='20px' width='20px'>";
                       }
                       ?>
                     </div>
                     <div class="col">
-                      <?=count($babysitter['ratings'])."avis"?>
+                      <?=count($babysitter['ratings'])." avis"?>
                     </div>
                   </div>
                   <?php foreach ($babysitter['ratings'] as $rating) {
