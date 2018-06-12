@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
   <div class="row justify-content-md-center mt-3">
-    <h2>Récapitulatif de la réservation</h2>
+    <h2>Récapitulatif de la réservation <? if($type[0] == 1) {echo "ponctuelle";} elseif ($type[0] == 2) { echo "en langue étrangère";} elseif ($type[0] == 3) { echo "régulière";} ?></h2>
   </div>
 </div>
 
@@ -128,7 +128,7 @@
               <form class="form m-auto justify-content-md-center" action="index.php?action=closeReservation" method="post">
 
                 <?php if ($type[0] == 3 ) {
-                
+
                   echo "<div class='form-group row justify-content-md-center'>";
                   echo "<div class='col-4'>";
                   echo "<label>Nombre d'heures (rappel : ".count($slot)."h)</label>";
