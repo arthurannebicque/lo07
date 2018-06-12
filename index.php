@@ -13,8 +13,7 @@ try {
         require('view/dispoSimpleForm.php');
         if ($_GET['type'] == 'recurrente')
         require('view/dispoRecurrenteForm.php');
-      }
-      elseif ($_GET['action'] == 'addDispoSimple') {
+      } elseif ($_GET['action'] == 'addDispoSimple') {
         if (!empty($_POST['date']) && !empty($_POST['heure_debut']) && !empty($_POST['heure_fin'])) {
           addDispoSimple($_SESSION['id'], $_POST['date'], $_POST['heure_debut'], $_POST['heure_fin']);
         } else {
