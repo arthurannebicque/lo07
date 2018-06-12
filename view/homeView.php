@@ -167,22 +167,22 @@
 <section class="showcase ">
   <div class="container-fluid p-0">
     <div class="row no-gutters">
-      <div class="col-lg-6 order-lg-2 text-white showcase-img"> <img src="public/images/baby1.jpg" alt="dd"  width=100% ></div>
-      <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+      <div class="col-6 order-2 text-white showcase-img"> <img src="public/images/baby1.jpg" alt="dd"  width=100% ></div>
+      <div class="col-6 order-1 my-auto showcase-text">
         <h2>Déja plus de 1500 inscrits en région parisienne</h2>
         <p class="lead mb-0">Rejoignez la communauté Sitties, comprennant plus de 1500 membres actifs, et choisissez dès aujourd'hui le Babysitter adapté à vos besoins.</p>
       </div>
     </div>
     <div  class="row no-gutters">
-      <div class="col-lg-6 text-white showcase-img"><img src="public/images/baby2.png" alt="dd" width="100%" ></div>
-      <div class="col-lg-6 my-auto showcase-text">
+      <div class="col-6 text-white showcase-img"><img src="public/images/baby2.png" alt="dd" width="100%" ></div>
+      <div class="col-6 my-auto showcase-text">
         <h2>Une grande variété de choix</h2>
         <p class="lead mb-0">Parlant anglais, chinois ou bien portugais, expérimenté ou non, aide aux devoirs ou non, nous avons quelqu'un pour vous.</p>
       </div>
     </div>
     <div class="row no-gutters">
-      <div class="col-lg-6 order-lg-2 text-white showcase-img"><img src="public/images/baby4.png" alt="dd" width="100%"  ></div>
-      <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+      <div class="col-6 order-2 text-white showcase-img"><img src="public/images/baby4.png" alt="dd" width="100%"  ></div>
+      <div class="col-6 order-1 my-auto showcase-text">
         <h2>Nous nous occupons de tout</h2>
         <p class="lead mb-0">Réservez quand vous voulez, et organisez votre emploi du temps dès le début de chaque semaine car chaque parent mérite du temps pour lui</p>
       </div>
