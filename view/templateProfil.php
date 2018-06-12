@@ -45,6 +45,69 @@
     </div>
   </div>
 </nav>
+<!-- Connexion Modal -->
+<div class="modal fade" id="connexionModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Connectez vous !</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form-signin" action="index.php?action=connectMember" method="post">
+          <div class="form-group">
+            <input type="text" id="inputEmail" name="email" class="form-control" placeholder="Email" <?php if(isset($_GET['email'])) echo 'value="'.htmlspecialchars($_GET['email']).'"'?> required autofocus>
+          </div>
+          <div class="form-group">
+            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+          </div>
+          <div class="checkbox mb-3">
+            <label>
+              <input class="defaultCheck" type="checkbox" name="case" value="connexion-automatique"> Connexion automatique
+            </label>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+          <p class="mt-5 mb-3 text-muted text-center">Pas encore inscrit ? Inscrivez vous <a href="index.php">ici</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Registration Modal -->
+<div class="modal fade" id="registrationModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Inscrivez vous !</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="height: 220px">
+        <div class="container mt-4">
+          <div class="row">
+            <div class="col mr-auto  text-center" style="height: 120px">
+              <a  href="index.php?action=registration&type=parent">
+                <div class="col-12 ml-auto border py-5 text-center" style="height: 120px">
+                  <h5 class="mx-auto">Parent</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col mr-auto  text-center" style="height: 120px">
+              <a  href="index.php?action=registration&type=babysitter">
+                <div class="col-12 mr-auto border py-5 text-center" style="height: 120px">
+                  <h5 class="mx-auto">Babysitter</h5>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <body>
   <div class="container-fluid" style="min-height:650px">
     <?php
