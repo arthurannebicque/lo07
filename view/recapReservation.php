@@ -253,8 +253,12 @@
                   <?php
                   while ($enfant = $listeEnfants->fetch()) {
                     echo "<div class='row mt-1'>";
-
+                    echo "<div class='col-2'>";
                     echo "<h3><small>".$enfant['prenom']."</small></h3>";
+                    echo "</div>";
+                    echo "<div class='col-6'>";
+                    echo "<h5><small>Restrictions alimentaires : ".$enfant['restrictions']."</small></h5>";
+                    echo "</div>";
                     echo "</div>";
                   }
                   ?>
